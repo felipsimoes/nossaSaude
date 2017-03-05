@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cadastro_usuario"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.app.nossasaudeapp.CadastroUsuarioActivity"
+    android:background="@color/colorBackRet">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:background="@android:color/white"
+            android:padding="16dp">
+        <TextView
+            android:text="Nome de Usuário"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView13"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:textColorLink="@color/colorBackQuad2"
+            android:hint="Nome de Usuario"
+            android:textSize="24sp" />
+
+        <TextView
+            android:text="Senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView14"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText3"
+            android:textColorLink="@color/colorBackQuad2"
+            android:hint="Senha"
+            android:textSize="24sp" />
+
+        <TextView
+            android:text="Confirmar Senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView15"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:textColorLink="@color/colorBackQuad2"
+            android:hint="Confirmar Senha"
+            android:textSize="24sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:text="Cadastrar" />
+    </LinearLayout>
+
+</RelativeLayout>

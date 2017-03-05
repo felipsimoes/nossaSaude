@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Nossa Saúde</string>
+
+    <string-array name="tipo_remedio_array">
+        <item>Capsulas</item>
+        <item>Copos</item>
+        <item>Gotas</item>
+        <item>Gramas</item>
+        <item>Injeções</item>
+        <item>Pilulas</item>
+        <item>Sachês</item>
+        <item>Spray</item>
+    </string-array>
+
+    <string-array name="frequencia_array">
+        <item>Diariamente</item>
+        <item>Semanalmente</item>
+        <item>Mensalmente</item>
+    </string-array>
+
+</resources>

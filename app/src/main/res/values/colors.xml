@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#292929</color>
+    <color name="colorPrimaryDark">#292929</color>
+    <color name="colorAccent">#292929</color>
+    <color name="colorBackMain">#292929</color>
+    <color name="colorBackRet">#23475f</color>
+    <color name="colorBackQuad1">#ff4b3a</color>
+    <color name="colorBackQuad2">#00afe5</color>
+    <color name="colorBackQuad3">#00cd6a</color>
+    <color name="colorBackQuad4">#ff7f0d</color>
+</resources>

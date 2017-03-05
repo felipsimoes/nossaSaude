@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_pessoa"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.app.nossasaudeapp.PessoaActivity"
+    android:background="@color/colorBackQuad1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:background="@android:color/white"
+        android:padding="16dp">
+
+        <TextView
+            android:text="Nome da Pessoa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView13"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:textColorLink="@color/colorBackQuad2" />
+
+        <Button
+            android:text="Próximo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button" />
+
+    </LinearLayout>
+
+</RelativeLayout>
