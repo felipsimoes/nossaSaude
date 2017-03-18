@@ -3,6 +3,7 @@ package com.example.app.nossasaudeapp.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import static com.example.app.nossasaudeapp.data.UsuarioContract.UsuarioEntry;
 
 /**
  * Created by Felipe on 09/03/2017.
