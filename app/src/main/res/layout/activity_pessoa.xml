@@ -13,28 +13,36 @@
         android:layout_height="match_parent"
         android:layout_margin="16dp"
         android:background="@android:color/white"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:weightSum="1">
+
+        <ListView
+            android:id="@+id/lvpessoa"
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
+            android:clickable="true"
+            android:layout_weight="0.91" />
 
         <TextView
-            android:text="Nome da Pessoa"
+            android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView13"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+            android:text="Nome da Pessoa"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
 
         <EditText
+            android:id="@+id/txtnomepessoa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:inputType="textPersonName"
             android:textColorLink="@color/colorBackQuad2" />
 
         <Button
-            android:text="Próximo"
+            android:id="@+id/btnaddpessoa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button" />
+            android:text="Adicionar" />
 
     </LinearLayout>
 
