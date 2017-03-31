@@ -15,10 +15,17 @@ import android.widget.Toast;
 
 import com.example.app.nossasaudeapp.data.Pessoa;
 
+import java.io.Console;
+import java.util.ArrayList;
+import java.util.List;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
 
 public class PessoaActivity extends AppCompatActivity {
+
+    public static final String LOG_TAG = "PESSOA_ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +34,11 @@ public class PessoaActivity extends AppCompatActivity {
 
         ListView lv = (ListView) findViewById(R.id.lvpessoa);
 
-        Pessoa[] items = {
-                new Pessoa(1, "Jose"),
-                new Pessoa(2, "Pedro"),
-        };
+        final List<Pessoa> pessoas = new ArrayList<Pessoa>();
+        pessoas.add(new Pessoa(1, "Jose"));
 
-        ArrayAdapter<Pessoa> adapter = new ArrayAdapter<Pessoa>(this,
-                android.R.layout.simple_list_item_1, items);
+        final ArrayAdapter<Pessoa> adapter = new ArrayAdapter<Pessoa>(this,
+                android.R.layout.simple_list_item_1, pessoas);
 
         lv.setAdapter(adapter);
 
@@ -42,28 +47,28 @@ public class PessoaActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Realm.init(getBaseContext());
-//                RealmConfiguration myConfig = new RealmConfiguration.Builder()
-//                        .name("myrealm.realm")
-//                        .inMemory()
-//                        .build();
 
                 Realm realm = Realm.getDefaultInstance();
 
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
-                        Log.d("TESTE", "Começando");
                         Pessoa p = new Pessoa();
                         p.setName(((TextView) findViewById(R.id.txtnomepessoa)).getText().toString());
-                        p.set_ID(1);
+
+                        Number num = (realm.where(Pessoa.class).max("id"));
+                        long id = num == null ? 1 : ((long) num ) + 1;
+
+                        Log.d(LOG_TAG, String.valueOf(id));
+                        p.setId(id);
                         realm.copyToRealm(p);
-                        Log.d("TESTE","FINALIZANDO");
+
+                        adapter.add(p);
                     }
                 });
             }
         });
-//
+
 //        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

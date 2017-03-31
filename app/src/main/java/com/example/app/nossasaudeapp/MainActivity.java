@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     public void startMedicamento(View view){

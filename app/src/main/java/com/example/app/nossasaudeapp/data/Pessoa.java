@@ -11,14 +11,16 @@ import io.realm.annotations.Required;
 public class Pessoa extends RealmObject {
 
     @PrimaryKey
-    private int _ID;
+    private long id;
 
-    public int get_ID() {
-        return _ID;
+    private String name;
+
+    public long getId() {
+        return id;
     }
 
-    public void set_ID(int _ID) {
-        this._ID = _ID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -29,11 +31,14 @@ public class Pessoa extends RealmObject {
         this.name = name;
     }
 
-    private String name;
-
     public Pessoa() {}
     public Pessoa(int id, String name){
-        this._ID = id;
+        this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.id).concat(" " + this.name) ;
     }
 }
