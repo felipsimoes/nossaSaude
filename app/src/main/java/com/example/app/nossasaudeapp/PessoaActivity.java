@@ -2,6 +2,8 @@ package com.example.app.nossasaudeapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Debug;
+import android.support.v4.util.DebugUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +23,7 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 
 public class PessoaActivity extends AppCompatActivity {
@@ -36,7 +39,14 @@ public class PessoaActivity extends AppCompatActivity {
         ListView listaPessoas = (ListView) findViewById(R.id.lvpessoa);
 
         final List<Pessoa> pessoas = new ArrayList<Pessoa>();
-        pessoas.add(new Pessoa(1, "Jose"));
+
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                RealmResults<Pessoa> allPeople = realm.where(Pessoa.class).findAll();
+                if (allPeople != null && allPeople.size()!= 0) pessoas.addAll(allPeople);
+            }
+        });
 
         final ArrayAdapter<Pessoa> adapter = new ArrayAdapter<Pessoa>(this,
                 android.R.layout.simple_list_item_1, pessoas);
@@ -78,7 +88,8 @@ public class PessoaActivity extends AppCompatActivity {
                     @Override
                     public void execute(Realm realm) {
                         Pessoa pessoaPorID = realm.where(Pessoa.class).equalTo("id", id).findFirst();
-                        Log.d(LOG_TAG, "ID - ".concat(Long.toString(pessoaPorID.getId())));
+                        if (pessoaPorID != null)
+                            Log.d(LOG_TAG, "ID - ".concat(Long.toString(pessoaPorID.getId())));
                     }
                 });
 

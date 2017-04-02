@@ -22,8 +22,8 @@ public class MyApplication extends Application {
 
         Realm.init(this);
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().build();
-        Realm.deleteRealm(realmConfiguration);
-        Realm.setDefaultConfiguration(realmConfiguration);
+//        Realm.deleteRealm(realmConfiguration);
+//        Realm.setDefaultConfiguration(realmConfiguration);
 
         Stetho.initialize(
                 Stetho.newInitializerBuilder(context)

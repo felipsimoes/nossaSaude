@@ -28,5 +28,6 @@
     <string name="pessoa">Pessoa</string>
     <string name="medicamento">Medicamento</string>
     <string name="configura_es">Configurações</string>
+    <string name="ficha_tecnica">Ficha Técnica</string>
 
 </resources>

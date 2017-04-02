@@ -37,6 +37,7 @@
                 android:layout_alignLeft="@+id/txtdiaM"
                 android:layout_alignStart="@+id/txtdiaM"
                 android:layout_below="@+id/txtdiaM"
+                android:layout_marginBottom="0dp"
                 android:text="@string/outubro"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@android:color/white" />
@@ -67,13 +68,13 @@
                 android:id="@+id/txtanoM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="41dp"
-                android:layout_marginStart="41dp"
+                android:layout_marginLeft="37dp"
+                android:layout_marginStart="37dp"
                 android:text="2016"
                 android:textColor="@android:color/white"
-                android:layout_below="@+id/textView6" />
+                android:layout_below="@+id/txtmesM"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -194,7 +195,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/white"
-                        android:text="Ficha Técnica"
+                        android:text="@string/ficha_tecnica"
                         style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem" />
 
                 </LinearLayout>

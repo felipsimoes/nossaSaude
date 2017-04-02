@@ -6,13 +6,34 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
 
 public class MainActivity extends AppCompatActivity {
+    private int mYear, mMonth, mDay;
+    TextView txtdia, txtmes, txtano;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        txtdia = (TextView)findViewById(R.id.txtdiaM);
+        txtmes = (TextView)findViewById(R.id.txtmesM);
+        txtano = (TextView)findViewById(R.id.txtanoM);
+
+
+
+        long date = System.currentTimeMillis();
+        SimpleDateFormat dia = new SimpleDateFormat("dd");
+        SimpleDateFormat mes = new SimpleDateFormat("MM");
+        SimpleDateFormat ano = new SimpleDateFormat("yyyy");
+        String dateString1 = dia.format(date);
+        String dateString2 = mes.format(date);
+        String dateString3 = ano.format(date);
+        txtdia.setText(dateString1);
+        txtmes.setText(retornaMes(Integer.parseInt(dateString2)));
+        txtano.setText(dateString3);
 
         LinearLayout lMedicamento = (LinearLayout) findViewById(R.id.image_button_3);
         lMedicamento.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +75,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public String retornaMes(int mes){
+
+        String[] meses = {"Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto",
+                "Setembro","Outubro","Novembro","Dezembro",};
+        return meses[mes-1];
     }
 
     public void startMedicamento(View view){

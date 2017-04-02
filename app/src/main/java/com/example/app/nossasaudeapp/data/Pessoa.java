@@ -50,6 +50,6 @@ public class Pessoa extends RealmObject {
 
     @Override
     public String toString() {
-        return String.valueOf(this.id).concat(" " + this.name) ;
+        return (" " + this.name) ;
     }
 }
