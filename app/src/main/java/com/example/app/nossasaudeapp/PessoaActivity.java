@@ -26,13 +26,14 @@ import io.realm.RealmResults;
 public class PessoaActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = "PESSOA_ACTIVITY";
+    private Realm realm = Realm.getDefaultInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pessoa);
 
-        ListView lv = (ListView) findViewById(R.id.lvpessoa);
+        ListView listaPessoas = (ListView) findViewById(R.id.lvpessoa);
 
         final List<Pessoa> pessoas = new ArrayList<Pessoa>();
         pessoas.add(new Pessoa(1, "Jose"));
@@ -40,15 +41,13 @@ public class PessoaActivity extends AppCompatActivity {
         final ArrayAdapter<Pessoa> adapter = new ArrayAdapter<Pessoa>(this,
                 android.R.layout.simple_list_item_1, pessoas);
 
-        lv.setAdapter(adapter);
+        listaPessoas.setAdapter(adapter);
 
         final Context context = this;
         Button btnAdd = (Button) findViewById(R.id.btnaddpessoa);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Realm realm = Realm.getDefaultInstance();
 
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
@@ -69,16 +68,27 @@ public class PessoaActivity extends AppCompatActivity {
             }
         });
 
-//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                String item = ((TextView)view).getText().toString();
-//                Intent i = new Intent(PessoaActivity.this,DadosPessoaActivity.class);
-//                startActivity(i);
-//                Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
-//            }
-//        });
+        listaPessoas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, final long id) {
+
+                String item = ((TextView)view).getText().toString();
+
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        Pessoa pessoaPorID = realm.where(Pessoa.class).equalTo("id", id).findFirst();
+                        Log.d(LOG_TAG, "ID - ".concat(Long.toString(pessoaPorID.getId())));
+                    }
+                });
+
+                Intent i = new Intent(PessoaActivity.this,DadosPessoaActivity.class);
+
+                startActivity(i);
+
+                Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 

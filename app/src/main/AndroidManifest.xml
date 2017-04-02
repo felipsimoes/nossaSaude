@@ -9,13 +9,15 @@
         android:supportsRtl="true"
         android:name=".MyApplication">
 
-        <activity android:name="com.example.app.nossasaudeapp.MainActivity" android:theme="@style/AppTheme"/>
-        <activity android:name="com.example.app.nossasaudeapp.MedicamentoActivity" android:theme="@style/AppTheme1"/>
-        <activity android:name="com.example.app.nossasaudeapp.PessoaActivity" android:theme="@style/AppTheme1"/>
-        <activity android:name="com.example.app.nossasaudeapp.ConfiguracaoActivity" android:theme="@style/AppTheme1"/>
-        <activity android:name="com.example.app.nossasaudeapp.FichaActivity" android:theme="@style/AppTheme1"/>
-        <activity android:name="com.example.app.nossasaudeapp.CadastroUsuarioActivity" android:theme="@style/AppTheme1"/>
-        <activity android:name="com.example.app.nossasaudeapp.LoginActivity" android:theme="@style/AppTheme1">
+        <activity android:name=".MainActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".MedicamentoActivity" android:theme="@style/AppTheme1"/>
+        <activity android:name=".PessoaActivity" android:theme="@style/AppTheme1"/>
+        <activity android:name=".ConfiguracaoActivity" android:theme="@style/AppTheme1"/>
+        <activity android:name=".FichaActivity" android:theme="@style/AppTheme1"/>
+        <activity android:name=".CadastroUsuarioActivity" android:theme="@style/AppTheme1"/>
+        <activity android:name=".DadosPessoaActivity" android:theme="@style/AppTheme1" />
+        <activity android:name=".DadosMedicamentoActivity" android:theme="@style/AppTheme1" />
+        <activity android:name=".LoginActivity" android:theme="@style/AppTheme1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

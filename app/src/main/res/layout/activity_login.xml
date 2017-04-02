@@ -13,12 +13,12 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:orientation="vertical"
@@ -32,71 +32,98 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView2"
                 android:layout_weight="2.32"
-                app:srcCompat="@mipmap/logo_app" />
+                app:srcCompat="@mipmap/logo_app"
+                android:contentDescription=""
+                tools:ignore="ContentDescription" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/image_button_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:weightSum="1"
-            android:orientation="vertical"
+            android:layout_marginBottom="5dp"
             android:layout_weight="2"
+            android:background="@android:drawable/editbox_background_normal"
+            android:gravity="center"
+            android:orientation="vertical"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:background="@android:drawable/editbox_background_normal">
+            android:weightSum="1">
 
             <TextView
-                android:text="Usuário"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Usuário"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <EditText
+                android:id="@+id/editText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText2"
+                android:inputType="textPersonName"
                 android:textColorLink="@color/colorBackQuad2" />
 
             <TextView
-                android:text="Senha"
+                android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView14"
+                android:text="Senha"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <EditText
+                android:id="@+id/editText3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText3"
+                android:inputType="textPersonName"
                 android:textColorLink="@color/colorBackQuad2" />
 
             <Button
-                android:text="Entrar"
+                android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:background="@color/colorBackQuad2"
-                android:id="@+id/button"
                 android:onClick="startMenu"
-                android:layout_marginTop="6dp" />
+                android:text="Entrar" />
 
             <Button
-                android:text="Cadastrar"
+                android:id="@+id/button1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button1"
-                android:onClick="startCadastraUsuario"
+                android:layout_marginTop="6dp"
                 android:background="@android:color/darker_gray"
-                android:layout_marginTop="6dp" />
+                android:onClick="startCadastraUsuario"
+                android:text="Cadastrar" />
 
         </LinearLayout>
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBackQuad2" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBackQuad1" />
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBackQuad3" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBackQuad4" />
+
     </LinearLayout>
+
 
 </RelativeLayout>

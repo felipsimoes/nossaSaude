@@ -1,5 +1,6 @@
 package com.example.app.nossasaudeapp.data;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -15,6 +16,8 @@ public class Pessoa extends RealmObject {
 
     private String name;
 
+    private RealmList<Medicamento> medicamentos;
+
     public long getId() {
         return id;
     }
@@ -29,6 +32,14 @@ public class Pessoa extends RealmObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public RealmList<Medicamento> getMedicamentos() {
+        return medicamentos;
+    }
+
+    public void setMedicamentos(RealmList<Medicamento> medicamentos) {
+        this.medicamentos = medicamentos;
     }
 
     public Pessoa() {}
