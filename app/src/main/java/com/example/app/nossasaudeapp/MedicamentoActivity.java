@@ -1,5 +1,6 @@
 package com.example.app.nossasaudeapp;
 
+import android.app.AlarmManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +13,15 @@ import android.widget.Spinner;
 
 public class MedicamentoActivity extends AppCompatActivity {
 
+    AlarmManager alarmManager;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medicamento);
+
+        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
