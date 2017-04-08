@@ -32,9 +32,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView2"
                 android:layout_weight="2.32"
-                app:srcCompat="@mipmap/logo_app"
-                android:contentDescription=""
-                tools:ignore="ContentDescription" />
+                android:src="@mipmap/logo_app"/>
+                <!--app:srcCompat="@mipmap/logo_app"-->
+                <!--android:contentDescription=""-->
+                <!--tools:ignore="ContentDescription" />-->
         </LinearLayout>
 
         <LinearLayout
