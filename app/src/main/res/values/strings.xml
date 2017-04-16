@@ -29,5 +29,7 @@
     <string name="medicamento">Medicamento</string>
     <string name="configura_es">Configurações</string>
     <string name="ficha_tecnica">Ficha Técnica</string>
+    <string name="concluir">Concluir</string>
+    <string name="nomeMedicamento">Nome</string>
 
 </resources>

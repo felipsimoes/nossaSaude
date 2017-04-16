@@ -20,8 +20,8 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:hint="Nome"
-            android:id="@+id/editText2"
+            android:hint="@string/nomeMedicamento"
+            android:id="@+id/medNome"
             android:textColorLink="@color/colorBackQuad2" />
         <TimePicker
             android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         </TimePicker>
 
         <Button
-            android:text="Próximo"
+            android:text="@string/concluir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button" />

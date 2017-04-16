@@ -8,26 +8,29 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.EditText;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-/**
- * Created by Galdino's on 26/10/2016.
- */
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MedicamentoActivity extends AppCompatActivity {
 
     AlarmManager alarmManager;
+    @BindView(R.id.medNome) EditText medNome;
+    @BindView(R.id.timepicker) TimePicker timepicker;
+    @BindView(R.id.button) Button btnAdd;
     private PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medicamento);
+        ButterKnife.bind(this);
+
 
         final Intent myIntent = new Intent(this, AlarmReceiver.class);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -67,13 +70,13 @@ public class MedicamentoActivity extends AppCompatActivity {
                 }
 
                 if (hour > 12) {
-                    hour_string = String.valueOf(hour - 12) ;
+                    hour_string = String.valueOf(hour - 12);
                 }
 
                 Log.d("HORA", hour_string);
                 Log.d("MINUTOS", minute_string);
 
-                myIntent.putExtra("extra","yes");
+                myIntent.putExtra("extra", "yes");
                 pendingIntent = PendingIntent.getBroadcast(MedicamentoActivity.this, 0,
                         myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 

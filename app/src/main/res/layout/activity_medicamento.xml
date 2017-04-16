@@ -30,14 +30,6 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
             android:textColor="@android:color/black" />
 
-        <EditText
-            android:id="@+id/txtnomemedicamento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColorLink="@color/colorBackQuad2" />
-
         <Button
             android:id="@+id/btnaddmedicamento"
             android:layout_width="match_parent"
