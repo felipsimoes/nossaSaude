@@ -6,12 +6,14 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -86,7 +88,13 @@ public class MedicamentoActivity extends AppCompatActivity {
         pendingIntent = PendingIntent.getBroadcast(MedicamentoActivity.this, 0,
                 myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        } else {
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        }
 
         startActivity(new Intent(this, MainActivity.class));
     }
@@ -110,8 +118,8 @@ public class MedicamentoActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.medData)
-    public void datePicker() {
-        DatePickerDialog DatePicker = new DatePickerDialog(getBaseContext(), new DatePickerDialog.OnDateSetListener() {
+    public void datePicker(View view) {
+        DatePickerDialog DatePicker = new DatePickerDialog(MedicamentoActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
                 calendar.set(Calendar.YEAR, year);

@@ -18,10 +18,6 @@ import com.example.app.nossasaudeapp.R;
 
 import java.util.Calendar;
 
-/**
- * Created by Galdino's on 26/10/2016.
- */
-
 public class DadosMedicamentoActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button btnDatePicker, btnTimePicker;
