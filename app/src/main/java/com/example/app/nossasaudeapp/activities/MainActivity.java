@@ -47,14 +47,6 @@ public class MainActivity extends AppCompatActivity {
         txtmes.setText(retornaMes(Integer.parseInt(dateString2)));
         txtano.setText(dateString3);
 
-        RelativeLayout lLogin = (RelativeLayout) findViewById(R.id.login);
-        lLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startLogin(v);
-            }
-        });
-
     }
 
     public String retornaMes(int mes) {
@@ -62,11 +54,6 @@ public class MainActivity extends AppCompatActivity {
         String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto",
                 "Setembro", "Outubro", "Novembro", "Dezembro",};
         return meses[mes - 1];
-    }
-
-    public void startLogin(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
     }
 
     @OnClick({R.id.imgBtnDadosPessoais, R.id.imgBtnFichaTecnica, R.id.imgBtnMedicamentos, R.id.imgBtnConfiguracoes})

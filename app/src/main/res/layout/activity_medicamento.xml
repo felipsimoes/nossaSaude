@@ -22,14 +22,6 @@
             android:layout_height="195dp"
             android:layout_weight="0.89" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nome do Medicamento"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-            android:textColor="@android:color/black" />
-
         <Button
             android:id="@+id/btnaddmedicamento"
             android:layout_width="match_parent"

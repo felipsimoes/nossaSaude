@@ -3,10 +3,9 @@ package com.example.app.nossasaudeapp.data;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class DadosPessoa extends RealmObject {
+import static android.R.attr.id;
 
-    @PrimaryKey
-    private long id;
+public class DadosPessoa extends RealmObject {
 
     private String name;
 
@@ -15,14 +14,6 @@ public class DadosPessoa extends RealmObject {
     private String sex;
 
     private String bloodType;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

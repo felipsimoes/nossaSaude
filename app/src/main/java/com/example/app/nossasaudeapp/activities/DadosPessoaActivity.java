@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.DadosPessoa;
+import com.example.app.nossasaudeapp.data.Pessoa;
 import com.example.app.nossasaudeapp.util.DateAndTimeUtil;
 import com.example.app.nossasaudeapp.util.RealmUtil;
 
@@ -47,6 +48,7 @@ public class DadosPessoaActivity extends AppCompatActivity {
     private Calendar calendar;
 
     public static final String LOG_TAG = "DADOS_PESSOA_ACTIVITY";
+    public static final long ID_PERSON_PHONE_OWNER = 1;
     private Realm realm = Realm.getDefaultInstance();
 
     @Override
@@ -62,6 +64,25 @@ public class DadosPessoaActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTipoSanguineo.setAdapter(adapter);
 
+        activityLoad();
+    }
+
+    private void activityLoad() {
+
+        Pessoa owner = realm.where(Pessoa.class).equalTo("id", ID_PERSON_PHONE_OWNER).findFirst();
+        if (owner.getDadosPessoa() != null) {
+            DadosPessoa dadosPessoa = owner.getDadosPessoa();
+
+            nomeDadosPessoa.setText(dadosPessoa.getName());
+            dtNascimentoDadosPessoa.setText(dadosPessoa.getBirthday());
+
+            if (dadosPessoa.getSex().equals("Masculino"))
+                radioGroupSexo.check(R.id.radioButtonMale);
+            else
+                radioGroupSexo.check(R.id.radioButtonFemale);
+
+//            spinnerTipoSanguineo.setSelection();
+        }
     }
 
     @OnClick(R.id.dtNascimentoDadosPessoa)
@@ -87,8 +108,6 @@ public class DadosPessoaActivity extends AppCompatActivity {
                 DadosPessoa dadosPessoa = new DadosPessoa();
                 dadosPessoa.setName(nomeDadosPessoa.getText().toString());
 
-                dadosPessoa.setId(RealmUtil.returnId(dadosPessoa));
-
                 dadosPessoa.setBirthday(dtNascimentoDadosPessoa.getText().toString());
 
                 RadioButton radioSexButton = (RadioButton)
@@ -98,9 +117,13 @@ public class DadosPessoaActivity extends AppCompatActivity {
 
                 dadosPessoa.setBloodType(spinnerTipoSanguineo.getSelectedItem().toString());
 
+                Pessoa owner = realm.where(Pessoa.class).equalTo("id", ID_PERSON_PHONE_OWNER).findFirst();
+
+                owner.setDadosPessoa(dadosPessoa);
+
                 Log.d(LOG_TAG, String.valueOf(id));
 
-                realm.copyToRealmOrUpdate(dadosPessoa);
+                realm.copyToRealmOrUpdate(owner);
             }
         });
 

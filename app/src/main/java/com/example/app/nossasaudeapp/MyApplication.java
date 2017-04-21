@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 
+import com.example.app.nossasaudeapp.data.Pessoa;
 import com.facebook.stetho.Stetho;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
@@ -21,9 +22,17 @@ public class MyApplication extends Application {
         final Context context = this;
 
         Realm.init(this);
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().build();
-//        Realm.deleteRealm(realmConfiguration);
-//        Realm.setDefaultConfiguration(realmConfiguration);
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+                .name("myrealm.realm")
+                .initialData(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        realm.insert(new Pessoa(1, "Felipe"));
+                    }
+                })
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
 
         Stetho.initialize(
                 Stetho.newInitializerBuilder(context)
