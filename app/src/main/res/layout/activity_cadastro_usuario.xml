@@ -4,7 +4,7 @@
     android:id="@+id/activity_cadastro_usuario"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.nossasaudeapp.CadastroUsuarioActivity"
+    tools:context="com.example.app.nossasaudeapp.activities.CadastroUsuarioActivity"
     android:background="@color/colorBackRet">
 
     <LinearLayout

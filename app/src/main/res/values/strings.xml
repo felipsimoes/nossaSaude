@@ -31,5 +31,8 @@
     <string name="ficha_tecnica">Ficha Técnica</string>
     <string name="concluir">Concluir</string>
     <string name="nomeMedicamento">Nome</string>
+    <string name="hora">Hora</string>
+    <string name="data_hoje">Hoje</string>
+    <string name="medData">Data</string>
 
 </resources>

@@ -1,15 +1,11 @@
-package com.example.app.nossasaudeapp;
+package com.example.app.nossasaudeapp.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.facebook.stetho.Stetho;
-import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
-
-import io.realm.Realm;
+import com.example.app.nossasaudeapp.R;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -1,9 +1,7 @@
-package com.example.app.nossasaudeapp;
+package com.example.app.nossasaudeapp.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Debug;
-import android.support.v4.util.DebugUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,15 +13,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.Pessoa;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import io.realm.RealmList;
 import io.realm.RealmResults;
 
 public class PessoaActivity extends AppCompatActivity {

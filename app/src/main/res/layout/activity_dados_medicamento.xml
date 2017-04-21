@@ -5,7 +5,7 @@
     android:id="@+id/activity_medicamento"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.nossasaudeapp.DadosMedicamentoActivity"
+    tools:context="com.example.app.nossasaudeapp.activities.DadosMedicamentoActivity"
     android:background="@color/colorBackQuad2">
 
     <LinearLayout

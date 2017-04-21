@@ -8,9 +8,9 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
-import android.support.annotation.IntDef;
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import com.example.app.nossasaudeapp.activities.MedicamentoActivity;
 
 /**
  * Created by Felipe on 04/04/2017.

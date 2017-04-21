@@ -9,7 +9,7 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="4dp"
-    tools:context="com.example.app.nossasaudeapp.MainActivity"
+    tools:context="com.example.app.nossasaudeapp.activities.MainActivity"
     android:background="@color/colorBackMain">
 
     <LinearLayout

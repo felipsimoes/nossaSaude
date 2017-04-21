@@ -1,4 +1,4 @@
-package com.example.app.nossasaudeapp;
+package com.example.app.nossasaudeapp.activities;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -13,6 +13,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+
+import com.example.app.nossasaudeapp.R;
 
 import java.util.Calendar;
 

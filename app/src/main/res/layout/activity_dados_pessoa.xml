@@ -4,7 +4,7 @@
     android:id="@+id/activity_dados_pessoa"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.nossasaudeapp.PessoaActivity"
+    tools:context="com.example.app.nossasaudeapp.activities.PessoaActivity"
     android:background="@color/colorBackQuad1">
 
     <LinearLayout

@@ -4,7 +4,7 @@
     android:id="@+id/activity_ficha"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.nossasaudeapp.FichaActivity"
+    tools:context="com.example.app.nossasaudeapp.activities.FichaActivity"
     android:background="@color/colorBackQuad3">
 
     <LinearLayout
