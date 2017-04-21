@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -145,7 +144,7 @@
                 android:paddingRight="2dp">
 
                 <LinearLayout
-                    android:id="@+id/image_button_1"
+                    android:id="@+id/imgBtnDadosPessoais"
                     style="@android:style/Widget.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -163,17 +162,16 @@
                         android:src="@mipmap/user_white" />
 
                     <TextView
-                        android:id="@+id/image_button_1_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/white"
-                        android:text="@string/pessoa"
+                        android:text="@string/dados_pessoais"
                         style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/image_button_2"
+                    android:id="@+id/imgBtnFichaTecnica"
                     style="@android:style/Widget.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -191,7 +189,6 @@
                         android:src="@mipmap/file_white" />
 
                     <TextView
-                        android:id="@+id/image_button_2_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/white"
@@ -210,7 +207,7 @@
                 android:paddingLeft="2dp">
 
                 <LinearLayout
-                    android:id="@+id/image_button_3"
+                    android:id="@+id/imgBtnMedicamentos"
                     style="@android:style/Widget.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -232,13 +229,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/white"
-                        android:text="@string/medicamento"
+                        android:text="@string/medicamentos"
                         style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/image_button_4"
+                    android:id="@+id/imgBtnConfiguracoes"
                     style="@android:style/Widget.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -256,7 +253,6 @@
                         android:src="@mipmap/settings_white" />
 
                     <TextView
-                        android:id="@+id/image_button_4_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/white"
@@ -269,7 +265,6 @@
 
         </LinearLayout>
 
-
-
     </LinearLayout>
+
 </RelativeLayout>

@@ -38,7 +38,7 @@
     <string name="outubro">Outubro</string>
     <string name="hoje">Hoje</string>
     <string name="pessoa">Pessoa</string>
-    <string name="medicamento">Medicamento</string>
+    <string name="medicamentos">Medicamentos</string>
     <string name="configura_es">Configurações</string>
     <string name="ficha_tecnica">Ficha Técnica</string>
     <string name="concluir">Concluir</string>
@@ -52,5 +52,6 @@
     <string name="masculino">Masculino</string>
     <string name="feminino">Feminino</string>
     <string name="tipo_sanguineo">Tipo Sanguíneo</string>
+    <string name="dados_pessoais">Dados Pessoais</string>
 
 </resources>

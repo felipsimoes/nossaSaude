@@ -100,7 +100,7 @@ public class DadosPessoaActivity extends AppCompatActivity {
 
                 Log.d(LOG_TAG, String.valueOf(id));
 
-                realm.copyToRealm(dadosPessoa);
+                realm.copyToRealmOrUpdate(dadosPessoa);
             }
         });
 
