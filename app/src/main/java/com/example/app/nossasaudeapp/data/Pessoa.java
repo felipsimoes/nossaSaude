@@ -40,11 +40,8 @@ public class Pessoa extends RealmObject {
         this.medicamentos = medicamentos;
     }
 
-    public Pessoa() {}
-
-    public Pessoa(int id, String name){
-        this.id = id;
-        this.dadosPessoa.setName(name);
+    public Pessoa() {
+        dadosPessoa = new DadosPessoa();
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.app.nossasaudeapp.activities;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -76,10 +77,12 @@ public class DadosPessoaActivity extends AppCompatActivity {
             nomeDadosPessoa.setText(dadosPessoa.getName());
             dtNascimentoDadosPessoa.setText(dadosPessoa.getBirthday());
 
-            if (dadosPessoa.getSex().equals("Masculino"))
-                radioGroupSexo.check(R.id.radioButtonMale);
-            else
-                radioGroupSexo.check(R.id.radioButtonFemale);
+            if (dadosPessoa.getSex() != null) {
+                if ( dadosPessoa.getSex().equals("Masculino"))
+                    radioGroupSexo.check(R.id.radioButtonMale);
+                else
+                    radioGroupSexo.check(R.id.radioButtonFemale);
+            }
 
 //            spinnerTipoSanguineo.setSelection();
         }
@@ -102,6 +105,22 @@ public class DadosPessoaActivity extends AppCompatActivity {
     @OnClick(R.id.btnSalvarDadosPessoa)
     public void savePersonData() {
 
+        if(nomeDadosPessoa.getText().toString() == null) {
+//            Snackbar.make(findViewById(R.id.r))
+        }
+        if(dtNascimentoDadosPessoa.getText().toString() == null) {
+
+        }
+        if(radioGroupSexo.getCheckedRadioButtonId() == -1) {
+
+        }
+        else {
+            saveDadosPessoa();
+        }
+
+    }
+
+    public void saveDadosPessoa() {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -126,6 +145,5 @@ public class DadosPessoaActivity extends AppCompatActivity {
                 realm.copyToRealmOrUpdate(owner);
             }
         });
-
     }
 }
