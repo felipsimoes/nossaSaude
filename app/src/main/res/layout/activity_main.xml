@@ -9,7 +9,7 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="4dp"
-    tools:context="com.example.app.nossasaudeapp.MainActivity"
+    tools:context="com.example.app.nossasaudeapp.activities.MainActivity"
     android:background="@color/colorBackMain">
 
     <LinearLayout
@@ -24,113 +24,111 @@
 
         <RelativeLayout
             android:id="@+id/login"
-            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/colorBackRet"
-            android:layout_marginBottom="4dp">
+            android:layout_marginBottom="4dp"
+            android:layout_weight="1"
+            android:background="@color/colorBackRet">
 
             <TextView
-                android:text="Outubro"
+                android:id="@+id/txtmesM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="87dp"
-                android:id="@+id/textView2"
+                android:layout_alignLeft="@+id/txtdiaM"
+                android:layout_alignStart="@+id/txtdiaM"
+                android:layout_below="@+id/txtdiaM"
+                android:layout_marginBottom="0dp"
+                android:text="@string/outubro"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@android:color/white" />
 
             <TextView
-                android:text="Hoje"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
                 android:id="@+id/textView"
-                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/txtmesM"
                 android:layout_alignParentTop="true"
-                android:layout_alignLeft="@+id/textView2"
-                android:layout_alignStart="@+id/textView2" />
+                android:layout_alignStart="@+id/txtmesM"
+                android:layout_marginTop="18dp"
+                android:text="@string/hoje"
+                android:textColor="@android:color/white" />
 
             <TextView
+                android:id="@+id/txtdiaM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/txtanoM"
+                android:layout_alignStart="@+id/txtanoM"
+                android:layout_below="@+id/textView5"
                 android:text="21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:id="@+id/textView3"
-                android:layout_below="@+id/textView"
-                android:layout_alignLeft="@+id/textView"
-                android:layout_alignStart="@+id/textView"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 android:textColor="@android:color/white" />
 
             <TextView
+                android:id="@+id/txtanoM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="37dp"
+                android:layout_marginStart="37dp"
                 android:text="2016"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+                android:textColor="@android:color/white"
+                android:layout_below="@+id/txtmesM"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="41dp"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="108dp"
-                android:id="@+id/textView4"
-                android:textColor="@android:color/white" />
+                android:layout_alignParentStart="true" />
 
             <TextView
-                android:text="Agendados"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="88dp"
-                android:layout_marginEnd="88dp"
-                android:layout_marginTop="19dp"
                 android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="88dp"
+                android:layout_marginRight="88dp"
+                android:layout_marginTop="19dp"
+                android:text="Agendados"
                 android:textColor="@android:color/white" />
 
             <TextView
-                android:text="Medicamento1"
+                android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView3"
+                android:layout_alignBaseline="@+id/txtdiaM"
+                android:layout_alignBottom="@+id/txtdiaM"
+                android:layout_alignLeft="@+id/textView9"
+                android:layout_alignStart="@+id/textView9"
+                android:text="Medicamento1"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView5"
+                android:layout_alignStart="@+id/textView5"
+                android:layout_alignTop="@+id/txtdiaM"
+                android:text="09:00"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView6"
                 android:layout_alignStart="@+id/textView6"
-                android:id="@+id/textView7"
+                android:layout_below="@+id/txtanoM"
+                android:text="Medicamento2"
                 android:textColor="@android:color/white" />
 
             <TextView
-                android:text="09:00"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView9"
-                android:textColor="@android:color/white"
-                android:layout_alignTop="@+id/textView3"
-                android:layout_alignLeft="@+id/textView5"
-                android:layout_alignStart="@+id/textView5" />
-
-            <TextView
-                android:text="Medicamento2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView8"
-                android:textColor="@android:color/white"
-                android:layout_below="@+id/textView4"
-                android:layout_alignLeft="@+id/textView7"
-                android:layout_alignStart="@+id/textView7" />
-
-            <TextView
-                android:text="13:00"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/textView6"
-                android:textColor="@android:color/white"
-                android:layout_below="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView9"
-                android:layout_alignStart="@+id/textView9" />
+                android:layout_alignStart="@+id/textView9"
+                android:layout_below="@+id/txtmesM"
+                android:text="13:00"
+                android:textColor="@android:color/white" />
         </RelativeLayout>
 
         <LinearLayout
@@ -169,7 +167,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/white"
-                        android:text="Pessoa"
+                        android:text="@string/pessoa"
                         style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem" />
 
                 </LinearLayout>
@@ -197,7 +195,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/white"
-                        android:text="Ficha Técnica"
+                        android:text="@string/ficha_tecnica"
                         style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem" />
 
                 </LinearLayout>
@@ -234,7 +232,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/white"
-                        android:text="Medicamento"
+                        android:text="@string/medicamento"
                         style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem" />
 
                 </LinearLayout>
@@ -262,7 +260,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/white"
-                        android:text="Configurações"
+                        android:text="@string/configura_es"
                         style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem" />
 
                 </LinearLayout>

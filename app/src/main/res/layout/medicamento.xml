@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/myCoordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,84 +19,43 @@
         android:background="@android:color/white"
         android:padding="16dp">
 
-        <TextView
-            android:text="Nome do Medicamento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView13"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:hint="@string/nomeMedicamento"
+            android:id="@+id/medNome"
             android:textColorLink="@color/colorBackQuad2" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <TextView
-                    android:text="Unidade"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView10"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/spinner" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <TextView
-                    android:text="Quantidade"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView11"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/editText3"
-                    android:textColorLink="@color/colorBackQuad2" />
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:text="@string/hora"
+                android:textSize="20dp"
+                android:padding="20dp"
+                android:id="@+id/medHora"/>
         </LinearLayout>
 
-        <TextView
-            android:text="Frequencia"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView12"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+            android:layout_height="wrap_content">
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:id="@+id/spinner2" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medData"
+                android:textSize="20dp"
+                android:padding="20dp"
+                android:id="@+id/medData"/>
+        </LinearLayout>
 
         <Button
-            android:text="Próximo"
+            android:text="@string/concluir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button" />
@@ -100,3 +63,5 @@
     </LinearLayout>
 
 </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

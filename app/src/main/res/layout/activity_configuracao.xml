@@ -4,7 +4,7 @@
     android:id="@+id/activity_configuracao"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.nossasaudeapp.ConfiguracaoActivity"
+    tools:context="com.example.app.nossasaudeapp.activities.ConfiguracaoActivity"
     android:background="@color/colorBackQuad4">
 
     <LinearLayout
