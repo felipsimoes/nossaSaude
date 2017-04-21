@@ -3,10 +3,6 @@ package com.example.app.nossasaudeapp.data;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-/**
- * Created by Felipe on 01/04/2017.
- */
-
 public class Medicamento extends RealmObject {
 
     @PrimaryKey

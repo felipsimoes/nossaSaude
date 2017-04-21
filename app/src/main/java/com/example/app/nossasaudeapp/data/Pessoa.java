@@ -5,10 +5,6 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-/**
- * Created by Felipe on 27/03/2017.
- */
-
 public class Pessoa extends RealmObject {
 
     @PrimaryKey

@@ -22,6 +22,18 @@
         <item>Semanalmente</item>
         <item>Mensalmente</item>
     </string-array>
+
+    <string-array name="tipo_sanguineo_array">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+    </string-array>
+
     <string name="title_activity_batata">batata</string>
     <string name="outubro">Outubro</string>
     <string name="hoje">Hoje</string>
@@ -34,5 +46,11 @@
     <string name="hora">Hora</string>
     <string name="data_hoje">Hoje</string>
     <string name="medData">Data</string>
+    <string name="nome">Nome</string>
+    <string name="data_de_nascimento">Data de nascimento</string>
+    <string name="sexo">Sexo</string>
+    <string name="masculino">Masculino</string>
+    <string name="feminino">Feminino</string>
+    <string name="tipo_sanguineo">Tipo Sanguíneo</string>
 
 </resources>

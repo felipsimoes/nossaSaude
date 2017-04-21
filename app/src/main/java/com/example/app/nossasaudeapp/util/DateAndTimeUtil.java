@@ -19,10 +19,16 @@ public class DateAndTimeUtil {
     private static final SimpleDateFormat READABLE_TIME_FORMAT = new SimpleDateFormat("h:mm a", Locale.getDefault());
     private static final SimpleDateFormat WEEK_DAYS_FORMAT = new SimpleDateFormat("EEEE", Locale.getDefault());
     private static final SimpleDateFormat SHORT_WEEK_DAYS_FORMAT = new SimpleDateFormat("E", Locale.getDefault());
+    private static final SimpleDateFormat FORMATO_BRASILEIRO = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
     public static String toStringReadableDate(Calendar calendar) {
-        java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance(java.text.DateFormat.FULL, Locale.getDefault());
+        java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance(java.text.DateFormat.LONG, Locale.getDefault());
         return dateFormat.format(calendar.getTime());
+    }
+
+    public static String toStringReadableDateBR(Calendar calendar) {
+        java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance(java.text.DateFormat.LONG, Locale.getDefault());
+        return FORMATO_BRASILEIRO.format(calendar.getTime());
     }
 
     public static String toStringReadableTime(Calendar calendar, Context context) {

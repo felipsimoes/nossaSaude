@@ -90,7 +90,6 @@ public class PessoaActivity extends AppCompatActivity {
                 });
 
                 Intent i = new Intent(PessoaActivity.this,DadosPessoaActivity.class);
-
                 startActivity(i);
 
                 Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
