@@ -20,12 +20,6 @@
             android:name=".activities.PessoaActivity"
             android:theme="@style/AppTheme1" />
         <activity
-            android:name=".activities.ConfiguracaoActivity"
-            android:theme="@style/AppTheme1" />
-        <activity
-            android:name=".activities.FichaActivity"
-            android:theme="@style/AppTheme1" />
-        <activity
             android:name=".activities.CadastroUsuarioActivity"
             android:theme="@style/AppTheme1" />
         <activity
@@ -48,7 +42,14 @@
 
         <service android:name=".AlarmService" />
 
-        <activity android:name=".activities.Main2Activity"></activity>
+        <activity android:name=".activities.ExameActivity" />
+        <activity android:name=".activities.DadosDoencaActivity" />
+        <activity android:name=".activities.DoencaActivity" />
+        <activity android:name=".activities.DadosExameActivity" />
+        <activity android:name=".activities.ConsultaActivity" />
+        <activity android:name=".activities.DadosConsultaActivity" />
+        <activity android:name=".activities.MedicoActivity" />
+        <activity android:name=".activities.DadosMedicoActivity"></activity>
     </application>
 
 </manifest>

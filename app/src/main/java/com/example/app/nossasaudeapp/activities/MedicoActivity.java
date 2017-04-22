@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.app.nossasaudeapp.R;
 
-public class ConfiguracaoActivity extends AppCompatActivity {
+public class MedicoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_configuracao);
+        setContentView(R.layout.activity_medico);
     }
 }
