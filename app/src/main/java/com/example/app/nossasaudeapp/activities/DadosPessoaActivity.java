@@ -1,6 +1,7 @@
 package com.example.app.nossasaudeapp.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -105,14 +106,16 @@ public class DadosPessoaActivity extends AppCompatActivity {
     @OnClick(R.id.btnSalvarDadosPessoa)
     public void savePersonData() {
 
-        if(nomeDadosPessoa.getText().toString() == null) {
-//            Snackbar.make(findViewById(R.id.r))
+        if(nomeDadosPessoa.getText().toString().trim() == null) {
+            Snackbar.make(findViewById(R.id.myCoordinatorLayout),
+                    "Entre com seu nome, por favor", Snackbar.LENGTH_SHORT);
         }
         if(dtNascimentoDadosPessoa.getText().toString() == null) {
 
         }
         if(radioGroupSexo.getCheckedRadioButtonId() == -1) {
-
+            Snackbar.make(findViewById(R.id.myCoordinatorLayout),
+                    "Selecione seu sexo, por favor", Snackbar.LENGTH_SHORT);
         }
         else {
             saveDadosPessoa();
@@ -124,7 +127,8 @@ public class DadosPessoaActivity extends AppCompatActivity {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                DadosPessoa dadosPessoa = new DadosPessoa();
+                DadosPessoa dadosPessoa = realm.createObject(DadosPessoa.class);
+
                 dadosPessoa.setName(nomeDadosPessoa.getText().toString());
 
                 dadosPessoa.setBirthday(dtNascimentoDadosPessoa.getText().toString());
@@ -136,7 +140,8 @@ public class DadosPessoaActivity extends AppCompatActivity {
 
                 dadosPessoa.setBloodType(spinnerTipoSanguineo.getSelectedItem().toString());
 
-                Pessoa owner = realm.where(Pessoa.class).equalTo("id", ID_PERSON_PHONE_OWNER).findFirst();
+                Pessoa owner = realm.where(Pessoa.class).
+                        equalTo("id", ID_PERSON_PHONE_OWNER).findFirst();
 
                 owner.setDadosPessoa(dadosPessoa);
 
@@ -145,5 +150,7 @@ public class DadosPessoaActivity extends AppCompatActivity {
                 realm.copyToRealmOrUpdate(owner);
             }
         });
+
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

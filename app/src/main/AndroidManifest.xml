@@ -11,7 +11,12 @@
         android:theme="@style/Theme.AppCompat.Light">
         <activity
             android:name=".activities.MainActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.MedicamentoActivity"
             android:configChanges="orientation|screenSize"
@@ -36,19 +41,15 @@
             android:theme="@style/AppTheme1" />
         <activity
             android:name=".activities.LoginActivity"
-            android:theme="@style/AppTheme1">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme1"/>
+        <activity
+            android:name=".activities.ListaMedicamentosActivity"
+            android:theme="@style/AppTheme1"/>
 
         <receiver android:name=".AlarmReceiver" />
 
         <service android:name=".AlarmService" />
 
-        <activity android:name=".activities.Main2Activity"></activity>
     </application>
 
 </manifest>

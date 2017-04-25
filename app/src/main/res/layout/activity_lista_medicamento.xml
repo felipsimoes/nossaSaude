@@ -19,14 +19,14 @@
         <ListView
             android:id="@+id/lvmedicamento"
             android:layout_width="match_parent"
-            android:layout_height="195dp"
+            android:layout_height="0dp"
             android:layout_weight="0.89" />
 
         <Button
             android:id="@+id/btnaddmedicamento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Adicionar" />
+            android:text="@string/adicionar" />
 
     </LinearLayout>
 

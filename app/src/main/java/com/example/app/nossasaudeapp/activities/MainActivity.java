@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, FichaActivity.class));
                 break;
             case R.id.imgBtnMedicamentos:
-                startActivity(new Intent(this, MedicamentoActivity.class));
+                startActivity(new Intent(this, ListaMedicamentosActivity.class));
                 break;
             case R.id.imgBtnConfiguracoes:
                 startActivity(new Intent(this, ConfiguracaoActivity.class));
