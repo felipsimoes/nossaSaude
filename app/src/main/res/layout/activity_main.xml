@@ -14,11 +14,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:background="@color/colorBackMain"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,10 +29,7 @@
                 android:id="@+id/txtdatacompleta"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignBaseline="@+id/txtdiaM"
-                android:layout_alignBottom="@+id/txtdiaM"
-                android:layout_alignLeft="@+id/textView9"
-                android:layout_alignStart="@+id/textView9"
+
                 android:layout_weight="1"
                 android:text="Data Completa"
                 android:textAlignment="center"
@@ -69,7 +66,6 @@
                         android:src="@mipmap/remedio" />
 
                     <TextView
-                        android:id="@+id/textView16"
                         style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -134,7 +130,6 @@
                         android:src="@mipmap/doutor" />
 
                     <TextView
-                        android:id="@+id/image_button_3_text"
                         style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -198,7 +193,6 @@
                         android:src="@mipmap/exame" />
 
                     <TextView
-                        android:id="@+id/image_button_3_text"
                         style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
