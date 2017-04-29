@@ -22,6 +22,8 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
+import static android.R.attr.y;
+
 public class PessoaActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = "PESSOA_ACTIVITY";
@@ -57,46 +59,9 @@ public class PessoaActivity extends AppCompatActivity {
 
                 Intent i = new Intent(PessoaActivity.this,DadosPessoaActivity.class);
                 startActivity(i);
-//                realm.executeTransaction(new Realm.Transaction() {
-//                    @Override
-//                    public void execute(Realm realm) {
-//                        Pessoa p = new Pessoa();
-//                        p.setName(((TextView) findViewById(R.id.txtnomepessoa)).getText().toString());
-//
-//                        Number num = (realm.where(Pessoa.class).max("id"));
-//                        long id = num == null ? 1 : ((long) num ) + 1;
-//
-//                        Log.d(LOG_TAG, String.valueOf(id));
-//                        p.setId(id);
-//                        realm.copyToRealm(p);
-//
-//                        adapter.add(p);
-//                    }
-//                });
             }
         });
 
-//        listaPessoas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, final long id) {
-//
-//                String item = ((TextView)view).getText().toString();
-//
-//                realm.executeTransaction(new Realm.Transaction() {
-//                    @Override
-//                    public void execute(Realm realm) {
-//                        Pessoa pessoaPorID = realm.where(Pessoa.class).equalTo("id", id).findFirst();
-//                        if (pessoaPorID != null)
-//                            Log.d(LOG_TAG, "ID - ".concat(Long.toString(pessoaPorID.getId())));
-//                    }
-//                });
-//
-//                Intent i = new Intent(PessoaActivity.this,DadosPessoaActivity.class);
-//                startActivity(i);
-//
-//                Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
-//            }
-//        });
     }
 
 

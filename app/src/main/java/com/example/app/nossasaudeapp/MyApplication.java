@@ -36,7 +36,6 @@ public class MyApplication extends Application {
             }
         });
 
-
         Stetho.initialize(
                 Stetho.newInitializerBuilder(context)
                         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
