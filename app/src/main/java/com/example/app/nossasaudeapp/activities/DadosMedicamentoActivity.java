@@ -37,7 +37,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.Realm;
 
-public class MedicamentoActivity extends AppCompatActivity {
+public class DadosMedicamentoActivity extends AppCompatActivity {
 
     @BindView(R.id.medNome)
     EditText medNome;
@@ -100,7 +100,7 @@ public class MedicamentoActivity extends AppCompatActivity {
 
         final Intent myIntent = new Intent(this, AlarmReceiver.class);
         myIntent.putExtra("extra", "yes");
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(MedicamentoActivity.this, 0,
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(DadosMedicamentoActivity.this, 0,
                 myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -123,12 +123,12 @@ public class MedicamentoActivity extends AppCompatActivity {
         });
 
         Toast.makeText(this, "Medicamento Salvo", Toast.LENGTH_SHORT);
-        startActivity(new Intent(this, ListaMedicamentosActivity.class));
+        startActivity(new Intent(this, MedicamentoActivity.class));
     }
 
     @OnClick(R.id.medHora)
     public void timePicker() {
-        TimePickerDialog TimePicker = new TimePickerDialog(MedicamentoActivity.this, new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog TimePicker = new TimePickerDialog(DadosMedicamentoActivity.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                 calendar.set(Calendar.HOUR_OF_DAY, hour);
@@ -146,7 +146,7 @@ public class MedicamentoActivity extends AppCompatActivity {
 
     @OnClick(R.id.medData)
     public void datePicker(View view) {
-        DatePickerDialog DatePicker = new DatePickerDialog(MedicamentoActivity.this, new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog DatePicker = new DatePickerDialog(DadosMedicamentoActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
                 calendar.set(Calendar.YEAR, year);

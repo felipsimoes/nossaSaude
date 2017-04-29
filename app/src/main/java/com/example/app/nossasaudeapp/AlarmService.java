@@ -12,9 +12,6 @@ import android.util.Log;
 
 import com.example.app.nossasaudeapp.activities.DadosMedicamentoActivity;
 
-/**
- * Created by Felipe on 04/04/2017.
- */
 
 public class AlarmService extends Service {
 
