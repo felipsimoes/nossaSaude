@@ -13,7 +13,7 @@
             android:name=".activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activities.MedicamentoActivity"
+            android:name=".activities.DadosMedicamentoActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
@@ -24,9 +24,6 @@
             android:theme="@style/AppTheme1" />
         <activity
             android:name=".activities.DadosPessoaActivity"
-            android:theme="@style/AppTheme1" />
-        <activity
-            android:name=".activities.DadosMedicamentoActivity"
             android:theme="@style/AppTheme1" />
         <activity
             android:name=".activities.LoginActivity"
@@ -49,7 +46,8 @@
         <activity android:name=".activities.ConsultaActivity" />
         <activity android:name=".activities.DadosConsultaActivity" />
         <activity android:name=".activities.MedicoActivity" />
-        <activity android:name=".activities.DadosMedicoActivity"></activity>
+        <activity android:name=".activities.DadosMedicoActivity" />
+        <activity android:name=".activities.MedicamentoActivity"></activity>
     </application>
 
 </manifest>

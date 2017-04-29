@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.app.nossasaudeapp.R;
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, ExameActivity.class));
                 break;
             case R.id.imgBtnMedicamentos:
-                startActivity(new Intent(this, MedicamentoActivity.class));
+                startActivity(new Intent(this, DadosMedicamentoActivity.class));
                 break;
             case R.id.imgBtnDoenca:
                 startActivity(new Intent(this, DoencaActivity.class));

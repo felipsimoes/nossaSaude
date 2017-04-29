@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_dados_medicamento"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.app.nossasaudeapp.activities.MedicamentoActivity"
@@ -14,13 +14,15 @@
         android:layout_margin="16dp"
         android:background="@android:color/white"
         android:padding="16dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
 
         <ListView
             android:id="@+id/lvmedicamento"
             android:layout_width="match_parent"
-            android:layout_height="195dp"
-            android:layout_weight="0.89" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/btnaddmedicamento"
@@ -30,4 +32,5 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

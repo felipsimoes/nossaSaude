@@ -10,7 +10,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.example.app.nossasaudeapp.activities.MedicamentoActivity;
+import com.example.app.nossasaudeapp.activities.DadosMedicamentoActivity;
 
 /**
  * Created by Felipe on 04/04/2017.
@@ -32,7 +32,7 @@ public class AlarmService extends Service {
         final NotificationManager mNM = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
 
-        Intent intent1 = new Intent(this.getApplicationContext(), MedicamentoActivity.class);
+        Intent intent1 = new Intent(this.getApplicationContext(), DadosMedicamentoActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent1, 0);
 
         Notification mNotify  = new Notification.Builder(this)

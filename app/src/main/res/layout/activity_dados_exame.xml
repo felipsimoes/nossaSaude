@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.nossasaudeapp.activities.DadosExameActivity">
+    tools:context="com.example.app.nossasaudeapp.activities.DadosExameActivity"
+    android:background="@color/colorBackQuad5">
 
     <LinearLayout
-        android:layout_width="344dp"
-        android:layout_height="495dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="16dp"
         android:background="@android:color/white"
         android:orientation="vertical"
@@ -18,7 +19,6 @@
 
 
         <TextView
-            android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Exame"
@@ -34,7 +34,6 @@
             android:textColorLink="@color/colorBackQuad2" />
 
         <TextView
-            android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Descrição"

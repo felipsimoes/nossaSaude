@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.nossasaudeapp.activities.ExameActivity">
+    tools:context="com.example.app.nossasaudeapp.activities.ExameActivity"
+    android:background="@color/colorBackQuad5">
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="344dp"
-        android:layout_height="495dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="16dp"
         android:background="@android:color/white"
         android:padding="16dp"
@@ -20,24 +21,9 @@
         <ListView
             android:id="@+id/lvexames"
             android:layout_width="match_parent"
-            android:layout_height="173dp"
-            android:layout_weight="0.91"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:clickable="true" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Exame"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
-
-        <EditText
-            android:id="@+id/txtexame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColorLink="@color/colorBackQuad2" />
 
         <Button
             android:id="@+id/btnaddexame"
