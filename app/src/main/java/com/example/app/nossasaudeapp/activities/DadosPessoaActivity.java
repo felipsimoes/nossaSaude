@@ -20,7 +20,6 @@ import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.DadosPessoa;
 import com.example.app.nossasaudeapp.data.Pessoa;
 import com.example.app.nossasaudeapp.util.DateAndTimeUtil;
-import com.example.app.nossasaudeapp.util.RealmUtil;
 
 import java.util.Calendar;
 
@@ -85,7 +84,7 @@ public class DadosPessoaActivity extends AppCompatActivity {
                     radioGroupSexo.check(R.id.radioButtonFemale);
             }
 
-//            spinnerTipoSanguineo.setSelection();
+            spinnerTipoSanguineo.setSelection((int) dadosPessoa.getBloodType());
         }
     }
 
@@ -114,7 +113,7 @@ public class DadosPessoaActivity extends AppCompatActivity {
 
         }
         if(radioGroupSexo.getCheckedRadioButtonId() == -1) {
-            Snackbar.make(findViewById(R.id.myCoordinatorLayout),
+            Snackbar.make(findViewById(R.id.activity_dados_pessoa),
                     "Selecione seu sexo, por favor", Snackbar.LENGTH_SHORT);
         }
         else {
@@ -138,7 +137,7 @@ public class DadosPessoaActivity extends AppCompatActivity {
 
                 dadosPessoa.setSex(radioSexButton.getText().toString());
 
-                dadosPessoa.setBloodType(spinnerTipoSanguineo.getSelectedItem().toString());
+                dadosPessoa.setBloodType(spinnerTipoSanguineo.getSelectedItemId());
 
                 Pessoa owner = realm.where(Pessoa.class).
                         equalTo("id", ID_PERSON_PHONE_OWNER).findFirst();

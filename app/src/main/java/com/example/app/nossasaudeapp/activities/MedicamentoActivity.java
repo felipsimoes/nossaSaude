@@ -64,6 +64,10 @@ public class MedicamentoActivity extends AppCompatActivity {
         setContentView(R.layout.medicamento);
         ButterKnife.bind(this);
 
+        Intent intent = getIntent();
+        long id = intent.getLongExtra("id", 0);
+        Toast.makeText(this, "ID - "+String.valueOf(id), Toast.LENGTH_LONG).show();
+
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         calendar = Calendar.getInstance();
