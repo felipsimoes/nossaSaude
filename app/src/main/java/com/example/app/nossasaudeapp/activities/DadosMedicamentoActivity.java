@@ -1,100 +1,160 @@
 package com.example.app.nossasaudeapp.activities;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.example.app.nossasaudeapp.AlarmReceiver;
 import com.example.app.nossasaudeapp.R;
+import com.example.app.nossasaudeapp.data.Medicamento;
+import com.example.app.nossasaudeapp.util.DateAndTimeUtil;
+import com.example.app.nossasaudeapp.util.RealmUtil;
 
 import java.util.Calendar;
 
-public class DadosMedicamentoActivity extends AppCompatActivity implements View.OnClickListener{
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import io.realm.Realm;
 
-    Button btnDatePicker, btnTimePicker;
-    EditText txtDate, txtTime;
-    private int mYear, mMonth, mDay, mHour, mMinute;
+public class DadosMedicamentoActivity extends AppCompatActivity {
+
+    @BindView(R.id.medNome)
+    EditText medNome;
+    @BindView(R.id.button)
+    Button btnAdd;
+    @BindView(R.id.medHora)
+    TextView medHora;
+    AlarmManager alarmManager;
+    @BindView(R.id.medData)
+    TextView medData;
+    @BindView(R.id.spinnerUnidadeMedicamento)
+    Spinner spinnerUnidadeMedicamento;
+    @BindView(R.id.qtDoseMedicamento)
+    EditText qtDoseMedicamento;
+    @BindView(R.id.vibrarSwitch)
+    Switch vibrarSwitch;
+    @BindView(R.id.myCoordinatorLayout)
+    CoordinatorLayout myCoordinatorLayout;
+    private Calendar calendar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_medicamento);
+        ButterKnife.bind(this);
 
-        btnDatePicker=(Button)findViewById(R.id.btncal);
-        btnTimePicker=(Button)findViewById(R.id.btnhora);
+        Intent intent = getIntent();
+        long id = intent.getLongExtra("id", 0);
+        Toast.makeText(this, "ID - "+String.valueOf(id), Toast.LENGTH_LONG).show();
 
-        txtDate=(EditText)findViewById(R.id.txtcal);
-        txtTime=(EditText)findViewById(R.id.txthr);
+        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        btnDatePicker.setOnClickListener(this);
-        btnTimePicker.setOnClickListener(this);
+        calendar = Calendar.getInstance();
 
-
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.tipo_remedio_array, android.R.layout.simple_spinner_item);
+                R.array.unidade_remedio_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        Spinner spinner1 = (Spinner) findViewById(R.id.spinner2);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
-                R.array.frequencia_array, android.R.layout.simple_spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setAdapter(adapter1);
+        spinnerUnidadeMedicamento.setAdapter(adapter);
 
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v == btnDatePicker) {
-
-            // Get Current Date
-            final Calendar c = Calendar.getInstance();
-            mYear = c.get(Calendar.YEAR);
-            mMonth = c.get(Calendar.MONTH);
-            mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
-
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-
-                        }
-                    }, mYear, mMonth, mDay);
-            datePickerDialog.show();
+    private void validateInput() {
+        if (medNome.getText().toString().trim().isEmpty()) {
+            Snackbar.make(myCoordinatorLayout,
+                    "Por favor, insira um nome", Snackbar.LENGTH_SHORT)
+                    .show();
         }
-        if (v == btnTimePicker) {
-
-            // Get Current Time
-            final Calendar c = Calendar.getInstance();
-            mHour = c.get(Calendar.HOUR_OF_DAY);
-            mMinute = c.get(Calendar.MINUTE);
-
-            // Launch Time Picker Dialog
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                    new TimePickerDialog.OnTimeSetListener() {
-
-                        @Override
-                        public void onTimeSet(TimePicker view, int hourOfDay,
-                                              int minute) {
-
-                            txtTime.setText(hourOfDay + ":" + minute);
-                        }
-                    }, mHour, mMinute, false);
-            timePickerDialog.show();
+//        if (spinnerUnidadeMedicamento.getSelectedItemId() == -1) {
+//            Snackbar.make(myCoordinatorLayout,
+//                    "Por favor, selecione a unidade de medicamento", Snackbar.LENGTH_SHORT)
+//                    .show();
+//        }
+        else {
+            saveMedicamento();
         }
+    }
+
+    private void saveMedicamento() {
+        Log.d("Time", DateAndTimeUtil.toStringReadableTime(calendar, this));
+
+        final Intent myIntent = new Intent(this, AlarmReceiver.class);
+        myIntent.putExtra("extra", "yes");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(DadosMedicamentoActivity.this, 0,
+                myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        } else {
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        }
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Medicamento medicamento = new Medicamento();
+                medicamento.setId(RealmUtil.returnId(medicamento));
+                medicamento.setNome(medNome.getText().toString());
+                realm.copyToRealmOrUpdate(medicamento);
+            }
+        });
+
+        Toast.makeText(this, "Medicamento Salvo", Toast.LENGTH_SHORT);
+        startActivity(new Intent(this, MedicamentoActivity.class));
+    }
+
+    @OnClick(R.id.medHora)
+    public void timePicker() {
+        TimePickerDialog TimePicker = new TimePickerDialog(DadosMedicamentoActivity.this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                calendar.set(Calendar.HOUR_OF_DAY, hour);
+                calendar.set(Calendar.MINUTE, minute);
+                medHora.setText(DateAndTimeUtil.toStringReadableTime(calendar, getApplicationContext()));
+            }
+        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), DateFormat.is24HourFormat(this));
+        TimePicker.show();
+    }
+
+    @OnClick(R.id.button)
+    public void btnAddClick() {
+        validateInput();
+    }
+
+    @OnClick(R.id.medData)
+    public void datePicker(View view) {
+        DatePickerDialog DatePicker = new DatePickerDialog(DadosMedicamentoActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                medData.setText(DateAndTimeUtil.toStringReadableDate(calendar));
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        DatePicker.show();
     }
 }

@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.app.nossasaudeapp.R;
 
-public class FichaActivity extends AppCompatActivity {
+public class DadosExameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ficha);
+        setContentView(R.layout.activity_dados_exame);
     }
 }

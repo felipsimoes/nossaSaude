@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.app.nossasaudeapp.activities.PessoaActivity"
-    android:background="@color/colorBackQuad1">
+    android:background="@color/colorBackQuad4">
 
     <LinearLayout
         android:orientation="vertical"
@@ -19,24 +19,9 @@
         <ListView
             android:id="@+id/lvpessoa"
             android:layout_width="match_parent"
-            android:layout_height="173dp"
+            android:layout_height="match_parent"
             android:clickable="true"
-            android:layout_weight="0.91" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nome da Pessoa"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
-
-        <EditText
-            android:id="@+id/txtnomepessoa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColorLink="@color/colorBackQuad2" />
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/btnaddpessoa"

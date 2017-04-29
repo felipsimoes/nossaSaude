@@ -6,7 +6,7 @@
     <string name="quantidade">Quantidade</string>
     <string name="unidade">Unidade</string>
 
-    <string-array name="tipo_remedio_array">
+    <string-array name="unidade_remedio_array">
         <item>Capsulas</item>
         <item>Copos</item>
         <item>Gotas</item>
@@ -22,11 +22,23 @@
         <item>Semanalmente</item>
         <item>Mensalmente</item>
     </string-array>
+
+    <string-array name="tipo_sanguineo_array">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+    </string-array>
+
     <string name="title_activity_batata">batata</string>
     <string name="outubro">Outubro</string>
     <string name="hoje">Hoje</string>
     <string name="pessoa">Pessoa</string>
-    <string name="medicamento">Medicamento</string>
+    <string name="medicamentos">Medicamentos</string>
     <string name="configura_es">Configurações</string>
     <string name="ficha_tecnica">Ficha Técnica</string>
     <string name="concluir">Concluir</string>
@@ -34,5 +46,14 @@
     <string name="hora">Hora</string>
     <string name="data_hoje">Hoje</string>
     <string name="medData">Data</string>
+    <string name="nome">Nome</string>
+    <string name="data_de_nascimento">Data de nascimento</string>
+    <string name="sexo">Sexo</string>
+    <string name="masculino">Masculino</string>
+    <string name="feminino">Feminino</string>
+    <string name="tipo_sanguineo">Tipo Sanguíneo</string>
+    <string name="dados_pessoais">Dados Pessoais</string>
+    <string name="vibrar">Vibrar</string>
+    <string name="adicionar">Adicionar</string>
 
 </resources>

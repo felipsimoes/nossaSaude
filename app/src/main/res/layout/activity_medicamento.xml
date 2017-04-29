@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_dados_medicamento"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.nossasaudeapp.activities.MedicamentoActivity"
-    android:background="@color/colorBackQuad2">
+    android:background="@color/colorBackQuad2"
+    tools:context="com.example.app.nossasaudeapp.activities.DadosMedicamentoActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
         android:background="@android:color/white"
+        android:orientation="vertical"
         android:padding="16dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
         <ListView
             android:id="@+id/lvmedicamento"
             android:layout_width="match_parent"
-            android:layout_height="195dp"
-            android:layout_weight="0.89" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nome do Medicamento"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-            android:textColor="@android:color/black" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/btnaddmedicamento"
@@ -38,4 +32,5 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

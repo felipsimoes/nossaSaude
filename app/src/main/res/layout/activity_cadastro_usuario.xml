@@ -18,7 +18,6 @@
             android:text="Nome de Usuário"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView13"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
         <EditText
@@ -26,7 +25,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:id="@+id/txtusuario"
             android:textColorLink="@color/colorBackQuad2"
             android:hint="Nome de Usuario"
             android:textSize="24sp" />
@@ -35,7 +34,6 @@
             android:text="Senha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView14"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
         <EditText
@@ -43,7 +41,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/txtsenha"
             android:textColorLink="@color/colorBackQuad2"
             android:hint="Senha"
             android:textSize="24sp" />
@@ -52,7 +50,6 @@
             android:text="Confirmar Senha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView15"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
         <EditText
@@ -60,7 +57,6 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText4"
             android:textColorLink="@color/colorBackQuad2"
             android:hint="Confirmar Senha"
             android:textSize="24sp" />

@@ -5,16 +5,14 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-/**
- * Created by Felipe on 27/03/2017.
- */
+import static android.R.attr.name;
 
 public class Pessoa extends RealmObject {
 
     @PrimaryKey
     private long id;
 
-    private String name;
+    private DadosPessoa dadosPessoa;
 
     private RealmList<Medicamento> medicamentos;
 
@@ -26,12 +24,12 @@ public class Pessoa extends RealmObject {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public DadosPessoa getDadosPessoa() {
+        return dadosPessoa;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDadosPessoa(DadosPessoa dadosPessoa) {
+        this.dadosPessoa = dadosPessoa;
     }
 
     public RealmList<Medicamento> getMedicamentos() {
@@ -42,14 +40,12 @@ public class Pessoa extends RealmObject {
         this.medicamentos = medicamentos;
     }
 
-    public Pessoa() {}
-    public Pessoa(int id, String name){
-        this.id = id;
-        this.name = name;
+    public Pessoa() {
+        dadosPessoa = new DadosPessoa();
     }
 
     @Override
     public String toString() {
-        return (" " + this.name) ;
+        return (" " + this.dadosPessoa.getName()) ;
     }
 }
