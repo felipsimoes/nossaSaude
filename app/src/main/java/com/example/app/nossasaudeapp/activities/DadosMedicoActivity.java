@@ -1,11 +1,13 @@
 package com.example.app.nossasaudeapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.Medico;
@@ -40,8 +42,7 @@ public class DadosMedicoActivity extends AppCompatActivity {
     public void onViewClicked() {
         if ("".equals(txtmedico.getText().toString())) {
             Snackbar.make(dadosmedico,"Preencha um nome.",Snackbar.LENGTH_SHORT).show();
-        }
-        if ("".equals(txtespecializacao.getText().toString())) {
+        } else if ("".equals(txtespecializacao.getText().toString())) {
             Snackbar.make(dadosmedico,"Preencha uma especialização.",Snackbar.LENGTH_SHORT).show();
         } else {
             salvarmedico();
@@ -63,5 +64,7 @@ public class DadosMedicoActivity extends AppCompatActivity {
                 realm.copyToRealmOrUpdate(medico);
             }
         });
+        Toast.makeText(this, "Medico Salvo", Toast.LENGTH_SHORT);
+        startActivity(new Intent(this, MedicoActivity.class));
     }
 }
