@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.app.nossasaudeapp.AlarmReceiver;
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.Medicamento;
+import com.example.app.nossasaudeapp.util.AlarmUtil;
 import com.example.app.nossasaudeapp.util.DateAndTimeUtil;
 import com.example.app.nossasaudeapp.util.RealmUtil;
 
@@ -98,29 +99,22 @@ public class DadosMedicamentoActivity extends AppCompatActivity {
     private void saveMedicamento() {
         Log.d("Time", DateAndTimeUtil.toStringReadableTime(calendar, this));
 
-        final Intent myIntent = new Intent(this, AlarmReceiver.class);
-        myIntent.putExtra("extra", "yes");
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(DadosMedicamentoActivity.this, 0,
-                myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        } else {
-            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        }
+        final Medicamento medicamento = new Medicamento();
+        medicamento.setId(RealmUtil.returnId(medicamento));
+        medicamento.setNome(medNome.getText().toString());
 
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                Medicamento medicamento = new Medicamento();
-                medicamento.setId(RealmUtil.returnId(medicamento));
-                medicamento.setNome(medNome.getText().toString());
                 realm.copyToRealmOrUpdate(medicamento);
             }
         });
+
+        final Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+
+        AlarmUtil.setAlarm(this, alarmIntent, (int) medicamento.getId(), calendar);
+
 
         Toast.makeText(this, "Medicamento Salvo", Toast.LENGTH_SHORT);
         startActivity(new Intent(this, MedicamentoActivity.class));
