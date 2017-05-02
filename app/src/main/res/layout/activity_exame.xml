@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.app.nossasaudeapp.activities.ExameActivity"
-    android:background="@color/colorBackQuad5">
+    android:background="@color/colorBackQuad5"
+    android:id="@+id/dadosexamelist">
 
     <LinearLayout
         android:orientation="vertical"

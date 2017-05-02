@@ -45,6 +45,7 @@ public class DadosExameActivity extends AppCompatActivity {
         }else if ("".equals(txtdesexame.getText().toString())) {
             Snackbar.make(dadosexame,"Preencha uma descrição.",Snackbar.LENGTH_SHORT).show();
         } else {
+            Toast.makeText(this, "Exame Salvo", Toast.LENGTH_SHORT);
             salvarexame();
         }
     }
@@ -62,7 +63,8 @@ public class DadosExameActivity extends AppCompatActivity {
                 realm.copyToRealmOrUpdate(exame);
             }
         });
-        Toast.makeText(this, "Exame Salvo", Toast.LENGTH_SHORT);
+        //Toast.makeText(this, "Exame Salvo", Toast.LENGTH_SHORT);
+        //Snackbar.make(dadosexame,"Exame Salvo.",Snackbar.LENGTH_SHORT).show();
         startActivity(new Intent(this, ExameActivity.class));
     }
 }

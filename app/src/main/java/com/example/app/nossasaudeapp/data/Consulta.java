@@ -3,7 +3,6 @@ package com.example.app.nossasaudeapp.data;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-
 public class Consulta extends RealmObject {
 
     @PrimaryKey
