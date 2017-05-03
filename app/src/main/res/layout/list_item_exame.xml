@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:padding="15dp"
-            android:src="@mipmap/doenca"/>
+            android:src="@mipmap/exame"/>
     </LinearLayout>
 
     <LinearLayout

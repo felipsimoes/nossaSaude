@@ -3,7 +3,7 @@ package com.example.app.nossasaudeapp.data;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Medicamento extends RealmObject {
+public class Medicamento extends RealmObject implements RealmObjectModelPrimary {
 
     @PrimaryKey
     private long id;

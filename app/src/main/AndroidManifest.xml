@@ -33,8 +33,6 @@
 
         <receiver android:name=".AlarmReceiver" />
 
-        <service android:name=".AlarmService" />
-
         <activity android:name=".activities.ExameActivity" />
         <activity android:name=".activities.DadosDoencaActivity" />
         <activity android:name=".activities.DoencaActivity" />
