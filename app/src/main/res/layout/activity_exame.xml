@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.app.nossasaudeapp.activities.ExameActivity"
-    android:background="@color/colorBackQuad5">
+    android:background="@color/colorBackQuad5"
+    android:id="@+id/dadosexamelist">
 
     <LinearLayout
         android:orientation="vertical"
@@ -14,9 +15,7 @@
         android:layout_margin="16dp"
         android:background="@android:color/white"
         android:padding="16dp"
-        android:weightSum="1"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:weightSum="1">
 
         <ListView
             android:id="@+id/lvexames"

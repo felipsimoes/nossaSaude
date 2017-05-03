@@ -9,8 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
-import com.example.app.nossasaudeapp.MedicamentosAdapter;
+import com.example.app.nossasaudeapp.Adapter.MedicamentosAdapter;
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.Medicamento;
 
@@ -29,6 +30,8 @@ public class MedicamentoActivity extends AppCompatActivity {
     ListView lvmedicamento;
     @BindView(R.id.btnaddmedicamento)
     Button btnAddMedicamento;
+    @BindView(R.id.empty_view_medicamentos)
+    RelativeLayout emptyViewMedicamentos;
     private Realm realm = Realm.getDefaultInstance();
 
     @Override
@@ -36,6 +39,8 @@ public class MedicamentoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicamento);
         ButterKnife.bind(this);
+
+        lvmedicamento.setEmptyView(emptyViewMedicamentos);
 
         List<Medicamento> listMedicamentos = new ArrayList<Medicamento>();
         RealmResults<Medicamento> medicamentoRealmList = realm.where(Medicamento.class).findAll();

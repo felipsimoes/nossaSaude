@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.DadosPessoa;
@@ -149,6 +150,7 @@ public class DadosPessoaActivity extends AppCompatActivity {
                 realm.copyToRealmOrUpdate(owner);
             }
         });
+        Toast.makeText(this, "Dados Alterado.", Toast.LENGTH_SHORT);
 
         startActivity(new Intent(this, MainActivity.class));
     }
