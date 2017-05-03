@@ -10,4 +10,5 @@
     <color name="colorBackQuad3">#00cd6a</color>
     <color name="colorBackQuad4">#ff7f0d</color>
     <color name="colorBackQuad5">#ffaa66cc</color>
+    <color name="colorWhite">#ffffff</color>
 </resources>

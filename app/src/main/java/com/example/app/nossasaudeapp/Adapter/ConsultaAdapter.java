@@ -17,6 +17,7 @@ public class ConsultaAdapter extends RealmBaseAdapter<Consulta> implements ListA
 
     private static class ViewHolder {
         TextView name;
+        TextView name2;
     }
 
     public ConsultaAdapter(@Nullable OrderedRealmCollection<Consulta> data) {
@@ -27,13 +28,15 @@ public class ConsultaAdapter extends RealmBaseAdapter<Consulta> implements ListA
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         convertView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item, parent, false);
+                .inflate(R.layout.list_item_consulta, parent, false);
 
         viewHolder = new ViewHolder();
         viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+        viewHolder.name2 = (TextView) convertView.findViewById(R.id.name2);
         convertView.setTag(viewHolder);
         final Consulta consulta = adapterData.get(position);
         viewHolder.name.setText(consulta.getNome());
+        viewHolder.name2.setText(consulta.getDescricao());
         return convertView;
     }
 }

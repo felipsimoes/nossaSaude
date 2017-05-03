@@ -15,9 +15,7 @@
         android:layout_margin="16dp"
         android:background="@android:color/white"
         android:padding="16dp"
-        android:weightSum="1"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:weightSum="1">
 
         <ListView
             android:id="@+id/lvdoenca"

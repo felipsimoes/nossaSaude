@@ -18,6 +18,7 @@ public class MedicoAdapter extends RealmBaseAdapter<Medico> implements ListAdapt
 
     private static class ViewHolder {
         TextView name;
+        TextView name2;
     }
 
     public MedicoAdapter(@Nullable OrderedRealmCollection<Medico> data) {
@@ -28,13 +29,15 @@ public class MedicoAdapter extends RealmBaseAdapter<Medico> implements ListAdapt
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         convertView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item, parent, false);
+                .inflate(R.layout.list_item_medico, parent, false);
 
         viewHolder = new ViewHolder();
         viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+        viewHolder.name2 = (TextView) convertView.findViewById(R.id.name2);
         convertView.setTag(viewHolder);
         final Medico medico = adapterData.get(position);
         viewHolder.name.setText(medico.getNome());
+        viewHolder.name2.setText(medico.getEspecializacao());
         return convertView;
     }
 }
