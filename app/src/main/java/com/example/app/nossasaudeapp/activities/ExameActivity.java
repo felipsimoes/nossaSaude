@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.example.app.nossasaudeapp.Adapter.ExameAdapter;
 import com.example.app.nossasaudeapp.R;
@@ -31,6 +32,8 @@ public class ExameActivity extends AppCompatActivity {
     Button btnaddexame;
     @BindView(R.id.dadosexamelist)
     ConstraintLayout dadosexamelist;
+    @BindView(R.id.empty_view_exames)
+    RelativeLayout emptyViewExames;
     private Realm realm = Realm.getDefaultInstance();
 
     @Override
@@ -38,6 +41,8 @@ public class ExameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exame);
         ButterKnife.bind(this);
+
+        lvexames.setEmptyView(emptyViewExames);
 
         List<Exame> listexames = new ArrayList<Exame>();
         RealmResults<Exame> exameRealmList = realm.where(Exame.class).findAll();

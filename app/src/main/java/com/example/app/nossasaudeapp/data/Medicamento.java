@@ -3,20 +3,18 @@ package com.example.app.nossasaudeapp.data;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Medicamento extends RealmObject implements RealmObjectModelPrimary {
+public class Medicamento extends RealmObject {
 
     @PrimaryKey
     private long id;
 
     private String nome;
 
-    public long getId() {
-        return id;
-    }
+    private Reminder reminder;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    public long getId() { return id; }
+
+    public void setId(long id) { this.id = id; }
 
     public String getNome() {
         return nome;
@@ -25,6 +23,10 @@ public class Medicamento extends RealmObject implements RealmObjectModelPrimary 
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public Reminder getReminder() { return reminder; }
+
+    public void setReminder(Reminder reminder) { this.reminder = reminder; }
 
     @Override
     public String toString() {

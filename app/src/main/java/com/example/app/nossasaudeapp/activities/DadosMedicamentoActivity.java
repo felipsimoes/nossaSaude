@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -27,11 +28,13 @@ import android.widget.Toast;
 import com.example.app.nossasaudeapp.AlarmReceiver;
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.Medicamento;
+import com.example.app.nossasaudeapp.data.Reminder;
 import com.example.app.nossasaudeapp.util.AlarmUtil;
 import com.example.app.nossasaudeapp.util.DateAndTimeUtil;
 import com.example.app.nossasaudeapp.util.RealmUtil;
 
 import java.util.Calendar;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,6 +61,7 @@ public class DadosMedicamentoActivity extends AppCompatActivity {
     @BindView(R.id.myCoordinatorLayout)
     CoordinatorLayout myCoordinatorLayout;
     private Calendar calendar;
+    Realm realm = Realm.getDefaultInstance();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,19 +69,27 @@ public class DadosMedicamentoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dados_medicamento);
         ButterKnife.bind(this);
 
-        Intent intent = getIntent();
-        long id = intent.getLongExtra("id", 0);
-        Toast.makeText(this, "ID - "+String.valueOf(id), Toast.LENGTH_LONG).show();
-
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
         calendar = Calendar.getInstance();
+        Intent intent = getIntent();
+        long id = intent.getLongExtra("NOTIFICATION_ID", 0);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.unidade_remedio_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerUnidadeMedicamento.setAdapter(adapter);
+        if(id != 0 ) {
+            fillMedicamentoDataOnFields(id);
 
+        } else {
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                    R.array.unidade_remedio_array, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerUnidadeMedicamento.setAdapter(adapter);
+        }
+    }
+
+    private void fillMedicamentoDataOnFields(long id) {
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+        Medicamento medicamento = realm.where(Medicamento.class).equalTo("id", id).findFirst();
+        medNome.setText(medicamento.getNome());
     }
 
     private void validateInput() {
@@ -103,6 +115,11 @@ public class DadosMedicamentoActivity extends AppCompatActivity {
         medicamento.setId(RealmUtil.returnId(medicamento));
         medicamento.setNome(medNome.getText().toString());
 
+        Reminder reminder = new Reminder();
+        reminder.setId(RealmUtil.returnId(reminder));
+        reminder.setOriginClass(Reminder.MEDICAMENTO);
+        medicamento.setReminder(reminder);
+
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -113,8 +130,7 @@ public class DadosMedicamentoActivity extends AppCompatActivity {
 
         final Intent alarmIntent = new Intent(this, AlarmReceiver.class);
 
-        AlarmUtil.setAlarm(this, alarmIntent, (int) medicamento.getId(), calendar);
-
+        AlarmUtil.setAlarm(this, alarmIntent, (int) medicamento.getReminder().getId(), calendar);
 
         Toast.makeText(this, "Medicamento Salvo", Toast.LENGTH_SHORT);
         startActivity(new Intent(this, MedicamentoActivity.class));

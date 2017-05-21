@@ -16,6 +16,22 @@
         android:padding="16dp"
         android:weightSum="1">
 
+        <RelativeLayout
+            android:id="@+id/empty_view_consultas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/emptyTextConsulta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:text="Adicione uma consulta agora mesmo" />
+        </RelativeLayout>
+
         <ListView
             android:id="@+id/lvconsulta"
             android:layout_width="match_parent"

@@ -27,6 +27,7 @@ public class NotificationUtil {
             Medicamento medicamento = ((Medicamento) realmObject);
             int medId = (int) medicamento.getId();
             Intent viewIntent = new Intent(context, DadosMedicamentoActivity.class);
+            viewIntent.putExtra("NOTIFICATION_ID", (long)medId);
             PendingIntent pIntent = PendingIntent.getActivity(context,
                     medId, viewIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 

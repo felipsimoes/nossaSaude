@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.example.app.nossasaudeapp.Adapter.MedicoAdapter;
 import com.example.app.nossasaudeapp.R;
@@ -28,6 +29,8 @@ public class MedicoActivity extends AppCompatActivity {
     ListView lvmedico;
     @BindView(R.id.btnaddmedico)
     Button btnaddmedico;
+    @BindView(R.id.empty_view_medicos)
+    RelativeLayout emptyViewMedicos;
     private Realm realm = Realm.getDefaultInstance();
 
     @Override
@@ -35,6 +38,8 @@ public class MedicoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medico);
         ButterKnife.bind(this);
+
+        lvmedico.setEmptyView(emptyViewMedicos);
 
         List<Medico> listmedicos = new ArrayList<Medico>();
         RealmResults<Medico> medicoRealmList = realm.where(Medico.class).findAll();

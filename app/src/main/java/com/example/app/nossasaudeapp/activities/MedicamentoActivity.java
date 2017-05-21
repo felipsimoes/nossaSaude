@@ -57,7 +57,7 @@ public class MedicamentoActivity extends AppCompatActivity {
                 Intent intent = new Intent(context, DadosMedicamentoActivity.class);
                 Medicamento medicamento = adapter.getItem(position);
                 if (medicamento != null) {
-                    intent.putExtra("id", medicamento.getId());
+                    intent.putExtra("NOTIFICATION_ID", medicamento.getId());
                 }
                 startActivity(intent);
             }

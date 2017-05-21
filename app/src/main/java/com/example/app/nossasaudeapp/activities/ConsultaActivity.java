@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.example.app.nossasaudeapp.Adapter.ConsultaAdapter;
 import com.example.app.nossasaudeapp.R;
@@ -28,6 +29,8 @@ public class ConsultaActivity extends AppCompatActivity {
     ListView lvconsulta;
     @BindView(R.id.btnaddconsulta)
     Button btnaddconsulta;
+    @BindView(R.id.empty_view_consultas)
+    RelativeLayout emptyViewConsultas;
     private Realm realm = Realm.getDefaultInstance();
 
     @Override
@@ -35,6 +38,8 @@ public class ConsultaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta);
         ButterKnife.bind(this);
+
+        lvconsulta.setEmptyView(emptyViewConsultas);
 
         List<Consulta> listConsulta = new ArrayList<Consulta>();
         RealmResults<Consulta> consultaRealmList = realm.where(Consulta.class).findAll();
