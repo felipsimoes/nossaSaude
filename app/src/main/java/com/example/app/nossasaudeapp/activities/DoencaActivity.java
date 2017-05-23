@@ -56,7 +56,7 @@ public class DoencaActivity extends AppCompatActivity {
                 Intent intent = new Intent(context, DadosDoencaActivity.class);
                 Doenca doenca = adapter.getItem(position);
                 if (doenca != null) {
-                    intent.putExtra("id", doenca.getId());
+                    intent.putExtra("NOTIFICATION_ID", doenca.getId());
                 }
                 startActivity(intent);
             }

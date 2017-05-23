@@ -56,7 +56,7 @@ public class MedicoActivity extends AppCompatActivity {
                 Intent intent = new Intent(context, DadosMedicoActivity.class);
                 Medico medico = adapter.getItem(position);
                 if (medico != null) {
-                    intent.putExtra("id", medico.getId());
+                    intent.putExtra("NOTIFICATION_ID", medico.getId());
                 }
                 startActivity(intent);
             }

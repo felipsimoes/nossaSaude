@@ -59,7 +59,7 @@ public class ExameActivity extends AppCompatActivity {
                 Intent intent = new Intent(context, DadosExameActivity.class);
                 Exame exame = adapter.getItem(position);
                 if (exame != null) {
-                    intent.putExtra("id", exame.getId());
+                    intent.putExtra("NOTIFICATION_ID", exame.getId());
                 }
                 startActivity(intent);
             }

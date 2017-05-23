@@ -56,7 +56,7 @@ public class ConsultaActivity extends AppCompatActivity {
                 Intent intent = new Intent(context, DadosConsultaActivity.class);
                 Consulta consulta = adapter.getItem(position);
                 if (consulta != null) {
-                    intent.putExtra("id", consulta.getId());
+                    intent.putExtra("NOTIFICATION_ID", consulta.getId());
                 }
                 startActivity(intent);
             }

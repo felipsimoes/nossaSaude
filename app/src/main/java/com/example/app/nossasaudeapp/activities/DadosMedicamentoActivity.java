@@ -2,10 +2,8 @@ package com.example.app.nossasaudeapp.activities;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
@@ -34,7 +32,6 @@ import com.example.app.nossasaudeapp.util.DateAndTimeUtil;
 import com.example.app.nossasaudeapp.util.RealmUtil;
 
 import java.util.Calendar;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
