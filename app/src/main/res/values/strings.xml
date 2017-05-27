@@ -34,6 +34,17 @@
         <item>O-</item>
     </string-array>
 
+    <string-array name="repeat_array">
+        <item>Does not repeat</item>
+        <item>Every hour</item>
+        <item>Every day</item>
+        <item>Every week</item>
+        <item>Every month</item>
+        <item>Every year</item>
+        <item>Specific days of the week</item>
+        <item>Advanced</item>
+    </string-array>
+
     <string name="title_activity_batata">batata</string>
     <string name="outubro">Outubro</string>
     <string name="hoje">Hoje</string>
@@ -55,5 +66,15 @@
     <string name="dados_pessoais">Dados Pessoais</string>
     <string name="vibrar">Vibrar</string>
     <string name="adicionar">Adicionar</string>
+    <string name="ok">OK</string>
+    <string name="repeat_every">Repeat Everyday</string>
+    <string name="repeats_every">Repeats every: %1$d %2$s</string>
+    <string name="no_repeat">Does not repeat</string>
+    <string name="forever">Forever</string>
+    <string name="repeats_on">Repeats on:</string>
+    <string name="times">times</string>
+    <string name="repeat_notification">Number of times to repeat: </string>
+    <string name="one" translatable="false">1</string>
+    <string name="times_shown_edit">Shown %1$d out of</string>
 
 </resources>

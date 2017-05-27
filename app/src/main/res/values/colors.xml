@@ -11,4 +11,12 @@
     <color name="colorBackQuad4">#ff7f0d</color>
     <color name="colorBackQuad5">#ffaa66cc</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="accent">#897dae</color>
+    <color name="lightGray">#e6e6e6</color>
+    <color name="textLightGray">#8f8f8f</color>
+    <color name="textGreyHeader">#ff818181</color>
+    <color name="notificationContentText">#737373</color>
+    <color name="error">#da1b21</color>
+    <color name="iconTint">#8e8e8e</color>
+    <color name="accentLight">#ff988db6</color>
 </resources>

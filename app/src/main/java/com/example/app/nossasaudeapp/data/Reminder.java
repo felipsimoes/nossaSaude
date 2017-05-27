@@ -89,9 +89,7 @@ public class Reminder extends RealmObject {
         return numberShown;
     }
 
-    public void setNumberShown(long numberShown) {
-        this.numberShown = numberShown;
-    }
+    public void setNumberShown(long numberShown) { this.numberShown = numberShown; }
 
     public byte[] getDaysOfWeek() {
         return daysOfWeek;

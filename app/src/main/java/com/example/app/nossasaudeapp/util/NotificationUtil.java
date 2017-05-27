@@ -86,4 +86,9 @@ public class NotificationUtil {
             Log.d("Notification", Exame.class.toString());
         }
     }
+
+    public static void cancelNotification(Context context, int notificationId) {
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(notificationId);
+    }
 }
