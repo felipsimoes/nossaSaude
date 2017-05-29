@@ -43,6 +43,15 @@
         <activity android:name=".activities.DadosMedicoActivity" />
         <activity android:name=".activities.DadosMedicamentoActivity" />
         <activity android:name=".activities.MedicamentoActivity" />
+        <activity
+            android:name=".MedicamentoViewActivity"
+            android:label="@string/title_activity_medicamento_view"
+            android:parentActivityName=".activities.MedicamentoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MedicamentoActivity" />
+        </activity>
     </application>
 
 </manifest>

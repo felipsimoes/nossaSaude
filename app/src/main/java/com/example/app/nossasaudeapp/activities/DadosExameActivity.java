@@ -35,22 +35,16 @@ import io.realm.Realm;
 
 public class DadosExameActivity extends AppCompatActivity {
 
-    @BindView(R.id.txtexame)
-    EditText txtexame;
-    @BindView(R.id.txtdesexame)
-    EditText txtdesexame;
-    @BindView(R.id.btnSalvarExame)
-    Button btnSalvarExame;
-    @BindView(R.id.dadosexame)
-    ConstraintLayout dadosexame;
-    @BindView(R.id.exameHora)
-    TextView exameHora;
-    @BindView(R.id.exameData)
-    TextView exameData;
+    @BindView(R.id.txtexame) EditText tituloExame;
+    @BindView(R.id.txtdesexame) EditText descricaoExame;
+    @BindView(R.id.btnSalvarExame) Button btnSalvarExame;
+    @BindView(R.id.dadosexame) ConstraintLayout dadosExameLayout;
+    @BindView(R.id.exameHora) TextView horaExame;
+    @BindView(R.id.exameData) TextView dataExame;
     AlarmManager alarmManager;
     private Calendar calendar;
-
     private Realm realm = Realm.getDefaultInstance();
+    private long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,25 +55,23 @@ public class DadosExameActivity extends AppCompatActivity {
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         calendar = Calendar.getInstance();
         Intent intent = getIntent();
-        long id = intent.getLongExtra("NOTIFICATION_ID", 0);
+        id = intent.getLongExtra("NOTIFICATION_ID", 0);
 
         if(id != 0 ) {
             fillExameDataOnFields(id);
-
         }
     }
 
     private void fillExameDataOnFields(long id) {
         Exame exame = realm.where(Exame.class).equalTo("id", id).findFirst();
-        txtexame.setText(exame.getNome());
+        tituloExame.setText(exame.getNome());
+        descricaoExame.setText(exame.getDescricao());
     }
 
     @OnClick(R.id.btnSalvarExame)
     public void onViewClicked() {
-        if ("".equals(txtexame.getText().toString())) {
-            Snackbar.make(dadosexame, "Preencha o nome do exame.", Snackbar.LENGTH_SHORT).show();
-        } else if ("".equals(txtdesexame.getText().toString())) {
-            Snackbar.make(dadosexame, "Preencha uma descrição.", Snackbar.LENGTH_SHORT).show();
+        if ("".equals(tituloExame.getText().toString())) {
+            Snackbar.make(dadosExameLayout, "Preencha o nome do exame.", Snackbar.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Exame Salvo", Toast.LENGTH_SHORT);
             salvarExame();
@@ -90,13 +82,20 @@ public class DadosExameActivity extends AppCompatActivity {
         Log.d("Time", DateAndTimeUtil.toStringReadableTime(calendar, this));
 
         final Exame exame = new Exame();
-        exame.setNome(txtexame.getText().toString());
-        exame.setDescricao(txtdesexame.getText().toString());
-        exame.setId(RealmUtil.returnId(exame));
-
         Reminder reminder = new Reminder();
-        reminder.setId(RealmUtil.returnId(reminder));
+
+        if (id == 0) {
+            id = RealmUtil.returnId(exame);
+            reminder.setId(RealmUtil.returnId(reminder));
+        }
+
+        exame.setId(id);
+        exame.setNome(tituloExame.getText().toString());
+        exame.setDescricao(descricaoExame.getText().toString());
+
         reminder.setOriginClass(Reminder.EXAME);
+        reminder.setDateAndTime(DateAndTimeUtil.toStringDateAndTime(calendar));
+
         exame.setReminder(reminder);
 
         realm.executeTransaction(new Realm.Transaction() {
@@ -111,7 +110,6 @@ public class DadosExameActivity extends AppCompatActivity {
         AlarmUtil.setAlarm(this, alarmIntent, (int) exame.getReminder().getId(), calendar);
 
         Toast.makeText(this, "Exame Salvo", Toast.LENGTH_SHORT);
-        //Snackbar.make(dadosexame,"Exame Salvo.",Snackbar.LENGTH_SHORT).show();
         startActivity(new Intent(this, ExameActivity.class));
     }
 
@@ -122,7 +120,7 @@ public class DadosExameActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                 calendar.set(Calendar.HOUR_OF_DAY, hour);
                 calendar.set(Calendar.MINUTE, minute);
-                exameHora.setText(DateAndTimeUtil.toStringReadableTime(calendar, getApplicationContext()));
+                horaExame.setText(DateAndTimeUtil.toStringReadableTime(calendar, getApplicationContext()));
             }
         }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), DateFormat.is24HourFormat(this));
         TimePicker.show();
@@ -136,7 +134,7 @@ public class DadosExameActivity extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                exameData.setText(DateAndTimeUtil.toStringReadableDate(calendar));
+                dataExame.setText(DateAndTimeUtil.toStringReadableDate(calendar));
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         DatePicker.show();

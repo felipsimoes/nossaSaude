@@ -50,7 +50,7 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         DaysOfWeekSelector.DaysOfWeekSelectionListener, RepeatSelector.RepeatSelectionListener {
 
     @BindView(R.id.medNome) EditText medNome;
-    @BindView(R.id.button) Button btnAdd;
+    @BindView(R.id.btnSalvarMedicamento) Button btnAdd;
     @BindView(R.id.medHora) TextView medHora;
     @BindView(R.id.medData) TextView medData;
     @BindView(R.id.spinnerUnidadeMedicamento) Spinner spinnerUnidadeMedicamento;
@@ -72,6 +72,7 @@ public class DadosMedicamentoActivity extends AppCompatActivity
     private int timesToShow = 1;
     private int repeatType;
     private int interval = 1;
+    private long id;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,7 +85,7 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         repeatType = Reminder.DOES_NOT_REPEAT;
 
         Intent intent = getIntent();
-        long id = intent.getLongExtra("NOTIFICATION_ID", 0);
+        id = intent.getLongExtra("NOTIFICATION_ID", 0);
 
         if (id != 0) {
             fillMedicamentoDataOnFields(id);
@@ -103,7 +104,6 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         Medicamento medicamento = realm.where(Medicamento.class).equalTo("id", id).findFirst();
         medNome.setText(medicamento.getNome());
         showTimesNumber.setText(String.valueOf(medicamento.getReminder().getNumberToShow()));
-
 
         timesShown = (int) medicamento.getReminder().getNumberShown();
         repeatType = (int) medicamento.getReminder().getRepeatType();
@@ -134,6 +134,14 @@ public class DadosMedicamentoActivity extends AppCompatActivity
     }
 
     private void validateInput() {
+        if (showTimesNumber.getText().toString().isEmpty()) {
+            showTimesNumber.setText("1");
+        }
+        timesToShow = Integer.parseInt(showTimesNumber.getText().toString());
+        if (repeatType == Reminder.DOES_NOT_REPEAT) {
+            timesToShow = timesShown + 1;
+        }
+
         if (medNome.getText().toString().trim().isEmpty()) {
             Snackbar.make(myCoordinatorLayout,
                     "Por favor, insira um nome", Snackbar.LENGTH_SHORT)
@@ -144,13 +152,6 @@ public class DadosMedicamentoActivity extends AppCompatActivity
 //                    "Por favor, selecione a unidade de medicamento", Snackbar.LENGTH_SHORT)
 //                    .show();
 //        }
-        if (showTimesNumber.getText().toString().isEmpty()) {
-            showTimesNumber.setText("1");
-        }
-        timesToShow = Integer.parseInt(showTimesNumber.getText().toString());
-        if (repeatType == Reminder.DOES_NOT_REPEAT) {
-            timesToShow = timesShown + 1;
-        }
         else {
             saveMedicamento();
         }
@@ -160,19 +161,22 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         Log.d("Time", DateAndTimeUtil.toStringReadableTime(calendar, this));
 
         final Medicamento medicamento = new Medicamento();
-        medicamento.setId(RealmUtil.returnId(medicamento));
+        Reminder reminder = new Reminder();
+
+        if (id == 0) {
+            id = RealmUtil.returnId(medicamento);
+            reminder.setId(RealmUtil.returnId(reminder));
+        }
+
+        medicamento.setId(id);
         medicamento.setNome(medNome.getText().toString());
 
-        Reminder reminder = new Reminder();
-        reminder.setId(RealmUtil.returnId(reminder));
         reminder.setOriginClass(Reminder.MEDICAMENTO);
         reminder.setRepeatType(repeatType);
         reminder.setForeverState(Boolean.toString(foreverSwitch.isChecked()));
         reminder.setNumberToShow(timesToShow);
         reminder.setNumberShown(timesShown);
         reminder.setInterval(interval);
-        ;
-
         reminder.setDateAndTime(DateAndTimeUtil.toStringDateAndTime(calendar));
 
         if (repeatType == Reminder.SPECIFIC_DAYS) {
@@ -181,11 +185,9 @@ public class DadosMedicamentoActivity extends AppCompatActivity
 
         medicamento.setReminder(reminder);
 
-        Realm realm = Realm.getDefaultInstance();
         realm.executeTransaction(new Realm.Transaction() {
             @Override
-            public void execute(Realm realm) {
-                realm.copyToRealmOrUpdate(medicamento);
+            public void execute(Realm realm) {realm.copyToRealmOrUpdate(medicamento);
             }
         });
 
@@ -201,7 +203,6 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         if (show) {
             foreverRow.setVisibility(View.VISIBLE);
             bottomRow.setVisibility(View.VISIBLE);
-
 
         } else {
             foreverSwitch.setChecked(false);
@@ -223,7 +224,7 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         TimePicker.show();
     }
 
-    @OnClick(R.id.button)
+    @OnClick(R.id.btnSalvarMedicamento)
     public void btnAddClick() {
         validateInput();
     }

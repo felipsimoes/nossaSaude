@@ -21,4 +21,9 @@
     <dimen name="dialog_padding_side">24dp</dimen>
     <dimen name="item_offset">5dp</dimen>
     <dimen name="toolbar_placeholder_height">56dp</dimen>
+    <dimen name="list_padding">140dp</dimen>
+    <dimen name="view_header_padding_bottom">5dp</dimen>
+    <dimen name="toolbar_shadow_height">10dp</dimen>
+    <dimen name="default_padding_view">16dp</dimen>
+    <dimen name="default_margin_layout">16dp</dimen>
 </resources>

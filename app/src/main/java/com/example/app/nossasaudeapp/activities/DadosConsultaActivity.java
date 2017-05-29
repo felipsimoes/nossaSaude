@@ -35,22 +35,16 @@ import io.realm.Realm;
 
 public class DadosConsultaActivity extends AppCompatActivity {
 
-    @BindView(R.id.txtconsulta)
-    EditText txtconsulta;
-    @BindView(R.id.txtdesconsulta)
-    EditText txtdesconsulta;
-    @BindView(R.id.btnSalvarConsulta)
-    Button btnSalvarConsulta;
-    @BindView(R.id.dadosconsulta)
-    ConstraintLayout dadosconsulta;
-    @BindView(R.id.consHora)
-    TextView consHora;
-    @BindView(R.id.consData)
-    TextView consData;
+    @BindView(R.id.txtconsulta) EditText tituloConsulta;
+    @BindView(R.id.txtdesconsulta) EditText descricaoConsulta;
+    @BindView(R.id.btnSalvarConsulta) Button btnSalvarConsulta;
+    @BindView(R.id.dadosconsulta) ConstraintLayout dadosConsultaLayout;
+    @BindView(R.id.consHora) TextView horaConsulta;
+    @BindView(R.id.consData) TextView dataConsulta;
     AlarmManager alarmManager;
     private Calendar calendar;
-
     private Realm realm = Realm.getDefaultInstance();
+    private long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,26 +55,25 @@ public class DadosConsultaActivity extends AppCompatActivity {
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         calendar = Calendar.getInstance();
         Intent intent = getIntent();
-        long id = intent.getLongExtra("NOTIFICATION_ID", 0);
+        id = intent.getLongExtra("NOTIFICATION_ID", 0);
 
         if(id != 0 ) {
             fillConsultaDataOnFields(id);
-
         }
     }
 
     private void fillConsultaDataOnFields(long id) {
-
         Consulta consulta = realm.where(Consulta.class).equalTo("id", id).findFirst();
-        txtconsulta.setText(consulta.getNome());
+        tituloConsulta.setText(consulta.getNome());
+        descricaoConsulta.setText(consulta.getDescricao());
     }
 
     @OnClick(R.id.btnSalvarConsulta)
     public void onViewClicked() {
-        if ("".equals(txtconsulta.getText().toString())) {
-            Snackbar.make(dadosconsulta, "Preencha o nome da consulta.", Snackbar.LENGTH_SHORT).show();
-        } else if ("".equals(txtdesconsulta.getText().toString())) {
-            Snackbar.make(dadosconsulta, "Preencha uma descrição.", Snackbar.LENGTH_SHORT).show();
+        if ("".equals(tituloConsulta.getText().toString())) {
+            Snackbar.make(dadosConsultaLayout, "Preencha o nome da consulta.", Snackbar.LENGTH_SHORT).show();
+        } else if ("".equals(descricaoConsulta.getText().toString())) {
+            Snackbar.make(dadosConsultaLayout, "Preencha uma descrição.", Snackbar.LENGTH_SHORT).show();
         } else {
             salvarConsulta();
         }
@@ -90,26 +83,29 @@ public class DadosConsultaActivity extends AppCompatActivity {
         Log.d("Time", DateAndTimeUtil.toStringReadableTime(calendar, this));
 
         final Consulta consulta = new Consulta();
-        consulta.setId(RealmUtil.returnId(consulta));
-        consulta.setNome(txtconsulta.getText().toString());
-        consulta.setDescricao(txtdesconsulta.getText().toString());
-
         Reminder reminder = new Reminder();
-        reminder.setId(RealmUtil.returnId(reminder));
+
+        if (id == 0) {
+            id = RealmUtil.returnId(consulta);
+            reminder.setId(RealmUtil.returnId(reminder));
+        }
+        consulta.setId(id);
+        consulta.setNome(tituloConsulta.getText().toString());
+        consulta.setDescricao(descricaoConsulta.getText().toString());
+
         reminder.setOriginClass(Reminder.CONSULTA);
+        reminder.setDateAndTime(DateAndTimeUtil.toStringDateAndTime(calendar));
         consulta.setReminder(reminder);
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
-            public void execute(Realm realm) {
-                realm.copyToRealmOrUpdate(consulta);
+            public void execute(Realm realm) {realm.copyToRealmOrUpdate(consulta);
             }
         });
 
         final Intent alarmIntent = new Intent(this, AlarmReceiver.class);
 
         AlarmUtil.setAlarm(this, alarmIntent, (int) consulta.getReminder().getId(), calendar);
-
 
         Toast.makeText(this, "Consulta Salva", Toast.LENGTH_SHORT);
         startActivity(new Intent(this, ConsultaActivity.class));
@@ -122,7 +118,7 @@ public class DadosConsultaActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                 calendar.set(Calendar.HOUR_OF_DAY, hour);
                 calendar.set(Calendar.MINUTE, minute);
-                consHora.setText(DateAndTimeUtil.toStringReadableTime(calendar, getApplicationContext()));
+                horaConsulta.setText(DateAndTimeUtil.toStringReadableTime(calendar, getApplicationContext()));
             }
         }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), DateFormat.is24HourFormat(this));
         TimePicker.show();
@@ -136,7 +132,7 @@ public class DadosConsultaActivity extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                consData.setText(DateAndTimeUtil.toStringReadableDate(calendar));
+                dataConsulta.setText(DateAndTimeUtil.toStringReadableDate(calendar));
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         DatePicker.show();

@@ -76,5 +76,11 @@
     <string name="repeat_notification">Number of times to repeat: </string>
     <string name="one" translatable="false">1</string>
     <string name="times_shown_edit">Shown %1$d out of</string>
+    <string name="title_activity_medicamento_view">MedicamentoViewActivity</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="delete_confirmation">Are you sure you want to delete this notification?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>

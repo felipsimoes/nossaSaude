@@ -18,5 +18,10 @@
     <string name="times">vezes</string>
     <string name="repeat_notification">Número de vezes a repetir: </string>
     <string name="times_shown_edit">Exibido %1$d de</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Deletar</string>
+    <string name="delete_confirmation">Tem certeza que você quer excluir essa notificação?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
 
 </resources>
