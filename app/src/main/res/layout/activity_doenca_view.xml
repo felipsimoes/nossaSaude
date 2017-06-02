@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.app.nossasaudeapp.activities.DoencaViewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorBackQuad1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorBackQuad1"
+            app:popupTheme="@style/PopupOverlay" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:background="@android:color/white"
+            android:padding="@dimen/default_padding_view"
+            tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="9dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Doença"
+                android:id="@+id/nome_doenca_view"
+                android:textSize="20sp"
+                android:paddingTop="@dimen/default_padding_view"
+                android:paddingBottom="@dimen/default_padding_view"
+                android:textColorLink="@color/colorBackQuad2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Descrição"
+                android:id="@+id/descricao_doenca_view"
+                android:textSize="20sp"
+                android:paddingTop="@dimen/default_padding_view"
+                android:paddingBottom="@dimen/default_padding_view"
+                android:textColorLink="@color/colorBackQuad2" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

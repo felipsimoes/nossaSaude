@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.app.nossasaudeapp">
 
     <application
@@ -44,13 +45,31 @@
         <activity android:name=".activities.DadosMedicamentoActivity" />
         <activity android:name=".activities.MedicamentoActivity" />
         <activity
-            android:name=".MedicamentoViewActivity"
+            android:name=".activities.MedicamentoViewActivity"
             android:label="@string/title_activity_medicamento_view"
             android:parentActivityName=".activities.MedicamentoActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.app.nossasaudeapp.activities.MedicamentoActivity" />
+        </activity>
+        <activity
+            android:name=".activities.MedicoViewActivity"
+            android:label="@string/title_activity_medico_view"
+            android:parentActivityName=".activities.MedicoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MedicoActivity" />
+        </activity>
+        <activity
+            android:name=".activities.DoencaViewActivity"
+            android:label="@string/title_activity_doenca_view"
+            android:parentActivityName=".activities.DoencaActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.DoencaActivity" />
         </activity>
     </application>
 

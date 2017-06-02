@@ -12,7 +12,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.example.app.nossasaudeapp.Adapter.MedicamentosAdapter;
-import com.example.app.nossasaudeapp.MedicamentoViewActivity;
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.Medicamento;
 

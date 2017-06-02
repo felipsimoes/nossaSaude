@@ -64,6 +64,7 @@ public class DadosMedicamentoActivity extends AppCompatActivity
     @BindView(R.id.times) TextView timesText;
     @BindView(R.id.bottom_row) LinearLayout bottomRow;
 
+    private ArrayAdapter<CharSequence> adapter;
     AlarmManager alarmManager;
     Realm realm = Realm.getDefaultInstance();
     private Calendar calendar;
@@ -87,14 +88,13 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         Intent intent = getIntent();
         id = intent.getLongExtra("NOTIFICATION_ID", 0);
 
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.unidade_remedio_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerUnidadeMedicamento.setAdapter(adapter);
+
         if (id != 0) {
             fillMedicamentoDataOnFields(id);
-
-        } else {
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                    R.array.unidade_remedio_array, android.R.layout.simple_spinner_item);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerUnidadeMedicamento.setAdapter(adapter);
         }
     }
 
@@ -103,6 +103,8 @@ public class DadosMedicamentoActivity extends AppCompatActivity
 
         Medicamento medicamento = realm.where(Medicamento.class).equalTo("id", id).findFirst();
         medNome.setText(medicamento.getNome());
+        spinnerUnidadeMedicamento.setSelection(adapter.getPosition(medicamento.getUnidade()));
+        qtDoseMedicamento.setText(medicamento.getDose());
         showTimesNumber.setText(String.valueOf(medicamento.getReminder().getNumberToShow()));
 
         timesShown = (int) medicamento.getReminder().getNumberShown();
@@ -147,6 +149,8 @@ public class DadosMedicamentoActivity extends AppCompatActivity
                     "Por favor, insira um nome", Snackbar.LENGTH_SHORT)
                     .show();
         }
+
+        //Todo: inserir validação de unidade e dose de medicamento
 //        if (spinnerUnidadeMedicamento.getSelectedItemId() == -1) {
 //            Snackbar.make(myCoordinatorLayout,
 //                    "Por favor, selecione a unidade de medicamento", Snackbar.LENGTH_SHORT)
@@ -170,6 +174,8 @@ public class DadosMedicamentoActivity extends AppCompatActivity
 
         medicamento.setId(id);
         medicamento.setNome(medNome.getText().toString());
+        medicamento.setUnidade(spinnerUnidadeMedicamento.getSelectedItem().toString());
+        medicamento.setDose(qtDoseMedicamento.getText().toString());
 
         reminder.setOriginClass(Reminder.MEDICAMENTO);
         reminder.setRepeatType(repeatType);

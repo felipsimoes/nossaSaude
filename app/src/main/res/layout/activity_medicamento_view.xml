@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.nossasaudeapp.MedicamentoViewActivity">
-
+    tools:context="com.example.app.nossasaudeapp.activities.MedicamentoViewActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -35,7 +34,7 @@
                 android:ems="10"
                 android:hint="@string/nomeMedicamento"
                 android:id="@+id/nome_medicamento_view"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:paddingTop="@dimen/default_padding_view"
                 android:paddingBottom="@dimen/default_padding_view"
                 android:textColorLink="@color/colorBackQuad2" />
@@ -60,9 +59,10 @@
                         android:textColor="@android:color/black" />
 
                     <TextView
-                        android:id="@+id/spinner_medicamento_view"
+                        android:id="@+id/unidade_medicamento_view"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -83,8 +83,7 @@
                         android:id="@+id/dose_medicamento_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:textColorLink="@color/colorBackQuad2" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
             </LinearLayout>

@@ -53,7 +53,7 @@ public class DoencaActivity extends AppCompatActivity {
         lvdoenca.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(context, DadosDoencaActivity.class);
+                Intent intent = new Intent(context, DoencaViewActivity.class);
                 Doenca doenca = adapter.getItem(position);
                 if (doenca != null) {
                     intent.putExtra("NOTIFICATION_ID", doenca.getId());

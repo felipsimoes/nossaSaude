@@ -10,15 +10,25 @@ public class Medicamento extends RealmObject {
 
     private String nome;
 
+    private String unidade;
+
+    private String dose;
+
     private Reminder reminder;
 
     public long getId() { return id; }
 
     public void setId(long id) { this.id = id; }
 
-    public String getNome() {
-        return nome;
-    }
+    public String getNome() { return nome; }
+
+    public String getUnidade() { return unidade; }
+
+    public void setUnidade(String unidade) { this.unidade = unidade; }
+
+    public String getDose() { return dose; }
+
+    public void setDose(String dose) { this.dose = dose; }
 
     public void setNome(String nome) {
         this.nome = nome;

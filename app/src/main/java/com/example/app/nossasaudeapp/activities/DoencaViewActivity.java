@@ -1,4 +1,4 @@
-package com.example.app.nossasaudeapp;
+package com.example.app.nossasaudeapp.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,35 +10,30 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.app.nossasaudeapp.activities.DadosMedicamentoActivity;
-import com.example.app.nossasaudeapp.data.Medicamento;
-import com.example.app.nossasaudeapp.util.AlarmUtil;
+import com.example.app.nossasaudeapp.R;
+import com.example.app.nossasaudeapp.data.Doenca;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 
-public class MedicamentoViewActivity extends AppCompatActivity {
+public class DoencaViewActivity extends AppCompatActivity {
 
-    Realm realm = Realm.getDefaultInstance();
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.nome_medicamento_view)
-    TextView nomeMedicamentoView;
-    @BindView(R.id.spinner_medicamento_view)
-    TextView spinnerMedicamentoView;
-    @BindView(R.id.dose_medicamento_view)
-    TextView doseMedicamentoView;
-    @BindView(R.id.repeat_medicamento_view)
-    TextView repeatMedicamentoView;
+    @BindView(R.id.nome_doenca_view)
+    TextView nomeDoencaView;
+    @BindView(R.id.descricao_doenca_view)
+    TextView descricaoDoencaView;
 
-    private Medicamento medicamento;
+    Realm realm = Realm.getDefaultInstance();
+    private Doenca doenca;
     private long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medicamento_view);
+        setContentView(R.layout.activity_doenca_view);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -49,7 +44,13 @@ public class MedicamentoViewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getLongExtra("NOTIFICATION_ID", 0);
 
-        medicamento = realm.where(Medicamento.class).equalTo("id", id).findFirst();
+        doenca = realm.where(Doenca.class).equalTo("id", id).findFirst();
+        fillDoencaDados();
+    }
+
+    private void fillDoencaDados() {
+        nomeDoencaView.setText(doenca.getNome());
+        descricaoDoencaView.setText(doenca.getDescricao());
     }
 
     @Override
@@ -75,8 +76,8 @@ public class MedicamentoViewActivity extends AppCompatActivity {
     }
 
     private void actionEdit() {
-        Intent intent = new Intent(this, DadosMedicamentoActivity.class);
-        intent.putExtra("NOTIFICATION_ID", medicamento.getId());
+        Intent intent = new Intent(this, DadosDoencaActivity.class);
+        intent.putExtra("NOTIFICATION_ID", doenca.getId());
         startActivity(intent);
         finish();
     }
@@ -93,16 +94,13 @@ public class MedicamentoViewActivity extends AppCompatActivity {
     }
 
     private void actionDelete() {
-        final Medicamento medicamento =
-                realm.where(Medicamento.class).equalTo("id", id).findFirst();
-
-        Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-        AlarmUtil.cancelAlarm(this, alarmIntent, (int) medicamento.getReminder().getId());
+        final Doenca doenca =
+                realm.where(Doenca.class).equalTo("id", id).findFirst();
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                medicamento.deleteFromRealm();
+                doenca.deleteFromRealm();
             }
         });
         finish();
