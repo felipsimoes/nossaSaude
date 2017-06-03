@@ -51,7 +51,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="2dp"
                     android:layout_weight="1"
-                    android:background="@color/colorBackQuad2"
+                    android:background="@color/colorMedicamento"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:weightSum="1">
@@ -79,7 +79,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="2dp"
                     android:layout_weight="1"
-                    android:background="@color/colorBackQuad1"
+                    android:background="@color/colorDoenca"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:weightSum="1">

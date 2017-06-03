@@ -2,18 +2,18 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dadosexamelist"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.nossasaudeapp.activities.ExameActivity"
-    android:background="@color/colorBackQuad5"
-    android:id="@+id/dadosexamelist">
+    android:background="@color/colorExame"
+    tools:context="com.example.app.nossasaudeapp.activities.ExameActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
         android:background="@android:color/white"
+        android:orientation="vertical"
         android:padding="16dp"
         android:weightSum="1">
 
@@ -27,10 +27,10 @@
                 android:id="@+id/emptyTextExames"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:layout_centerInParent="true"
                 android:layout_centerHorizontal="true"
-                android:text="Adicione um exame agora mesmo" />
+                android:layout_centerInParent="true"
+                android:text="Adicione um exame agora mesmo"
+                android:textAlignment="center" />
         </RelativeLayout>
 
         <ListView

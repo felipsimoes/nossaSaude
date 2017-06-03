@@ -56,7 +56,7 @@ public class ExameActivity extends AppCompatActivity {
         lvexames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(context, DadosExameActivity.class);
+                Intent intent = new Intent(context, ExameViewActivity.class);
                 Exame exame = adapter.getItem(position);
                 if (exame != null) {
                     intent.putExtra("NOTIFICATION_ID", exame.getId());

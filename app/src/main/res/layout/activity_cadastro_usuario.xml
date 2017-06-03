@@ -26,7 +26,7 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/txtusuario"
-            android:textColorLink="@color/colorBackQuad2"
+            android:textColorLink="@color/colorMedicamento"
             android:hint="Nome de Usuario"
             android:textSize="24sp" />
 
@@ -42,7 +42,7 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/txtsenha"
-            android:textColorLink="@color/colorBackQuad2"
+            android:textColorLink="@color/colorMedicamento"
             android:hint="Senha"
             android:textSize="24sp" />
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:textColorLink="@color/colorBackQuad2"
+            android:textColorLink="@color/colorMedicamento"
             android:hint="Confirmar Senha"
             android:textSize="24sp" />
 

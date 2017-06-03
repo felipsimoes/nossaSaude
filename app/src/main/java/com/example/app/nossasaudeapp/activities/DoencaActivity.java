@@ -67,4 +67,9 @@ public class DoencaActivity extends AppCompatActivity {
     public void onViewClicked() {
         startActivity(new Intent(this, DadosDoencaActivity.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

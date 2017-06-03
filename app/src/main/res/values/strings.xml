@@ -45,7 +45,6 @@
         <item>Advanced</item>
     </string-array>
 
-    <string name="title_activity_batata">batata</string>
     <string name="outubro">Outubro</string>
     <string name="hoje">Hoje</string>
     <string name="pessoa">Pessoa</string>
@@ -54,9 +53,9 @@
     <string name="ficha_tecnica">Ficha Técnica</string>
     <string name="concluir">Concluir</string>
     <string name="nomeMedicamento">Nome</string>
-    <string name="hora">Hora</string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
     <string name="data_hoje">Hoje</string>
-    <string name="medData">Data</string>
     <string name="nome">Nome</string>
     <string name="data_de_nascimento">Data de nascimento</string>
     <string name="sexo">Sexo</string>
@@ -84,5 +83,8 @@
     <string name="no">No</string>
     <string name="title_activity_medico_view">MedicoViewActivity</string>
     <string name="title_activity_doenca_view">DoencaViewActivity</string>
+    <string name="exam">Exam</string>
+    <string name="description">Description</string>
+    <string name="appointment">Appointment</string>
 
 </resources>

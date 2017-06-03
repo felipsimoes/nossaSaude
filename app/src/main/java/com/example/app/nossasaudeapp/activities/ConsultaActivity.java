@@ -53,7 +53,7 @@ public class ConsultaActivity extends AppCompatActivity {
         lvconsulta.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(context, DadosConsultaActivity.class);
+                Intent intent = new Intent(context, ConsultaViewActivity.class);
                 Consulta consulta = adapter.getItem(position);
                 if (consulta != null) {
                     intent.putExtra("NOTIFICATION_ID", consulta.getId());

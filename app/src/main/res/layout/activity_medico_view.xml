@@ -36,7 +36,7 @@
                 android:textSize="20sp"
                 android:paddingTop="@dimen/default_padding_view"
                 android:paddingBottom="@dimen/default_padding_view"
-                android:textColorLink="@color/colorBackQuad2" />
+                android:textColorLink="@color/colorMedicamento" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:textSize="20sp"
                 android:paddingTop="@dimen/default_padding_view"
                 android:paddingBottom="@dimen/default_padding_view"
-                android:textColorLink="@color/colorBackQuad2" />
+                android:textColorLink="@color/colorMedicamento" />
 
         </LinearLayout>
 

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.app.nossasaudeapp.AlarmReceiver;
 import com.example.app.nossasaudeapp.R;
-import com.example.app.nossasaudeapp.data.Medicamento;
+import com.example.app.nossasaudeapp.data.Consulta;
 import com.example.app.nossasaudeapp.util.AlarmUtil;
 import com.example.app.nossasaudeapp.util.DateAndTimeUtil;
 
@@ -22,32 +22,28 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 
-public class MedicamentoViewActivity extends AppCompatActivity {
+public class ConsultaViewActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.nome_medicamento_view)
-    TextView nomeMedicamentoView;
-    @BindView(R.id.unidade_medicamento_view)
-    TextView unidadeMedicamentoView;
-    @BindView(R.id.dose_medicamento_view)
-    TextView doseMedicamentoView;
-    @BindView(R.id.hora_medicamento_view)
-    TextView horaMedicamentoView;
-    @BindView(R.id.data_medicamento_view)
-    TextView dataMedicamentoView;
+    @BindView(R.id.nome_consulta_view)
+    TextView nomeConsultaView;
+    @BindView(R.id.descricao_consulta_view)
+    TextView descricaoConsultaView;
+    @BindView(R.id.hora_consulta_view)
+    TextView horaConsultaView;
+    @BindView(R.id.data_consulta_view)
+    TextView dataConsultaView;
 
-    @BindView(R.id.repeat_medicamento_view)
-    TextView repeatMedicamentoView;
     Realm realm = Realm.getDefaultInstance();
-    private Medicamento medicamento;
+    private Consulta consulta;
     private long id;
     private Calendar calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medicamento_view);
+        setContentView(R.layout.activity_consulta_view);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -58,21 +54,18 @@ public class MedicamentoViewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getLongExtra("NOTIFICATION_ID", 0);
 
-        medicamento = realm.where(Medicamento.class).equalTo("id", id).findFirst();
-        fillMedicamentoDados();
+        consulta = realm.where(Consulta.class).equalTo("id", id).findFirst();
+        fillConsultaDados();
     }
 
-    private void fillMedicamentoDados() {
-        nomeMedicamentoView.setText(medicamento.getNome());
-        doseMedicamentoView.setText(medicamento.getDose());
-        unidadeMedicamentoView.setText(medicamento.getUnidade());
+    private void fillConsultaDados() {
+        nomeConsultaView.setText(consulta.getNome());
+        descricaoConsultaView.setText(consulta.getDescricao());
 
-        calendar = DateAndTimeUtil.parseDateAndTime(medicamento.getReminder().getDateAndTime());
+        calendar = DateAndTimeUtil.parseDateAndTime(consulta.getReminder().getDateAndTime());
 
-        dataMedicamentoView.setText(DateAndTimeUtil.toStringReadableDate(calendar));
-        horaMedicamentoView.setText(DateAndTimeUtil.toStringReadableTime(calendar, this));
-
-        repeatMedicamentoView.setText(String.valueOf(medicamento.getReminder().getNumberShown()));
+        dataConsultaView.setText(DateAndTimeUtil.toStringReadableDate(calendar));
+        horaConsultaView.setText(DateAndTimeUtil.toStringReadableTime(calendar, this));
     }
 
     @Override
@@ -98,8 +91,8 @@ public class MedicamentoViewActivity extends AppCompatActivity {
     }
 
     private void actionEdit() {
-        Intent intent = new Intent(this, DadosMedicamentoActivity.class);
-        intent.putExtra("NOTIFICATION_ID", medicamento.getId());
+        Intent intent = new Intent(this, DadosConsultaActivity.class);
+        intent.putExtra("NOTIFICATION_ID", consulta.getId());
         startActivity(intent);
         finish();
     }
@@ -116,16 +109,16 @@ public class MedicamentoViewActivity extends AppCompatActivity {
     }
 
     private void actionDelete() {
-        final Medicamento medicamento =
-                realm.where(Medicamento.class).equalTo("id", id).findFirst();
+        final Consulta consulta =
+                realm.where(Consulta.class).equalTo("id", id).findFirst();
 
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-        AlarmUtil.cancelAlarm(this, alarmIntent, (int) medicamento.getReminder().getId());
+        AlarmUtil.cancelAlarm(this, alarmIntent, (int) consulta.getReminder().getId());
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                medicamento.deleteFromRealm();
+                consulta.deleteFromRealm();
             }
         });
         finish();

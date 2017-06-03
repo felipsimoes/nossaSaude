@@ -41,6 +41,7 @@ public class DadosConsultaActivity extends AppCompatActivity {
     @BindView(R.id.dadosconsulta) ConstraintLayout dadosConsultaLayout;
     @BindView(R.id.consHora) TextView horaConsulta;
     @BindView(R.id.consData) TextView dataConsulta;
+
     AlarmManager alarmManager;
     private Calendar calendar;
     private Realm realm = Realm.getDefaultInstance();
@@ -66,6 +67,11 @@ public class DadosConsultaActivity extends AppCompatActivity {
         Consulta consulta = realm.where(Consulta.class).equalTo("id", id).findFirst();
         tituloConsulta.setText(consulta.getNome());
         descricaoConsulta.setText(consulta.getDescricao());
+
+        calendar = DateAndTimeUtil.parseDateAndTime(consulta.getReminder().getDateAndTime());
+        dataConsulta.setText(DateAndTimeUtil.toStringReadableDate(calendar));
+        horaConsulta.setText(DateAndTimeUtil.toStringReadableTime(calendar, this));
+
     }
 
     @OnClick(R.id.btnSalvarConsulta)

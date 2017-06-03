@@ -67,4 +67,10 @@ public class MedicoActivity extends AppCompatActivity {
     public void onViewClicked() {
         startActivity(new Intent(this, DadosMedicoActivity.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//        super.onBackPressed();
+    }
 }

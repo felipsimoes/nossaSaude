@@ -105,6 +105,11 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         medNome.setText(medicamento.getNome());
         spinnerUnidadeMedicamento.setSelection(adapter.getPosition(medicamento.getUnidade()));
         qtDoseMedicamento.setText(medicamento.getDose());
+
+        calendar = DateAndTimeUtil.parseDateAndTime(medicamento.getReminder().getDateAndTime());
+
+        medData.setText(DateAndTimeUtil.toStringReadableDate(calendar));
+        medHora.setText(DateAndTimeUtil.toStringReadableTime(calendar, this));
         showTimesNumber.setText(String.valueOf(medicamento.getReminder().getNumberToShow()));
 
         timesShown = (int) medicamento.getReminder().getNumberShown();

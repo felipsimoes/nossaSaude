@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.Doenca;
-import com.example.app.nossasaudeapp.data.Exame;
+import com.example.app.nossasaudeapp.data.Medico;
 import com.example.app.nossasaudeapp.util.RealmUtil;
 
 import butterknife.BindView;
@@ -30,6 +30,8 @@ public class DadosDoencaActivity extends AppCompatActivity {
     @BindView(R.id.dadosdoenca)
     ConstraintLayout dadosdoenca;
 
+    private long id;
+
     private Realm realm = Realm.getDefaultInstance();
 
     @Override
@@ -37,15 +39,28 @@ public class DadosDoencaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_doenca);
         ButterKnife.bind(this);
+
+        Intent intent = getIntent();
+        id = intent.getLongExtra("NOTIFICATION_ID", 0);
+
+        if (id != 0) {
+            fillDoencaDataOnFields(id);
+        }
+    }
+
+    private void fillDoencaDataOnFields(long id) {
+        Doenca doenca = realm.where(Doenca.class).equalTo("id", id).findFirst();
+        txtdoenca.setText(doenca.getNome());
+        txtdesdoenca.setText(doenca.getNome());
     }
 
     @OnClick(R.id.btnSalvarDoenca)
     public void onViewClicked() {
 
         if ("".equals(txtdoenca.getText().toString())) {
-            Snackbar.make(dadosdoenca,"Preencha o nome da doença.",Snackbar.LENGTH_SHORT).show();
-        }else if ("".equals(txtdesdoenca.getText().toString())) {
-            Snackbar.make(dadosdoenca,"Preencha uma descrição.",Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(dadosdoenca, "Preencha o nome da doença.", Snackbar.LENGTH_SHORT).show();
+        } else if ("".equals(txtdesdoenca.getText().toString())) {
+            Snackbar.make(dadosdoenca, "Preencha uma descrição.", Snackbar.LENGTH_SHORT).show();
         } else {
             salvardoenca();
         }
@@ -53,19 +68,26 @@ public class DadosDoencaActivity extends AppCompatActivity {
 
     private void salvardoenca() {
 
+        final Doenca doenca = new Doenca();
+
+        if (id == 0) {
+            id = RealmUtil.returnId(doenca);
+        }
+        doenca.setId(id);
+        doenca.setNome(txtdoenca.getText().toString());
+        doenca.setDescricao(txtdesdoenca.getText().toString());
+
         realm.executeTransaction(new Realm.Transaction() {
             @Override
-            public void execute(Realm realm) {
-                Doenca doenca = new Doenca();
-                doenca.setNome(txtdoenca.getText().toString());
-                doenca.setDescricao(txtdesdoenca.getText().toString());
-
-                doenca.setId(RealmUtil.returnId(doenca));
-
-                realm.copyToRealmOrUpdate(doenca);
-            }
+            public void execute(Realm realm) { realm.copyToRealmOrUpdate(doenca); }
         });
+
         Toast.makeText(this, "Doença Salva", Toast.LENGTH_SHORT);
         startActivity(new Intent(this, DoencaActivity.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

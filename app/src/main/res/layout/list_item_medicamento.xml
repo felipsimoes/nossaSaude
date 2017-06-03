@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:baselineAligned="false"
     android:orientation="horizontal"
-    android:background="@color/colorBackQuad2">
+    android:background="@color/colorMedicamento">
 
     <LinearLayout
         android:layout_width="match_parent"

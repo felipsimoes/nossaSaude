@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textColorLink="@color/colorBackQuad2" />
+            android:textColorLink="@color/colorMedicamento" />
 
         <TextView
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textColorLink="@color/colorBackQuad2" />
+            android:textColorLink="@color/colorMedicamento" />
 
         <Button
             android:id="@+id/btnSalvarmedico"

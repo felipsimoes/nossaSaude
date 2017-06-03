@@ -66,6 +66,11 @@ public class DadosExameActivity extends AppCompatActivity {
         Exame exame = realm.where(Exame.class).equalTo("id", id).findFirst();
         tituloExame.setText(exame.getNome());
         descricaoExame.setText(exame.getDescricao());
+
+        calendar = DateAndTimeUtil.parseDateAndTime(exame.getReminder().getDateAndTime());
+
+        dataExame.setText(DateAndTimeUtil.toStringReadableDate(calendar));
+        horaExame.setText(DateAndTimeUtil.toStringReadableTime(calendar, this));
     }
 
     @OnClick(R.id.btnSalvarExame)
@@ -138,5 +143,10 @@ public class DadosExameActivity extends AppCompatActivity {
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         DatePicker.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

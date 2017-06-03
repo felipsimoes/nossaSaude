@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/colorBackQuad1">
+        android:background="@color/colorDoenca">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorBackQuad1"
+            android:background="@color/colorDoenca"
             app:popupTheme="@style/PopupOverlay" />
 
         <LinearLayout
@@ -38,7 +38,7 @@
                 android:textSize="20sp"
                 android:paddingTop="@dimen/default_padding_view"
                 android:paddingBottom="@dimen/default_padding_view"
-                android:textColorLink="@color/colorBackQuad2" />
+                android:textColorLink="@color/colorMedicamento" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                 android:textSize="20sp"
                 android:paddingTop="@dimen/default_padding_view"
                 android:paddingBottom="@dimen/default_padding_view"
-                android:textColorLink="@color/colorBackQuad2" />
+                android:textColorLink="@color/colorMedicamento" />
 
         </LinearLayout>
 
