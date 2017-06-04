@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.Doenca;
-import com.example.app.nossasaudeapp.data.Medico;
 import com.example.app.nossasaudeapp.util.RealmUtil;
 
 import butterknife.BindView;
@@ -51,22 +50,19 @@ public class DadosDoencaActivity extends AppCompatActivity {
     private void fillDoencaDataOnFields(long id) {
         Doenca doenca = realm.where(Doenca.class).equalTo("id", id).findFirst();
         txtdoenca.setText(doenca.getNome());
-        txtdesdoenca.setText(doenca.getNome());
+        txtdesdoenca.setText(doenca.getDescricao());
     }
 
     @OnClick(R.id.btnSalvarDoenca)
     public void onViewClicked() {
-
         if ("".equals(txtdoenca.getText().toString())) {
             Snackbar.make(dadosdoenca, "Preencha o nome da doença.", Snackbar.LENGTH_SHORT).show();
-        } else if ("".equals(txtdesdoenca.getText().toString())) {
-            Snackbar.make(dadosdoenca, "Preencha uma descrição.", Snackbar.LENGTH_SHORT).show();
         } else {
-            salvardoenca();
+            salvarDoenca();
         }
     }
 
-    private void salvardoenca() {
+    private void salvarDoenca() {
 
         final Doenca doenca = new Doenca();
 
@@ -88,6 +84,6 @@ public class DadosDoencaActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), DoencaActivity.class));
     }
 }

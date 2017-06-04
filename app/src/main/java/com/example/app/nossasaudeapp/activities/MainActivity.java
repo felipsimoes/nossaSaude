@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.app.nossasaudeapp.R;
@@ -16,7 +17,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-    TextView txtdata;
 
     @BindView(R.id.imgBtnMedicamentos)
     LinearLayout imgBtnMedicamentos;
@@ -30,15 +30,14 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout imgBtnDoenca;
     @BindView(R.id.imgBtnExames)
     LinearLayout imgBtnExames;
-
+    @BindView(R.id.txtdatacompleta)
+    TextView txtdata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        txtdata = (TextView) findViewById(R.id.txtdatacompleta);
 
         long date = System.currentTimeMillis();
         SimpleDateFormat dia = new SimpleDateFormat("dd");
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         String dateString2 = mes.format(date);
         String dateString3 = ano.format(date);
 
-        txtdata.setText("Hoje "+dateString1+" de "+retornaMes(Integer.parseInt(dateString2))+" de "+dateString3);
+        txtdata.setText("Hoje " + dateString1 + " de " + retornaMes(Integer.parseInt(dateString2)) + " de " + dateString3);
     }
 
     public String retornaMes(int mes) {
@@ -79,5 +78,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, ConsultaActivity.class));
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }
