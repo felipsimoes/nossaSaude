@@ -30,30 +30,12 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout imgBtnDoenca;
     @BindView(R.id.imgBtnExames)
     LinearLayout imgBtnExames;
-    @BindView(R.id.txtdatacompleta)
-    TextView txtdata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        long date = System.currentTimeMillis();
-        SimpleDateFormat dia = new SimpleDateFormat("dd");
-        SimpleDateFormat mes = new SimpleDateFormat("MM");
-        SimpleDateFormat ano = new SimpleDateFormat("yyyy");
-        String dateString1 = dia.format(date);
-        String dateString2 = mes.format(date);
-        String dateString3 = ano.format(date);
-
-        txtdata.setText("Hoje " + dateString1 + " de " + retornaMes(Integer.parseInt(dateString2)) + " de " + dateString3);
-    }
-
-    public String retornaMes(int mes) {
-        String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto",
-                "Setembro", "Outubro", "Novembro", "Dezembro",};
-        return meses[mes - 1];
     }
 
     @OnClick({R.id.imgBtnPessoa, R.id.imgBtnExames, R.id.imgBtnDoenca, R.id.imgBtnMedicos, R.id.imgBtnConsultas, R.id.imgBtnMedicamentos})

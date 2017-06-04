@@ -18,7 +18,6 @@ public class DoencaAdapter extends RealmBaseAdapter<Doenca> implements ListAdapt
 
     private static class ViewHolder {
         TextView name;
-        TextView name2;
     }
 
     public DoencaAdapter(@Nullable OrderedRealmCollection<Doenca> data) {
@@ -33,11 +32,9 @@ public class DoencaAdapter extends RealmBaseAdapter<Doenca> implements ListAdapt
 
         viewHolder = new ViewHolder();
         viewHolder.name = (TextView) convertView.findViewById(R.id.name);
-        viewHolder.name2 = (TextView) convertView.findViewById(R.id.name2);
         convertView.setTag(viewHolder);
         final Doenca doenca = adapterData.get(position);
         viewHolder.name.setText(doenca.getNome());
-        viewHolder.name2.setText(doenca.getDescricao());
         return convertView;
     }
 }

@@ -28,6 +28,10 @@ public class DadosMedicoActivity extends AppCompatActivity {
     Button btnSalvarmedico;
     @BindView(R.id.dadosmedico)
     ConstraintLayout dadosmedico;
+    @BindView(R.id.enderecoMedico)
+    EditText endereco;
+    @BindView(R.id.telefoneMedico)
+    EditText telefone;
 
     private long id;
 
@@ -51,6 +55,8 @@ public class DadosMedicoActivity extends AppCompatActivity {
         Medico medico = realm.where(Medico.class).equalTo("id", id).findFirst();
         txtmedico.setText(medico.getNome());
         txtespecializacao.setText(medico.getEspecializacao());
+        endereco.setText(medico.getEndereco());
+        telefone.setText(medico.getTelefone());
     }
 
     @OnClick(R.id.btnSalvarmedico)
@@ -75,10 +81,14 @@ public class DadosMedicoActivity extends AppCompatActivity {
         medico.setId(id);
         medico.setNome(txtmedico.getText().toString());
         medico.setEspecializacao(txtespecializacao.getText().toString());
+        medico.setEndereco(endereco.getText().toString());
+        medico.setTelefone(telefone.getText().toString());
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
-            public void execute(Realm realm) { realm.copyToRealmOrUpdate(medico); }
+            public void execute(Realm realm) {
+                realm.copyToRealmOrUpdate(medico);
+            }
         });
 
         Toast.makeText(this, "Medico Salvo", Toast.LENGTH_SHORT);

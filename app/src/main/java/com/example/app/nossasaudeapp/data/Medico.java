@@ -13,6 +13,8 @@ public class Medico extends RealmObject {
     private long id;
     private String nome;
     private String especializacao;
+    private String endereco;
+    private String telefone;
 
     public long getId() {
         return id;
@@ -37,4 +39,12 @@ public class Medico extends RealmObject {
     public void setEspecializacao(String especializacao) {
         this.especializacao = especializacao;
     }
+
+    public String getEndereco() { return endereco; }
+
+    public void setEndereco(String endereco) { this.endereco = endereco; }
+
+    public String getTelefone() { return telefone; }
+
+    public void setTelefone(String telefone) { this.telefone = telefone; }
 }
