@@ -17,7 +17,6 @@ public class MedicamentosAdapter extends RealmBaseAdapter<Medicamento> implement
 
     private static class ViewHolder {
         TextView name;
-        TextView name2;
     }
 
     public MedicamentosAdapter(@Nullable OrderedRealmCollection<Medicamento> data) {
@@ -32,11 +31,9 @@ public class MedicamentosAdapter extends RealmBaseAdapter<Medicamento> implement
 
         viewHolder = new ViewHolder();
         viewHolder.name = (TextView) convertView.findViewById(R.id.name);
-        viewHolder.name2 = (TextView) convertView.findViewById(R.id.name2);
         convertView.setTag(viewHolder);
         final Medicamento medicamento = adapterData.get(position);
         viewHolder.name.setText(medicamento.getNome());
-        viewHolder.name2.setText(medicamento.getNome());
         return convertView;
     }
 }

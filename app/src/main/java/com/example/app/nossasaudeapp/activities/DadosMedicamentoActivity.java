@@ -92,6 +92,7 @@ public class DadosMedicamentoActivity extends AppCompatActivity
                 R.array.unidade_remedio_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerUnidadeMedicamento.setAdapter(adapter);
+        spinnerUnidadeMedicamento.setPrompt("Selecione a unidade");
 
         if (id != 0) {
             fillMedicamentoDataOnFields(id);

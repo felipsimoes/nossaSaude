@@ -32,33 +32,21 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Doença"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
         <EditText
             android:id="@+id/txtdoenca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:textColorLink="@color/colorMedicamento" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descrição"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+            android:hint="Doença"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/txtdesdoenca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:textColorLink="@color/colorMedicamento" />
+            android:hint="@string/description"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/btnSalvarDoenca"
