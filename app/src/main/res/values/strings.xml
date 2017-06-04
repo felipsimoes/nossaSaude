@@ -34,7 +34,17 @@
         <item>O-</item>
     </string-array>
 
-    <string name="title_activity_batata">batata</string>
+    <string-array name="repeat_array">
+        <item>Does not repeat</item>
+        <item>Every hour</item>
+        <item>Every day</item>
+        <item>Every week</item>
+        <item>Every month</item>
+        <item>Every year</item>
+        <item>Specific days of the week</item>
+        <item>Advanced</item>
+    </string-array>
+
     <string name="outubro">Outubro</string>
     <string name="hoje">Hoje</string>
     <string name="pessoa">Pessoa</string>
@@ -43,9 +53,9 @@
     <string name="ficha_tecnica">Ficha Técnica</string>
     <string name="concluir">Concluir</string>
     <string name="nomeMedicamento">Nome</string>
-    <string name="hora">Hora</string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
     <string name="data_hoje">Hoje</string>
-    <string name="medData">Data</string>
     <string name="nome">Nome</string>
     <string name="data_de_nascimento">Data de nascimento</string>
     <string name="sexo">Sexo</string>
@@ -55,5 +65,26 @@
     <string name="dados_pessoais">Dados Pessoais</string>
     <string name="vibrar">Vibrar</string>
     <string name="adicionar">Adicionar</string>
+    <string name="ok">OK</string>
+    <string name="repeat_every">Repeat Everyday</string>
+    <string name="repeats_every">Repeats every: %1$d %2$s</string>
+    <string name="no_repeat">Does not repeat</string>
+    <string name="forever">Forever</string>
+    <string name="repeats_on">Repeats on:</string>
+    <string name="times">times</string>
+    <string name="repeat_notification">Number of times to repeat: </string>
+    <string name="one" translatable="false">1</string>
+    <string name="times_shown_edit">Shown %1$d out of</string>
+    <string name="title_activity_medicamento_view">MedicamentoViewActivity</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="delete_confirmation">Are you sure you want to delete this notification?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="title_activity_medico_view">MedicoViewActivity</string>
+    <string name="title_activity_doenca_view">DoencaViewActivity</string>
+    <string name="exam">Exam</string>
+    <string name="description">Description</string>
+    <string name="appointment">Appointment</string>
 
 </resources>

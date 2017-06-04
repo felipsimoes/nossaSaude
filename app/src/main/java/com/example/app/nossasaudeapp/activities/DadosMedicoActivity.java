@@ -29,6 +29,8 @@ public class DadosMedicoActivity extends AppCompatActivity {
     @BindView(R.id.dadosmedico)
     ConstraintLayout dadosmedico;
 
+    private long id;
+
     private Realm realm = Realm.getDefaultInstance();
 
     @Override
@@ -36,35 +38,55 @@ public class DadosMedicoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_medico);
         ButterKnife.bind(this);
+
+        Intent intent = getIntent();
+        id = intent.getLongExtra("NOTIFICATION_ID", 0);
+
+        if (id != 0) {
+            fillMedicoDataOnFields(id);
+        }
+    }
+
+    private void fillMedicoDataOnFields(long id) {
+        Medico medico = realm.where(Medico.class).equalTo("id", id).findFirst();
+        txtmedico.setText(medico.getNome());
+        txtespecializacao.setText(medico.getEspecializacao());
     }
 
     @OnClick(R.id.btnSalvarmedico)
     public void onViewClicked() {
         if ("".equals(txtmedico.getText().toString())) {
-            Snackbar.make(dadosmedico,"Preencha um nome.",Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(dadosmedico, "Preencha um nome.", Snackbar.LENGTH_SHORT).show();
         } else if ("".equals(txtespecializacao.getText().toString())) {
-            Snackbar.make(dadosmedico,"Preencha uma especialização.",Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(dadosmedico, "Preencha uma especialização.", Snackbar.LENGTH_SHORT).show();
         } else {
-            salvarmedico();
+            salvarMedico();
         }
     }
 
-    private void salvarmedico() {
+    private void salvarMedico() {
+
+        final Medico medico = new Medico();
+
+        if (id == 0) {
+            id = RealmUtil.returnId(medico);
+        }
+
+        medico.setId(id);
+        medico.setNome(txtmedico.getText().toString());
+        medico.setEspecializacao(txtespecializacao.getText().toString());
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
-            public void execute(Realm realm) {
-
-                Medico medico = new Medico();
-                medico.setNome(txtmedico.getText().toString());
-                medico.setEspecializacao(txtespecializacao.getText().toString());
-
-                medico.setId(RealmUtil.returnId(medico));
-
-                realm.copyToRealmOrUpdate(medico);
-            }
+            public void execute(Realm realm) { realm.copyToRealmOrUpdate(medico); }
         });
+
         Toast.makeText(this, "Medico Salvo", Toast.LENGTH_SHORT);
         startActivity(new Intent(this, MedicoActivity.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

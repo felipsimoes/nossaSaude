@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="repeat_array">
+        <item>Não repetir</item>
+        <item>Toda hora</item>
+        <item>Todo dia</item>
+        <item>Toda semana</item>
+        <item>Todo mês</item>
+        <item>Todo ano</item>
+        <item>Dia específico da semana</item>
+        <item>Avançado</item>
+    </string-array>
+    <string name="no_repeat">Não repete</string>
+    <string name="forever">Sempre</string>
+    <string name="repeats_on">Repete em:</string>
+    <string name="repeat_every">Repete Todo Dia</string>
+    <string name="repeats_every">Repete a cada: %1$d %2$s</string>
+    <string name="times">vezes</string>
+    <string name="repeat_notification">Número de vezes a repetir: </string>
+    <string name="times_shown_edit">Exibido %1$d de</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Deletar</string>
+    <string name="delete_confirmation">Tem certeza que você quer excluir essa notificação?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="exam">Exame</string>
+    <string name="description">Descrição</string>
+    <string name="date">Data</string>
+    <string name="time">Hora</string>
+    <string name="appointment">Consulta</string>
+</resources>

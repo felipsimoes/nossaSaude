@@ -2,20 +2,33 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dadosexame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.app.nossasaudeapp.activities.DadosExameActivity"
-    android:background="@color/colorBackQuad5"
-    android:id="@+id/dadosexame">
+    android:background="@color/colorExame"
+    tools:context="com.example.app.nossasaudeapp.activities.DadosExameActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_margin="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/white"
         android:orientation="vertical"
-        android:padding="16dp">
-
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
 
         <TextView
             android:layout_width="match_parent"
@@ -23,14 +36,13 @@
             android:text="Exame"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-
         <EditText
             android:id="@+id/txtexame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textColorLink="@color/colorBackQuad2" />
+            android:textColorLink="@color/colorMedicamento" />
 
         <TextView
             android:layout_width="match_parent"
@@ -44,7 +56,33 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textColorLink="@color/colorBackQuad2" />
+            android:textColorLink="@color/colorMedicamento" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/exameHora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="@string/time"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/exameData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="@string/date"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnSalvarExame"

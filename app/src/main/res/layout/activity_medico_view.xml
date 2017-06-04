@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.app.nossasaudeapp.activities.MedicoViewActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackQuad3">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorBackQuad3"
+            app:popupTheme="@style/PopupOverlay" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:background="@android:color/white"
+            android:padding="@dimen/default_padding_view">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Médico"
+                android:id="@+id/nome_medico_view"
+                android:textSize="20sp"
+                android:paddingTop="@dimen/default_padding_view"
+                android:paddingBottom="@dimen/default_padding_view"
+                android:textColorLink="@color/colorMedicamento" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Especialização"
+                android:id="@+id/especializacao_medico_view"
+                android:textSize="20sp"
+                android:paddingTop="@dimen/default_padding_view"
+                android:paddingBottom="@dimen/default_padding_view"
+                android:textColorLink="@color/colorMedicamento" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -8,7 +8,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/AppTheme" />
@@ -43,6 +43,47 @@
         <activity android:name=".activities.DadosMedicoActivity" />
         <activity android:name=".activities.DadosMedicamentoActivity" />
         <activity android:name=".activities.MedicamentoActivity" />
+        <activity
+            android:name=".activities.MedicamentoViewActivity"
+            android:label="@string/title_activity_medicamento_view"
+            android:parentActivityName=".activities.MedicamentoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MedicamentoActivity" />
+        </activity>
+        <activity
+            android:name=".activities.MedicoViewActivity"
+            android:label="@string/title_activity_medico_view"
+            android:parentActivityName=".activities.MedicoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MedicoActivity" />
+        </activity>
+        <activity
+            android:name=".activities.DoencaViewActivity"
+            android:label="@string/title_activity_doenca_view"
+            android:parentActivityName=".activities.DoencaActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.DoencaActivity" />
+        </activity>
+        <activity android:name=".activities.ExameViewActivity"
+            android:parentActivityName=".activities.ExameActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.ExameActivity" />
+        </activity>
+        <activity android:name=".activities.ConsultaViewActivity"
+            android:parentActivityName=".activities.ConsultaActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.ConsultaActivity" />
+        </activity>
     </application>
 
 </manifest>

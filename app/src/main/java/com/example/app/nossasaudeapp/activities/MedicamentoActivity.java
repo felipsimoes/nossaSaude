@@ -54,10 +54,10 @@ public class MedicamentoActivity extends AppCompatActivity {
         lvmedicamento.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(context, DadosMedicamentoActivity.class);
+                Intent intent = new Intent(context, MedicamentoViewActivity.class);
                 Medicamento medicamento = adapter.getItem(position);
                 if (medicamento != null) {
-                    intent.putExtra("id", medicamento.getId());
+                    intent.putExtra("NOTIFICATION_ID", medicamento.getId());
                 }
                 startActivity(intent);
             }

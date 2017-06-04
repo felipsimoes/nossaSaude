@@ -7,8 +7,12 @@ public class Exame extends RealmObject {
 
     @PrimaryKey
     private long id;
+
     private String nome;
+
     private String descricao;
+
+    private Reminder reminder;
 
     public long getId() {
         return id;
@@ -32,5 +36,13 @@ public class Exame extends RealmObject {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Reminder getReminder() {
+        return reminder;
+    }
+
+    public void setReminder(Reminder reminder) {
+        this.reminder = reminder;
     }
 }
