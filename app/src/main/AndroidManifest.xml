@@ -9,9 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity
-            android:name=".activities.MainActivity"
-            android:theme="@style/AppTheme" />
+        <activity android:name=".activities.MainActivity" />
         <activity
             android:name=".activities.PessoaActivity"
             android:theme="@style/AppTheme1" />
@@ -70,20 +68,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.app.nossasaudeapp.activities.DoencaActivity" />
         </activity>
-        <activity android:name=".activities.ExameViewActivity"
+        <activity
+            android:name=".activities.ExameViewActivity"
             android:parentActivityName=".activities.ExameActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.app.nossasaudeapp.activities.ExameActivity" />
         </activity>
-        <activity android:name=".activities.ConsultaViewActivity"
+        <activity
+            android:name=".activities.ConsultaViewActivity"
             android:parentActivityName=".activities.ConsultaActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.app.nossasaudeapp.activities.ConsultaActivity" />
         </activity>
+        <activity android:name=".activities.TelaInicialActivity"/>
     </application>
 
 </manifest>

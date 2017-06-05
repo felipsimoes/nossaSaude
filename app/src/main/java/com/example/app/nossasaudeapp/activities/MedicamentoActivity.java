@@ -11,12 +11,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.example.app.nossasaudeapp.Adapter.MedicamentosAdapter;
+import com.example.app.nossasaudeapp.adapter.MedicamentosAdapter;
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.Medicamento;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,9 +39,7 @@ public class MedicamentoActivity extends AppCompatActivity {
 
         lvmedicamento.setEmptyView(emptyViewMedicamentos);
 
-        List<Medicamento> listMedicamentos = new ArrayList<Medicamento>();
         RealmResults<Medicamento> medicamentoRealmList = realm.where(Medicamento.class).findAll();
-        listMedicamentos.addAll(medicamentoRealmList);
         final MedicamentosAdapter adapter = new MedicamentosAdapter(medicamentoRealmList);
 
         lvmedicamento.setAdapter(adapter);

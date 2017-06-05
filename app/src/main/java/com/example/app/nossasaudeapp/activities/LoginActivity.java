@@ -16,7 +16,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void startMenu(View v){
-        Intent i = new Intent(this,MainActivity.class);
+//        Intent i = new Intent(this,MainActivity.class);
+        Intent i = new Intent(this,TelaInicialActivity.class);
         startActivity(i);
     }
     public void startCadastraUsuario(View v){

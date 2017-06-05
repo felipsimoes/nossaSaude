@@ -1,4 +1,4 @@
-package com.example.app.nossasaudeapp.Adapter;
+package com.example.app.nossasaudeapp.adapter;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmBaseAdapter;
@@ -11,16 +11,16 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.example.app.nossasaudeapp.R;
-import com.example.app.nossasaudeapp.data.Consulta;
+import com.example.app.nossasaudeapp.data.Medico;
 
-public class ConsultaAdapter extends RealmBaseAdapter<Consulta> implements ListAdapter {
+public class MedicoAdapter extends RealmBaseAdapter<Medico> implements ListAdapter {
 
     private static class ViewHolder {
         TextView name;
         TextView name2;
     }
 
-    public ConsultaAdapter(@Nullable OrderedRealmCollection<Consulta> data) {
+    public MedicoAdapter(@Nullable OrderedRealmCollection<Medico> data) {
         super(data);
     }
 
@@ -28,15 +28,15 @@ public class ConsultaAdapter extends RealmBaseAdapter<Consulta> implements ListA
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         convertView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_consulta, parent, false);
+                .inflate(R.layout.list_item_medico, parent, false);
 
         viewHolder = new ViewHolder();
         viewHolder.name = (TextView) convertView.findViewById(R.id.name);
         viewHolder.name2 = (TextView) convertView.findViewById(R.id.name2);
         convertView.setTag(viewHolder);
-        final Consulta consulta = adapterData.get(position);
-        viewHolder.name.setText(consulta.getNome());
-        viewHolder.name2.setText(consulta.getDescricao());
+        final Medico medico = adapterData.get(position);
+        viewHolder.name.setText(medico.getNome());
+        viewHolder.name2.setText(medico.getEspecializacao());
         return convertView;
     }
 }

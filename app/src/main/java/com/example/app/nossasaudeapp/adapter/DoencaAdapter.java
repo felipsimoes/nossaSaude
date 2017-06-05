@@ -1,4 +1,7 @@
-package com.example.app.nossasaudeapp.Adapter;
+package com.example.app.nossasaudeapp.adapter;
+
+import io.realm.OrderedRealmCollection;
+import io.realm.RealmBaseAdapter;
 
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,18 +11,15 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.example.app.nossasaudeapp.R;
-import com.example.app.nossasaudeapp.data.Medicamento;
+import com.example.app.nossasaudeapp.data.Doenca;
 
-import io.realm.OrderedRealmCollection;
-import io.realm.RealmBaseAdapter;
-
-public class MedicamentosAdapter extends RealmBaseAdapter<Medicamento> implements ListAdapter {
+public class DoencaAdapter extends RealmBaseAdapter<Doenca> implements ListAdapter {
 
     private static class ViewHolder {
         TextView name;
     }
 
-    public MedicamentosAdapter(@Nullable OrderedRealmCollection<Medicamento> data) {
+    public DoencaAdapter(@Nullable OrderedRealmCollection<Doenca> data) {
         super(data);
     }
 
@@ -27,13 +27,13 @@ public class MedicamentosAdapter extends RealmBaseAdapter<Medicamento> implement
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         convertView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_medicamento, parent, false);
+                .inflate(R.layout.list_item_doenca, parent, false);
 
         viewHolder = new ViewHolder();
         viewHolder.name = (TextView) convertView.findViewById(R.id.name);
         convertView.setTag(viewHolder);
-        final Medicamento medicamento = adapterData.get(position);
-        viewHolder.name.setText(medicamento.getNome());
+        final Doenca doenca = adapterData.get(position);
+        viewHolder.name.setText(doenca.getNome());
         return convertView;
     }
 }

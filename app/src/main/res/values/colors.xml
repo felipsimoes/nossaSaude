@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#292929</color>
     <color name="colorAccent">#292929</color>
     <color name="colorBackMain">#292929</color>
-    <color name="colorBackRet">#23475f</color>
+    <color name="colorConsulta">#23475f</color>
     <color name="colorDoenca">#ff4b3a</color>
     <color name="colorMedicamento">#00afe5</color>
     <color name="colorMedico">#00cd6a</color>

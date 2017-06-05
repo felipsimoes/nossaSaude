@@ -5,7 +5,7 @@
     android:id="@+id/dadosconsulta"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackRet"
+    android:background="@color/colorConsulta"
     tools:context="com.example.app.nossasaudeapp.activities.DadosConsultaActivity">
 
     <LinearLayout

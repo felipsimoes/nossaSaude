@@ -86,5 +86,6 @@
     <string name="exam">Exam</string>
     <string name="description">Description</string>
     <string name="appointment">Appointment</string>
+    <string name="menu">Menu</string>
 
 </resources>
