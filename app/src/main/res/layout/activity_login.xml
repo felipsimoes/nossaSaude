@@ -115,7 +115,7 @@
             android:id="@+id/view3"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorBackQuad3" />
+            android:background="@color/colorMedico" />
 
         <View
             android:id="@+id/view4"

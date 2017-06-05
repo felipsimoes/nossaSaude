@@ -1,253 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/myCoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorMedicamento">
-
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        android:background="@android:color/white"
-        android:padding="@dimen/default_padding_view">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:hint="@string/nomeMedicamento"
-            android:id="@+id/medNome"
-            android:textColorLink="@color/colorMedicamento" />
+        android:background="@color/colorMedicamento"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/default_padding_view">
+
+            <EditText
+                android:id="@+id/medNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/nomeMedicamento"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="5dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spinnerUnidadeMedicamento"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/accentLight"
+                    android:layout_marginBottom="@dimen/default_margin_layout"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/qtDoseMedicamento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Quantidade"
+                        android:layout_marginBottom="5dp"
+                        android:inputType="textPersonName" />
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <TextView
-                    android:id="@+id/txtmesM"
+                    android:id="@+id/medHora"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/unidade"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-                    android:textColor="@android:color/black" />
-
-                <Spinner
-                    android:id="@+id/spinnerUnidadeMedicamento"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:text="@string/time"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_margin="5dp"
+                android:background="@color/accentLight"
+                android:layout_marginBottom="@dimen/default_margin_layout"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/txtdiaM"
+                    android:id="@+id/medData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/quantidade"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-                    android:textColor="@android:color/black" />
-
-                <EditText
-                    android:id="@+id/qtDoseMedicamento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColorLink="@color/colorMedicamento" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/date"
+                    android:textSize="18sp" />
 
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/time"
-                android:textSize="20sp"
-                android:padding="20dp"
-                android:id="@+id/medHora"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/date"
-                android:textSize="20sp"
-                android:padding="20dp"
-                android:id="@+id/medData"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/repeat_row"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/table_row_default_horizontal_padding"
-            android:paddingEnd="@dimen/table_row_default_padding_side"
-            android:paddingRight="@dimen/table_row_default_padding_side"
-            android:paddingTop="@dimen/table_row_default_horizontal_padding"
-            android:weightSum="1">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/image_margin_side"
-                android:layout_marginStart="@dimen/image_margin_side"
-                android:tint="@color/iconTint" />
-                <!--android:src="@drawable/ic_refresh_white_24dp"/>-->
-
-            <TextView
-                android:id="@+id/repeat_day"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="22dp"
-                android:layout_marginStart="22dp"
-                android:text="@string/no_repeat"
-                android:lineSpacingExtra="3dp"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/line_separator_height"
-            android:layout_marginLeft="@dimen/line_separator_margin_side_large"
-            android:layout_marginStart="@dimen/line_separator_margin_side_large"
-            android:background="@color/lightGray" />
-
-        <LinearLayout
-            android:id="@+id/forever_row"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:paddingBottom="@dimen/table_row_default_horizontal_padding"
-            android:paddingEnd="@dimen/table_row_default_padding_side"
-            android:paddingRight="@dimen/table_row_default_padding_side"
-            android:paddingTop="@dimen/table_row_default_horizontal_padding"
-            android:visibility="gone"
-            android:weightSum="1">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/image_margin_side"
-                android:layout_marginStart="@dimen/image_margin_side"
-                android:tint="@color/iconTint" />
-                <!--//android:src="@drawable/ic_remove_red_eye_white_24dp"/>-->
-
-            <TextView
-                android:id="@+id/forever"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/text_margin_side"
-                android:layout_marginStart="@dimen/text_margin_side"
-                android:layout_weight="1"
-                android:text="@string/forever"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-
-            <android.support.v7.widget.SwitchCompat
-                android:id="@+id/switch_toggle"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                app:showText="false" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/bottom_row"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="24dp"
-            android:paddingEnd="@dimen/table_row_default_padding_side"
-            android:paddingRight="@dimen/table_row_default_padding_side"
-            android:visibility="gone"
-            android:weightSum="1">
+                android:layout_height="1.5dp"
+                android:layout_margin="5dp"
+                android:background="@color/accentLight"
+                android:layout_marginBottom="@dimen/default_margin_layout"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/repeat_row"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:background="?attr/selectableItemBackground"
+                android:paddingBottom="@dimen/table_row_default_horizontal_padding"
+                android:paddingEnd="@dimen/table_row_default_padding_side"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="@dimen/table_row_default_padding_side"
+                android:paddingTop="@dimen/table_row_default_horizontal_padding"
+                android:weightSum="1">
 
-                <TextView
-                    android:id="@+id/show"
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="62dp"
-                    android:layout_marginStart="62dp"
-                    android:text="@string/repeat_notification"
+                    android:layout_marginLeft="@dimen/image_margin_side"
+                    android:layout_marginStart="@dimen/image_margin_side"
+                    android:tint="@color/iconTint" />
+
+                <TextView
+                    android:id="@+id/repeat_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/no_repeat"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_separator_height"
+                android:layout_marginLeft="@dimen/line_separator_margin_side_large"
+                android:layout_marginStart="@dimen/line_separator_margin_side_large"
+                android:background="@color/lightGray" />
+
+            <LinearLayout
+                android:id="@+id/forever_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:paddingBottom="@dimen/table_row_default_horizontal_padding"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingEnd="@dimen/table_row_default_padding_side"
+                android:paddingRight="@dimen/table_row_default_padding_side"
+                android:paddingTop="@dimen/table_row_default_horizontal_padding"
+                android:visibility="gone"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/image_margin_side"
+                    android:layout_marginStart="@dimen/image_margin_side"
+                    android:tint="@color/iconTint" />
+
+                <TextView
+                    android:id="@+id/forever"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/text_margin_side"
+                    android:layout_marginStart="@dimen/text_margin_side"
+                    android:layout_weight="1"
+                    android:text="@string/forever"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/show_times_number"
-                    android:layout_width="wrap_content"
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_toggle"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:maxLength="4"
-                    android:minWidth="30dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
-                    android:textColorHighlight="@color/accentLight"
-                    android:text="@string/one"
-                    android:textSize="16sp" />
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    app:showText="false" />
 
-                <TextView
-                    android:id="@+id/times"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/times"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:visibility="gone" />
             </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/bottom_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="24dp"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingEnd="@dimen/table_row_default_padding_side"
+                android:paddingRight="@dimen/table_row_default_padding_side"
+                android:visibility="gone"
+                android:weightSum="1">
 
-        <Button
-            android:text="@string/concluir"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnSalvarMedicamento" />
+                    <TextView
+                        android:id="@+id/show"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="62dp"
+                        android:layout_marginStart="62dp"
+                        android:text="@string/repeat_notification"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/show_times_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:minWidth="30dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:text="@string/one"
+                        android:textColorHighlight="@color/accentLight"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/times"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/times"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSalvarMedicamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/concluir" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
-
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

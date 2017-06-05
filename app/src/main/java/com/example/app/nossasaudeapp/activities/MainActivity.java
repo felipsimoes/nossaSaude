@@ -2,15 +2,15 @@ package com.example.app.nossasaudeapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.app.nossasaudeapp.R;
-
-import java.text.SimpleDateFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout imgBtnDoenca;
     @BindView(R.id.imgBtnExames)
     LinearLayout imgBtnExames;
-    @BindView(R.id.txtdatacompleta)
-    TextView txtdata;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,21 +39,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        long date = System.currentTimeMillis();
-        SimpleDateFormat dia = new SimpleDateFormat("dd");
-        SimpleDateFormat mes = new SimpleDateFormat("MM");
-        SimpleDateFormat ano = new SimpleDateFormat("yyyy");
-        String dateString1 = dia.format(date);
-        String dateString2 = mes.format(date);
-        String dateString3 = ano.format(date);
-
-        txtdata.setText("Hoje " + dateString1 + " de " + retornaMes(Integer.parseInt(dateString2)) + " de " + dateString3);
-    }
-
-    public String retornaMes(int mes) {
-        String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto",
-                "Setembro", "Outubro", "Novembro", "Dezembro",};
-        return meses[mes - 1];
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(null);
     }
 
     @OnClick({R.id.imgBtnPessoa, R.id.imgBtnExames, R.id.imgBtnDoenca, R.id.imgBtnMedicos, R.id.imgBtnConsultas, R.id.imgBtnMedicamentos})
@@ -81,7 +70,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onBackPressed() {
-        finish();
+        startActivity(new Intent(this, TelaInicialActivity.class));
     }
 }

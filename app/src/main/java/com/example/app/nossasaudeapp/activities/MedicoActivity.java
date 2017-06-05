@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.example.app.nossasaudeapp.Adapter.MedicoAdapter;
+import com.example.app.nossasaudeapp.adapter.MedicoAdapter;
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.Medico;
 

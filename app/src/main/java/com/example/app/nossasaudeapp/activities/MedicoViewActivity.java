@@ -27,6 +27,10 @@ public class MedicoViewActivity extends AppCompatActivity {
     TextView especializacaoMedicoView;
 
     Realm realm = Realm.getDefaultInstance();
+    @BindView(R.id.endereco_medico_view)
+    TextView enderecoMedicoView;
+    @BindView(R.id.telefone_medico_view)
+    TextView telefoneMedicoView;
     private Medico medico;
     private long id;
 
@@ -51,6 +55,8 @@ public class MedicoViewActivity extends AppCompatActivity {
     private void fillMedicoDados() {
         nomeMedicoView.setText(medico.getNome());
         especializacaoMedicoView.setText(medico.getEspecializacao());
+        enderecoMedicoView.setText(medico.getEndereco());
+        telefoneMedicoView.setText(medico.getTelefone());
     }
 
     @Override
