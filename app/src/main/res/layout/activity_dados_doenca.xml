@@ -32,27 +32,68 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
 
-        <EditText
-            android:id="@+id/txtdoenca"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Doença"
-            android:inputType="textPersonName" />
+            android:text="@string/condition_title"
+            android:textSize="20sp"
+            android:layout_marginBottom="@dimen/default_margin_layout"/>
 
-        <EditText
-            android:id="@+id/txtdesdoenca"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/description"
-            android:inputType="textPersonName" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_create_black_24dp"/>
+
+            <EditText
+                android:id="@+id/txtdoenca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_weight="5"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:hint="@string/condition"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_subject_black_24dp"/>
+
+            <EditText
+                android:id="@+id/txtdesdoenca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_weight="5"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:hint="@string/description"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnSalvarDoenca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Salvar" />
+            android:text="@string/save" />
 
     </LinearLayout>
 
