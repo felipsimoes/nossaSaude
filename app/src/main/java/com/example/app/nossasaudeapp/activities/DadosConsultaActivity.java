@@ -8,14 +8,15 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.TimePicker;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.app.nossasaudeapp.AlarmReceiver;
@@ -35,14 +36,22 @@ import io.realm.Realm;
 
 public class DadosConsultaActivity extends AppCompatActivity {
 
-    @BindView(R.id.txtconsulta) EditText tituloConsulta;
-    @BindView(R.id.txtdesconsulta) EditText descricaoConsulta;
-    @BindView(R.id.btnSalvarConsulta) Button btnSalvarConsulta;
-    @BindView(R.id.dadosconsulta) ConstraintLayout dadosConsultaLayout;
-    @BindView(R.id.consHora) TextView horaConsulta;
-    @BindView(R.id.consData) TextView dataConsulta;
+    @BindView(R.id.txtconsulta)
+    EditText tituloConsulta;
+    @BindView(R.id.txtdesconsulta)
+    EditText descricaoConsulta;
+    @BindView(R.id.btnSalvarConsulta)
+    Button btnSalvarConsulta;
+    @BindView(R.id.dadosconsulta)
+    ConstraintLayout dadosConsultaLayout;
+    @BindView(R.id.consHora)
+    TextView horaConsulta;
+    @BindView(R.id.consData)
+    TextView dataConsulta;
 
     AlarmManager alarmManager;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private Calendar calendar;
     private Realm realm = Realm.getDefaultInstance();
     private long id;
@@ -53,12 +62,17 @@ public class DadosConsultaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dados_consulta);
         ButterKnife.bind(this);
 
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.appointment);
+
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         calendar = Calendar.getInstance();
         Intent intent = getIntent();
         id = intent.getLongExtra("NOTIFICATION_ID", 0);
 
-        if(id != 0 ) {
+        if (id != 0) {
             fillConsultaDataOnFields(id);
         }
     }
@@ -105,7 +119,8 @@ public class DadosConsultaActivity extends AppCompatActivity {
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
-            public void execute(Realm realm) {realm.copyToRealmOrUpdate(consulta);
+            public void execute(Realm realm) {
+                realm.copyToRealmOrUpdate(consulta);
             }
         });
 

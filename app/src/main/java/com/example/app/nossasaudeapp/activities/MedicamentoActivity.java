@@ -37,14 +37,13 @@ public class MedicamentoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medicamento);
         ButterKnife.bind(this);
 
+        final Context context = this.getBaseContext();
+
         lvmedicamento.setEmptyView(emptyViewMedicamentos);
 
         RealmResults<Medicamento> medicamentoRealmList = realm.where(Medicamento.class).findAll();
         final MedicamentosAdapter adapter = new MedicamentosAdapter(medicamentoRealmList);
-
         lvmedicamento.setAdapter(adapter);
-
-        final Context context = this.getBaseContext();
 
         lvmedicamento.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -14,6 +14,7 @@ import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
@@ -96,6 +97,11 @@ public class DadosMedicamentoActivity extends AppCompatActivity
     private long id;
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_medicamento);
@@ -104,7 +110,7 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(null);
+        getSupportActionBar().setTitle(R.string.medicine);
 
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         calendar = Calendar.getInstance();

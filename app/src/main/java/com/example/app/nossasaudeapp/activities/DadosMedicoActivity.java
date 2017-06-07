@@ -34,7 +34,6 @@ public class DadosMedicoActivity extends AppCompatActivity {
     EditText telefone;
 
     private long id;
-
     private Realm realm = Realm.getDefaultInstance();
 
     @Override

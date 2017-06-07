@@ -8,14 +8,15 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.TimePicker;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.app.nossasaudeapp.AlarmReceiver;
@@ -35,13 +36,21 @@ import io.realm.Realm;
 
 public class DadosExameActivity extends AppCompatActivity {
 
-    @BindView(R.id.txtexame) EditText tituloExame;
-    @BindView(R.id.txtdesexame) EditText descricaoExame;
-    @BindView(R.id.btnSalvarExame) Button btnSalvarExame;
-    @BindView(R.id.dadosexame) ConstraintLayout dadosExameLayout;
-    @BindView(R.id.exameHora) TextView horaExame;
-    @BindView(R.id.exameData) TextView dataExame;
+    @BindView(R.id.txtexame)
+    EditText tituloExame;
+    @BindView(R.id.txtdesexame)
+    EditText descricaoExame;
+    @BindView(R.id.btnSalvarExame)
+    Button btnSalvarExame;
+    @BindView(R.id.dadosexame)
+    ConstraintLayout dadosExameLayout;
+    @BindView(R.id.exameHora)
+    TextView horaExame;
+    @BindView(R.id.exameData)
+    TextView dataExame;
     AlarmManager alarmManager;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private Calendar calendar;
     private Realm realm = Realm.getDefaultInstance();
     private long id;
@@ -52,12 +61,17 @@ public class DadosExameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dados_exame);
         ButterKnife.bind(this);
 
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.exam);
+
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         calendar = Calendar.getInstance();
         Intent intent = getIntent();
         id = intent.getLongExtra("NOTIFICATION_ID", 0);
 
-        if(id != 0 ) {
+        if (id != 0) {
             fillExameDataOnFields(id);
         }
     }
