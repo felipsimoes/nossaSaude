@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
+import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -49,20 +49,40 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         implements AdvancedRepeatSelector.AdvancedRepeatSelectionListener,
         DaysOfWeekSelector.DaysOfWeekSelectionListener, RepeatSelector.RepeatSelectionListener {
 
-    @BindView(R.id.medNome) EditText medNome;
-    @BindView(R.id.btnSalvarMedicamento) Button btnAdd;
-    @BindView(R.id.medHora) TextView medHora;
-    @BindView(R.id.medData) TextView medData;
-    @BindView(R.id.spinnerUnidadeMedicamento) Spinner spinnerUnidadeMedicamento;
-    @BindView(R.id.qtDoseMedicamento) EditText qtDoseMedicamento;
-    @BindView(R.id.myCoordinatorLayout) CoordinatorLayout myCoordinatorLayout;
-    @BindView(R.id.repeat_day) TextView repeatText;
-    @BindView(R.id.forever_row) LinearLayout foreverRow;
-    @BindView(R.id.switch_toggle) SwitchCompat foreverSwitch;
-    @BindView(R.id.show) TextView showText;
-    @BindView(R.id.show_times_number) EditText showTimesNumber;
-    @BindView(R.id.times) TextView timesText;
-    @BindView(R.id.bottom_row) LinearLayout bottomRow;
+    @BindView(R.id.medNome)
+    EditText medNome;
+    @BindView(R.id.btnSalvarMedicamento)
+    Button btnAdd;
+    @BindView(R.id.medHora)
+    TextView medHora;
+    @BindView(R.id.medData)
+    TextView medData;
+    @BindView(R.id.spinnerUnidadeMedicamento)
+    Spinner spinnerUnidadeMedicamento;
+    @BindView(R.id.qtDoseMedicamento)
+    EditText qtDoseMedicamento;
+    @BindView(R.id.myCoordinatorLayout)
+    CoordinatorLayout myCoordinatorLayout;
+    @BindView(R.id.repeat_day)
+    TextView repeatText;
+    @BindView(R.id.forever_row)
+    LinearLayout foreverRow;
+    @BindView(R.id.switch_toggle)
+    SwitchCompat foreverSwitch;
+    @BindView(R.id.show)
+    TextView showText;
+    @BindView(R.id.show_times_number)
+    EditText showTimesNumber;
+    @BindView(R.id.times)
+    TextView timesText;
+    @BindView(R.id.bottom_row)
+    LinearLayout bottomRow;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.repeat_row)
+    LinearLayout repeatRow;
+    @BindView(R.id.forever)
+    TextView forever;
 
     private ArrayAdapter<CharSequence> adapter;
     AlarmManager alarmManager;
@@ -80,6 +100,11 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_medicamento);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(null);
 
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         calendar = Calendar.getInstance();
@@ -199,7 +224,8 @@ public class DadosMedicamentoActivity extends AppCompatActivity
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
-            public void execute(Realm realm) {realm.copyToRealmOrUpdate(medicamento);
+            public void execute(Realm realm) {
+                realm.copyToRealmOrUpdate(medicamento);
             }
         });
 

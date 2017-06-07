@@ -31,4 +31,5 @@
     <string name="condition_title"><u>Doença</u></string>
     <string name="condition">Doença</string>
     <string name="save">Salvar</string>
+    <string name="medicine">Medicamento</string>
 </resources>

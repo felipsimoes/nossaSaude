@@ -24,7 +24,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorDoenca"
+            android:background="@color/lightGray"
             app:popupTheme="@style/PopupOverlay" />
 
         <LinearLayout
@@ -36,13 +36,6 @@
             android:padding="@dimen/default_padding_view"
             tools:layout_editor_absoluteX="9dp"
             tools:layout_editor_absoluteY="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/default_margin_layout"
-                android:text="@string/condition_title"
-                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

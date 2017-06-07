@@ -39,7 +39,7 @@ public class DoencaViewActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(null);
+        getSupportActionBar().setTitle(R.string.condition);
 
         Intent intent = getIntent();
         id = intent.getLongExtra("NOTIFICATION_ID", 0);

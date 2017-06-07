@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,6 +29,8 @@ public class DadosDoencaActivity extends AppCompatActivity {
     Button btnSalvarDoenca;
     @BindView(R.id.dadosdoenca)
     ConstraintLayout dadosdoenca;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     private long id;
 
@@ -38,6 +41,11 @@ public class DadosDoencaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_doenca);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.condition);
 
         Intent intent = getIntent();
         id = intent.getLongExtra("NOTIFICATION_ID", 0);
@@ -75,7 +83,9 @@ public class DadosDoencaActivity extends AppCompatActivity {
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
-            public void execute(Realm realm) { realm.copyToRealmOrUpdate(doenca); }
+            public void execute(Realm realm) {
+                realm.copyToRealmOrUpdate(doenca);
+            }
         });
 
         Toast.makeText(this, "Doença Salva", Toast.LENGTH_SHORT);
