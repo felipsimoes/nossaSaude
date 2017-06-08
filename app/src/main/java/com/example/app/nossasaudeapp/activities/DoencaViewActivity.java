@@ -39,6 +39,7 @@ public class DoencaViewActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(R.string.condition);
 
         Intent intent = getIntent();
@@ -105,4 +106,6 @@ public class DoencaViewActivity extends AppCompatActivity {
         });
         finish();
     }
+
+
 }

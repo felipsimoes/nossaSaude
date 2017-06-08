@@ -91,5 +91,6 @@
     <string name="condition">Condition</string>
     <string name="save">Save</string>
     <string name="medicine">Medicine</string>
+    <string name="address">Address</string>
 
 </resources>

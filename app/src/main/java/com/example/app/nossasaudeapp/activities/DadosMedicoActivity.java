@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,15 +35,24 @@ public class DadosMedicoActivity extends AppCompatActivity {
     EditText endereco;
     @BindView(R.id.telefoneMedico)
     EditText telefone;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     private long id;
-    private Realm realm = Realm.getDefaultInstance();
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_medico);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Médico");
+
+        realm = Realm.getDefaultInstance();
 
         Intent intent = getIntent();
         id = intent.getLongExtra("NOTIFICATION_ID", 0);
@@ -72,7 +84,6 @@ public class DadosMedicoActivity extends AppCompatActivity {
     private void salvarMedico() {
 
         final Medico medico = new Medico();
-
         if (id == 0) {
             id = RealmUtil.returnId(medico);
         }
@@ -92,6 +103,16 @@ public class DadosMedicoActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Medico Salvo", Toast.LENGTH_SHORT);
         startActivity(new Intent(this, MedicoActivity.class));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

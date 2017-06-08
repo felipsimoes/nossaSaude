@@ -8,53 +8,57 @@
     tools:context="com.example.app.nossasaudeapp.activities.DadosMedicamentoActivity">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:weightSum="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/empty_view_medicamentos"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/lightGray"
+            app:popupTheme="@style/PopupOverlay" />
 
-            <TextView
-                android:id="@+id/emptyTextMedicamentos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerInParent="true"
-                android:text="Adicione um medicamento agora mesmo"
-                android:textAlignment="center" />
-
-        </RelativeLayout>
-
-        <ListView
-            android:id="@+id/lvmedicamento"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_margin="16dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:weightSum="1">
 
-        <Button
-            android:id="@+id/btnaddmedicamento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Adicionar" />
+            <RelativeLayout
+                android:id="@+id/empty_view_medicamentos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/emptyTextMedicamentos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:text="Adicione um medicamento agora mesmo"
+                    android:textAlignment="center" />
+
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/lvmedicamento"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btnaddmedicamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Adicionar" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
 </android.support.constraint.ConstraintLayout>

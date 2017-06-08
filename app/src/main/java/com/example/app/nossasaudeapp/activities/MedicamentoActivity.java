@@ -4,15 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.example.app.nossasaudeapp.adapter.MedicamentosAdapter;
 import com.example.app.nossasaudeapp.R;
+import com.example.app.nossasaudeapp.adapter.MedicamentosAdapter;
 import com.example.app.nossasaudeapp.data.Medicamento;
 
 import butterknife.BindView;
@@ -29,6 +32,8 @@ public class MedicamentoActivity extends AppCompatActivity {
     Button btnAddMedicamento;
     @BindView(R.id.empty_view_medicamentos)
     RelativeLayout emptyViewMedicamentos;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private Realm realm = Realm.getDefaultInstance();
 
     @Override
@@ -38,6 +43,11 @@ public class MedicamentoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         final Context context = this.getBaseContext();
+
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.medicine);
 
         lvmedicamento.setEmptyView(emptyViewMedicamentos);
 
@@ -61,5 +71,15 @@ public class MedicamentoActivity extends AppCompatActivity {
     @OnClick(R.id.btnaddmedicamento)
     public void setBtnAddMedicamento() {
         startActivity(new Intent(this, DadosMedicamentoActivity.class));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
