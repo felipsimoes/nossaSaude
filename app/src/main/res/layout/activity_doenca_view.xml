@@ -7,47 +7,87 @@
     tools:context="com.example.app.nossasaudeapp.activities.DoencaViewActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorDoenca"
         android:orientation="vertical"
-        android:background="@color/colorDoenca">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorDoenca"
+            android:background="@color/lightGray"
             app:popupTheme="@style/PopupOverlay" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="16dp"
             android:background="@android:color/white"
+            android:orientation="vertical"
             android:padding="@dimen/default_padding_view"
-            tools:layout_editor_absoluteY="8dp"
-            tools:layout_editor_absoluteX="9dp">
+            tools:layout_editor_absoluteX="9dp"
+            tools:layout_editor_absoluteY="8dp">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Doença"
-                android:id="@+id/nome_doenca_view"
-                android:textSize="20sp"
-                android:paddingTop="@dimen/default_padding_view"
-                android:paddingBottom="@dimen/default_padding_view" />
+                android:orientation="horizontal">
 
-            <TextView
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_create_black_24dp"/>
+
+                <TextView
+                    android:id="@+id/nome_doenca_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_margin_layout"
+                    android:layout_marginStart="@dimen/default_margin_layout"
+                    android:layout_weight="5"
+                    android:ems="10"
+                    android:hint="@string/condition"
+                    android:paddingBottom="@dimen/default_padding_view"
+                    android:paddingTop="@dimen/default_padding_view"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/description"
-                android:id="@+id/descricao_doenca_view"
-                android:textSize="20sp"
-                android:paddingTop="@dimen/default_padding_view"
-                android:paddingBottom="@dimen/default_padding_view" />
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_subject_black_24dp" />
+
+                <TextView
+                    android:id="@+id/descricao_doenca_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:ems="10"
+                    android:layout_marginLeft="@dimen/default_margin_layout"
+                    android:layout_marginStart="@dimen/default_margin_layout"
+                    android:hint="@string/description"
+                    android:paddingBottom="@dimen/default_margin_layout"
+                    android:paddingTop="@dimen/default_margin_layout"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

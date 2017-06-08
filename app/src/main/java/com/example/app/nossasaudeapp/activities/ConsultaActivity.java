@@ -3,15 +3,18 @@ package com.example.app.nossasaudeapp.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.example.app.nossasaudeapp.adapter.ConsultaAdapter;
 import com.example.app.nossasaudeapp.R;
+import com.example.app.nossasaudeapp.adapter.ConsultaAdapter;
 import com.example.app.nossasaudeapp.data.Consulta;
 
 import java.util.ArrayList;
@@ -31,6 +34,8 @@ public class ConsultaActivity extends AppCompatActivity {
     Button btnaddconsulta;
     @BindView(R.id.empty_view_consultas)
     RelativeLayout emptyViewConsultas;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private Realm realm = Realm.getDefaultInstance();
 
     @Override
@@ -38,6 +43,11 @@ public class ConsultaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.appointment);
 
         lvconsulta.setEmptyView(emptyViewConsultas);
 
@@ -62,6 +72,16 @@ public class ConsultaActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @OnClick(R.id.btnaddconsulta)

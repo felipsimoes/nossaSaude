@@ -3,16 +3,19 @@ package com.example.app.nossasaudeapp.activities;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +36,9 @@ import static android.R.attr.id;
 
 public class DadosPessoaActivity extends AppCompatActivity {
 
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     @BindView(R.id.nomeDadosPessoa)
     EditText nomeDadosPessoa;
     @BindView(R.id.dtNascimentoDadosPessoa)
@@ -46,7 +52,7 @@ public class DadosPessoaActivity extends AppCompatActivity {
     @BindView(R.id.btnSalvarDadosPessoa)
     Button btnSalvarDadosPessoa;
     @BindView(R.id.activity_dados_pessoa)
-    RelativeLayout activityDadosPessoa;
+    ConstraintLayout activityDadosPessoa;
     private Calendar calendar;
 
     public static final String LOG_TAG = "DADOS_PESSOA_ACTIVITY";
@@ -60,6 +66,11 @@ public class DadosPessoaActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         calendar = Calendar.getInstance();
+
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Dados pessoais");
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.tipo_sanguineo_array, android.R.layout.simple_spinner_item);
@@ -79,7 +90,7 @@ public class DadosPessoaActivity extends AppCompatActivity {
             dtNascimentoDadosPessoa.setText(dadosPessoa.getBirthday());
 
             if (dadosPessoa.getSex() != null) {
-                if ( dadosPessoa.getSex().equals("Masculino"))
+                if (dadosPessoa.getSex().equals("Masculino"))
                     radioGroupSexo.check(R.id.radioButtonMale);
                 else
                     radioGroupSexo.check(R.id.radioButtonFemale);
@@ -106,18 +117,17 @@ public class DadosPessoaActivity extends AppCompatActivity {
     @OnClick(R.id.btnSalvarDadosPessoa)
     public void savePersonData() {
 
-        if(nomeDadosPessoa.getText().toString().trim() == null) {
+        if (nomeDadosPessoa.getText().toString().trim() == null) {
             Snackbar.make(findViewById(R.id.myCoordinatorLayout),
                     "Entre com seu nome, por favor", Snackbar.LENGTH_SHORT);
         }
-        if(dtNascimentoDadosPessoa.getText().toString() == null) {
+        if (dtNascimentoDadosPessoa.getText().toString() == null) {
 
         }
-        if(radioGroupSexo.getCheckedRadioButtonId() == -1) {
+        if (radioGroupSexo.getCheckedRadioButtonId() == -1) {
             Snackbar.make(findViewById(R.id.activity_dados_pessoa),
                     "Selecione seu sexo, por favor", Snackbar.LENGTH_SHORT);
-        }
-        else {
+        } else {
             saveDadosPessoa();
         }
 
@@ -130,14 +140,12 @@ public class DadosPessoaActivity extends AppCompatActivity {
                 DadosPessoa dadosPessoa = realm.createObject(DadosPessoa.class);
 
                 dadosPessoa.setName(nomeDadosPessoa.getText().toString());
-
                 dadosPessoa.setBirthday(dtNascimentoDadosPessoa.getText().toString());
 
                 RadioButton radioSexButton = (RadioButton)
                         findViewById(radioGroupSexo.getCheckedRadioButtonId());
 
                 dadosPessoa.setSex(radioSexButton.getText().toString());
-
                 dadosPessoa.setBloodType(spinnerTipoSanguineo.getSelectedItemId());
 
                 Pessoa owner = realm.where(Pessoa.class).
@@ -153,5 +161,20 @@ public class DadosPessoaActivity extends AppCompatActivity {
         Toast.makeText(this, "Dados Alterado.", Toast.LENGTH_SHORT);
 
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

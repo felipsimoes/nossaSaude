@@ -9,6 +9,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <activity android:name=".activities.TelaInicialActivity" />
         <activity
             android:name=".activities.MainActivity"
             android:parentActivityName=".activities.TelaInicialActivity"
@@ -18,36 +20,45 @@
                 android:value="com.example.app.nossasaudeapp.activities.TelaInicialActivity" />
         </activity>
         <activity
-            android:name=".activities.PessoaActivity"
-            android:theme="@style/AppTheme1" />
-        <activity
-            android:name=".activities.CadastroUsuarioActivity"
-            android:theme="@style/AppTheme1" />
-        <activity
-            android:name=".activities.DadosPessoaActivity"
-            android:theme="@style/AppTheme1" />
-        <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.CadastroUsuarioActivity" />
+        <activity android:name=".activities.PessoaActivity" />
 
-        <receiver android:name=".AlarmReceiver" />
+        <activity
+            android:name=".activities.DadosPessoaActivity"
+            android:label="DadosPessoaActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MainActivity" />
+        </activity>
 
-        <activity android:name=".activities.ExameActivity" />
-        <activity android:name=".activities.DadosDoencaActivity" />
-        <activity android:name=".activities.DoencaActivity" />
-        <activity android:name=".activities.DadosExameActivity" />
-        <activity android:name=".activities.ConsultaActivity" />
-        <activity android:name=".activities.DadosConsultaActivity" />
-        <activity android:name=".activities.MedicoActivity" />
-        <activity android:name=".activities.DadosMedicoActivity" />
-        <activity android:name=".activities.DadosMedicamentoActivity" />
-        <activity android:name=".activities.MedicamentoActivity" />
+        <!-- Medicamento -->
+        <activity
+            android:name=".activities.MedicamentoActivity"
+            android:label="MedicamentoActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.DadosMedicamentoActivity"
+            android:label="DadosMedicamentoActivity"
+            android:parentActivityName=".activities.MedicamentoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MedicamentoActivity" />
+        </activity>
         <activity
             android:name=".activities.MedicamentoViewActivity"
             android:label="@string/title_activity_medicamento_view"
@@ -57,14 +68,25 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.app.nossasaudeapp.activities.MedicamentoActivity" />
         </activity>
+
+        <!-- Doenca -->
         <activity
-            android:name=".activities.MedicoViewActivity"
-            android:label="@string/title_activity_medico_view"
-            android:parentActivityName=".activities.MedicoActivity"
+            android:name=".activities.DoencaActivity"
+            android:label="DoencaActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.app.nossasaudeapp.activities.MedicoActivity" />
+                android:value="com.example.app.nossasaudeapp.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.DadosDoencaActivity"
+            android:label="DadosDoencaActivity"
+            android:parentActivityName=".activities.DoencaActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.DoencaActivity" />
         </activity>
         <activity
             android:name=".activities.DoencaViewActivity"
@@ -75,6 +97,53 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.app.nossasaudeapp.activities.DoencaActivity" />
         </activity>
+
+        <!-- Medico -->
+        <activity
+            android:name=".activities.MedicoActivity"
+            android:label="MedicoActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.DadosMedicoActivity"
+            android:label="DadosMedicoActivity"
+            android:parentActivityName=".activities.MedicoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MedicoActivity" />
+        </activity>
+        <activity
+            android:name=".activities.MedicoViewActivity"
+            android:label="@string/title_activity_medico_view"
+            android:parentActivityName=".activities.MedicoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MedicoActivity" />
+        </activity>
+
+        <!-- Exame -->
+        <activity
+            android:name=".activities.ExameActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.DadosExameActivity"
+            android:parentActivityName=".activities.ExameActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.ExameActivity" />
+        </activity>
         <activity
             android:name=".activities.ExameViewActivity"
             android:parentActivityName=".activities.ExameActivity"
@@ -82,6 +151,24 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.app.nossasaudeapp.activities.ExameActivity" />
+        </activity>
+
+        <!-- Consulta -->
+        <activity
+            android:name=".activities.ConsultaActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.DadosConsultaActivity"
+            android:parentActivityName=".activities.ConsultaActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.app.nossasaudeapp.activities.ConsultaActivity" />
         </activity>
         <activity
             android:name=".activities.ConsultaViewActivity"
@@ -91,7 +178,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.app.nossasaudeapp.activities.ConsultaActivity" />
         </activity>
-        <activity android:name=".activities.TelaInicialActivity"/>
+
+        <receiver android:name=".AlarmReceiver" />
     </application>
 
 </manifest>

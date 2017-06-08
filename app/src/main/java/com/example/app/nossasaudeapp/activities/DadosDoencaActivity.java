@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,6 +31,8 @@ public class DadosDoencaActivity extends AppCompatActivity {
     Button btnSalvarDoenca;
     @BindView(R.id.dadosdoenca)
     ConstraintLayout dadosdoenca;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     private long id;
 
@@ -38,6 +43,11 @@ public class DadosDoencaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_doenca);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.condition);
 
         Intent intent = getIntent();
         id = intent.getLongExtra("NOTIFICATION_ID", 0);
@@ -75,11 +85,23 @@ public class DadosDoencaActivity extends AppCompatActivity {
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
-            public void execute(Realm realm) { realm.copyToRealmOrUpdate(doenca); }
+            public void execute(Realm realm) {
+                realm.copyToRealmOrUpdate(doenca);
+            }
         });
 
         Toast.makeText(this, "Doença Salva", Toast.LENGTH_SHORT);
         startActivity(new Intent(this, DoencaActivity.class));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

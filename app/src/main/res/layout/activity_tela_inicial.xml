@@ -10,12 +10,6 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -26,17 +20,66 @@
         tools:layout_constraintTop_creator="1"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_home_black_24dp"
+                android:drawableLeft="@drawable/ic_home_black_24dp"
+                android:layout_weight=".5"
+                android:id="@+id/btnTelaInicial"
+                android:text="Tela Inicial"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:id="@+id/btnTelaMenu"
+                android:drawableStart="@drawable/ic_menu_black_24dp"
+                android:drawableLeft="@drawable/ic_menu_black_24dp"
+                android:text="Menu"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/empty_view_tela_inicial"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/msgEmptyTelaInicial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:text="Você não tem remédios, exames ou consultas cadastradas no aplicativo."/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/msgEmptyTelaInicial"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:paddingTop="@dimen/default_margin_layout"
+                android:text="Para cadastar os itens, clique em menu"/>
+
+        </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/lvTelaInicial"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_marginTop="@dimen/default_margin_layout"
+            android:layout_weight="1"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="8dp" />
 
     </LinearLayout>
 

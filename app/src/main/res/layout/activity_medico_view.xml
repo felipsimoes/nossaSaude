@@ -4,68 +4,132 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorMedico"
     tools:context="com.example.app.nossasaudeapp.activities.MedicoViewActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorMedico">
+        android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorMedico"
+            android:background="@color/lightGray"
             app:popupTheme="@style/PopupOverlay" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="16dp"
             android:background="@android:color/white"
+            android:orientation="vertical"
             android:padding="@dimen/default_padding_view">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Médico"
-                android:id="@+id/nome_medico_view"
-                android:textSize="20sp"
-                android:paddingTop="@dimen/default_padding_view"
-                android:paddingBottom="@dimen/default_padding_view" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Especialização"
-                android:id="@+id/especializacao_medico_view"
-                android:textSize="20sp"
-                android:paddingTop="@dimen/default_padding_view"
-                android:paddingBottom="@dimen/default_padding_view" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_edit_black_24dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Endereço"
-                android:id="@+id/endereco_medico_view"
-                android:textSize="20sp"
-                android:paddingTop="@dimen/default_padding_view"
-                android:paddingBottom="@dimen/default_padding_view" />
+                <TextView
+                    android:id="@+id/nome_medico_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_weight="5"
+                    android:ems="10"
+                    android:hint="Médico"
+                    android:paddingBottom="@dimen/default_padding_view"
+                    android:paddingTop="@dimen/default_padding_view"
+                    android:textSize="20sp" />
 
-            <TextView
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Telefone"
-                android:id="@+id/telefone_medico_view"
-                android:textSize="20sp"
-                android:paddingTop="@dimen/default_padding_view"
-                android:paddingBottom="@dimen/default_padding_view" />
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_subject_black_24dp" />
+
+                <TextView
+                    android:id="@+id/especializacao_medico_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_weight="5"
+                    android:ems="10"
+                    android:hint="Especialização"
+                    android:paddingBottom="@dimen/default_padding_view"
+                    android:paddingTop="@dimen/default_padding_view"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_location_on_black_24dp" />
+
+                <TextView
+                    android:id="@+id/endereco_medico_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_weight="5"
+                    android:ems="10"
+                    android:hint="Endereço"
+                    android:paddingBottom="@dimen/default_padding_view"
+                    android:paddingTop="@dimen/default_padding_view"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_call_black_24dp" />
+
+                <TextView
+                    android:id="@+id/telefone_medico_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_weight="5"
+                    android:ems="10"
+                    android:hint="Telefone"
+                    android:paddingBottom="@dimen/default_padding_view"
+                    android:paddingTop="@dimen/default_padding_view"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

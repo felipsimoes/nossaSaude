@@ -4,15 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.example.app.nossasaudeapp.adapter.ExameAdapter;
 import com.example.app.nossasaudeapp.R;
+import com.example.app.nossasaudeapp.adapter.ExameAdapter;
 import com.example.app.nossasaudeapp.data.Exame;
 
 import java.util.ArrayList;
@@ -34,6 +37,8 @@ public class ExameActivity extends AppCompatActivity {
     ConstraintLayout dadosexamelist;
     @BindView(R.id.empty_view_exames)
     RelativeLayout emptyViewExames;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private Realm realm = Realm.getDefaultInstance();
 
     @Override
@@ -41,6 +46,11 @@ public class ExameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exame);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.exam);
 
         lvexames.setEmptyView(emptyViewExames);
 
@@ -65,6 +75,16 @@ public class ExameActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @OnClick(R.id.btnaddexame)

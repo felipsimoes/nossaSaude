@@ -87,5 +87,10 @@
     <string name="description">Description</string>
     <string name="appointment">Appointment</string>
     <string name="menu">Menu</string>
+    <string name="condition_title"><u>Condition</u></string>
+    <string name="condition">Condition</string>
+    <string name="save">Save</string>
+    <string name="medicine">Medicine</string>
+    <string name="address">Address</string>
 
 </resources>
