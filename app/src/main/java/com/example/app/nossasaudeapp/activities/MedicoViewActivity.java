@@ -109,6 +109,6 @@ public class MedicoViewActivity extends AppCompatActivity {
                 medico.deleteFromRealm();
             }
         });
-        finish();
+        startActivity(new Intent(this, MedicoActivity.class));
     }
 }

@@ -19,8 +19,10 @@ import com.example.app.nossasaudeapp.activities.MedicamentoViewActivity;
 import com.example.app.nossasaudeapp.data.Consulta;
 import com.example.app.nossasaudeapp.data.Exame;
 import com.example.app.nossasaudeapp.data.Medicamento;
+import com.example.app.nossasaudeapp.util.DateAndTimeUtil;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import io.realm.Realm;
@@ -45,12 +47,14 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.MyVi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
+        public TextView time;
         public ImageView iconeReminder;
         public LinearLayout linearItem;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.reminder_name);
+            time = (TextView) itemView.findViewById(R.id.reminder_time);
             iconeReminder = (ImageView) itemView.findViewById(R.id.imgViewIconeReminder);
             linearItem = (LinearLayout) itemView.findViewById(R.id.linearItemReminder);
         }
@@ -84,12 +88,15 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.MyVi
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         RealmObject realmObject = list.get(position);
-
+        Calendar calendar;
         if (realmObject instanceof Medicamento) {
             final Medicamento medicamento = (Medicamento) realmObject;
+            calendar = DateAndTimeUtil.parseDateAndTime(medicamento.getReminder().getDateAndTime());
+
             holder.linearItem.setBackgroundResource(R.color.colorMedicamento);
             holder.name.setText(medicamento.getNome());
             holder.iconeReminder.setImageResource(R.mipmap.remedio);
+            holder.time.setText(DateAndTimeUtil.toStringReadableTime(calendar, holder.itemView.getContext()));
             holder.linearItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -100,9 +107,12 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.MyVi
             });
         } else if (realmObject instanceof Exame) {
             final Exame exame = (Exame) realmObject;
+            calendar = DateAndTimeUtil.parseDateAndTime(exame.getReminder().getDateAndTime());
+
             holder.linearItem.setBackgroundResource(R.color.colorExame);
             holder.name.setText(exame.getNome());
             holder.iconeReminder.setImageResource(R.mipmap.exame);
+            holder.time.setText(DateAndTimeUtil.toStringReadableTime(calendar, holder.itemView.getContext()));
             holder.linearItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -113,9 +123,12 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.MyVi
             });
         } else if (realmObject instanceof Consulta) {
             final Consulta consulta = (Consulta) realmObject;
+            calendar = DateAndTimeUtil.parseDateAndTime(consulta.getReminder().getDateAndTime());
+
             holder.linearItem.setBackgroundResource(R.color.colorConsulta);
             holder.name.setText(consulta.getNome());
             holder.iconeReminder.setImageResource(R.mipmap.consultas);
+            holder.time.setText(DateAndTimeUtil.toStringReadableTime(calendar, holder.itemView.getContext()));
             holder.linearItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

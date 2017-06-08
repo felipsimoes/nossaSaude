@@ -128,6 +128,6 @@ public class MedicamentoViewActivity extends AppCompatActivity {
                 medicamento.deleteFromRealm();
             }
         });
-        finish();
+        startActivity(new Intent(this, MedicamentoActivity.class));
     }
 }
