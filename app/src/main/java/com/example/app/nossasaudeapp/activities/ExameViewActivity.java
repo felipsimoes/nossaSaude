@@ -121,6 +121,6 @@ public class ExameViewActivity extends AppCompatActivity {
                 exame.deleteFromRealm();
             }
         });
-        finish();
+        startActivity(new Intent(this, ExameActivity.class));
     }
 }

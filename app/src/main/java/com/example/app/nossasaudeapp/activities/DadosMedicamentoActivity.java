@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.example.app.nossasaudeapp.AlarmReceiver;
 import com.example.app.nossasaudeapp.R;
+import com.example.app.nossasaudeapp.data.Consulta;
 import com.example.app.nossasaudeapp.data.Medicamento;
 import com.example.app.nossasaudeapp.data.Reminder;
 import com.example.app.nossasaudeapp.dialogs.AdvancedRepeatSelector;
@@ -203,6 +204,9 @@ public class DadosMedicamentoActivity extends AppCompatActivity
         if (id == 0) {
             id = RealmUtil.returnId(medicamento);
             reminder.setId(RealmUtil.returnId(reminder));
+        }else {
+            Medicamento medicamentoReminder = realm.where(Medicamento.class).equalTo("id", id).findFirst();
+            reminder.setId(medicamentoReminder.getReminder().getId());
         }
 
         medicamento.setId(id);
@@ -235,7 +239,7 @@ public class DadosMedicamentoActivity extends AppCompatActivity
 
         AlarmUtil.setAlarm(this, alarmIntent, (int) medicamento.getReminder().getId(), calendar);
 
-        Toast.makeText(this, "Medicamento Salvo", Toast.LENGTH_SHORT);
+        Toast.makeText(this, "Medicamento Salvo", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, MedicamentoActivity.class));
     }
 

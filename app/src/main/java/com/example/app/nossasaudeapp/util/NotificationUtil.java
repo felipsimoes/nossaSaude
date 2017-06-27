@@ -5,13 +5,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.util.Log;
 
 import com.example.app.nossasaudeapp.R;
-import com.example.app.nossasaudeapp.activities.DadosConsultaActivity;
-import com.example.app.nossasaudeapp.activities.DadosExameActivity;
-import com.example.app.nossasaudeapp.activities.DadosMedicamentoActivity;
-import com.example.app.nossasaudeapp.activities.MedicamentoActivity;
+import com.example.app.nossasaudeapp.activities.ConsultaViewActivity;
+import com.example.app.nossasaudeapp.activities.ExameViewActivity;
+import com.example.app.nossasaudeapp.activities.MedicamentoViewActivity;
 import com.example.app.nossasaudeapp.data.Consulta;
 import com.example.app.nossasaudeapp.data.Exame;
 import com.example.app.nossasaudeapp.data.Medicamento;
@@ -28,10 +28,12 @@ public class NotificationUtil {
         final NotificationManager notificationManager = (NotificationManager)
                 context.getSystemService(NOTIFICATION_SERVICE);
 
+        long[] pattern = {0, 300, 0};
+
         if (realmObject instanceof Medicamento) {
             Medicamento medicamento = ((Medicamento) realmObject);
             int medId = (int) medicamento.getId();
-            Intent viewIntent = new Intent(context, DadosMedicamentoActivity.class);
+            Intent viewIntent = new Intent(context, MedicamentoViewActivity.class);
             viewIntent.putExtra("NOTIFICATION_ID", (long)medId);
             PendingIntent pIntent = PendingIntent.getActivity(context,
                     medId, viewIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -41,6 +43,8 @@ public class NotificationUtil {
                     .setContentText("Medicamento")
                     .setSmallIcon(R.drawable.ic_generic_notification)
                     .setContentIntent(pIntent)
+                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                    .setVibrate(pattern)
                     .setAutoCancel(true)
                     .build();
 
@@ -50,7 +54,7 @@ public class NotificationUtil {
         else if (realmObject instanceof Consulta) {
             Consulta consulta = ((Consulta) realmObject);
             int consId = (int) consulta.getId();
-            Intent viewIntent = new Intent(context, DadosConsultaActivity.class);
+            Intent viewIntent = new Intent(context, ConsultaViewActivity.class);
             viewIntent.putExtra("NOTIFICATION_ID", (long) consId);
             PendingIntent pIntent = PendingIntent.getActivity(context,
                     consId, viewIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -60,6 +64,8 @@ public class NotificationUtil {
                     .setContentText("Consulta")
                     .setSmallIcon(R.drawable.ic_generic_notification)
                     .setContentIntent(pIntent)
+                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                    .setVibrate(pattern)
                     .setAutoCancel(true)
                     .build();
 
@@ -69,17 +75,19 @@ public class NotificationUtil {
         else if (realmObject instanceof Exame) {
             Exame exame = ((Exame) realmObject);
             int exameId = (int) exame.getId();
-            Intent viewIntent = new Intent(context, DadosExameActivity.class);
+            Intent viewIntent = new Intent(context, ExameViewActivity.class);
             viewIntent.putExtra("NOTIFICATION_ID", (long) exameId);
             PendingIntent pIntent = PendingIntent.getActivity(context,
                     exameId, viewIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             Notification mNotify = new Notification.Builder(context)
                     .setContentTitle(exame.getNome())
-                    .setContentTitle("Exame")
+                    .setContentText("Exame")
                     .setSmallIcon(R.drawable.ic_generic_notification)
                     .setContentIntent(pIntent)
                     .setAutoCancel(true)
+                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                    .setVibrate(pattern)
                     .build();
 
             notificationManager.notify(exameId, mNotify);

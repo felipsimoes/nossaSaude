@@ -110,6 +110,9 @@ public class DadosConsultaActivity extends AppCompatActivity {
         if (id == 0) {
             id = RealmUtil.returnId(consulta);
             reminder.setId(RealmUtil.returnId(reminder));
+        } else {
+            Consulta consultaReminder = realm.where(Consulta.class).equalTo("id", id).findFirst();
+            reminder.setId(consultaReminder.getReminder().getId());
         }
         consulta.setId(id);
         consulta.setNome(tituloConsulta.getText().toString());
@@ -130,7 +133,7 @@ public class DadosConsultaActivity extends AppCompatActivity {
 
         AlarmUtil.setAlarm(this, alarmIntent, (int) consulta.getReminder().getId(), calendar);
 
-        Toast.makeText(this, "Consulta Salva", Toast.LENGTH_SHORT);
+        Toast.makeText(this, "Consulta Salva", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, ConsultaActivity.class));
     }
 

@@ -10,7 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity android:name=".activities.TelaInicialActivity" />
+        <activity android:name=".activities.TelaInicialActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.MainActivity"
             android:parentActivityName=".activities.TelaInicialActivity"
@@ -22,10 +27,6 @@
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme1">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activities.CadastroUsuarioActivity" />
         <activity android:name=".activities.PessoaActivity" />

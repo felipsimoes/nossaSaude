@@ -121,6 +121,6 @@ public class ConsultaViewActivity extends AppCompatActivity {
                 consulta.deleteFromRealm();
             }
         });
-        finish();
+        startActivity(new Intent(this, ConsultaActivity.class));
     }
 }

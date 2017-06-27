@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.app.nossasaudeapp.AlarmReceiver;
 import com.example.app.nossasaudeapp.R;
 import com.example.app.nossasaudeapp.data.Exame;
+import com.example.app.nossasaudeapp.data.Medicamento;
 import com.example.app.nossasaudeapp.data.Reminder;
 import com.example.app.nossasaudeapp.util.AlarmUtil;
 import com.example.app.nossasaudeapp.util.DateAndTimeUtil;
@@ -92,7 +93,7 @@ public class DadosExameActivity extends AppCompatActivity {
         if ("".equals(tituloExame.getText().toString())) {
             Snackbar.make(dadosExameLayout, "Preencha o nome do exame.", Snackbar.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Exame Salvo", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "Exame Salvo", Toast.LENGTH_SHORT).show();
             salvarExame();
         }
     }
@@ -106,6 +107,9 @@ public class DadosExameActivity extends AppCompatActivity {
         if (id == 0) {
             id = RealmUtil.returnId(exame);
             reminder.setId(RealmUtil.returnId(reminder));
+        }else {
+            Exame exameReminder = realm.where(Exame.class).equalTo("id", id).findFirst();
+            reminder.setId(exameReminder.getReminder().getId());
         }
 
         exame.setId(id);
@@ -128,7 +132,7 @@ public class DadosExameActivity extends AppCompatActivity {
 
         AlarmUtil.setAlarm(this, alarmIntent, (int) exame.getReminder().getId(), calendar);
 
-        Toast.makeText(this, "Exame Salvo", Toast.LENGTH_SHORT);
+        Toast.makeText(this, "Exame Salvo", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, ExameActivity.class));
     }
 
