@@ -92,10 +92,8 @@ public class DadosConsultaActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnSalvarConsulta)
     public void onViewClicked() {
-        if ("".equals(tituloConsulta.getText().toString())) {
+        if (tituloConsulta.getText().toString().isEmpty()) {
             Snackbar.make(dadosConsultaLayout, "Preencha o nome da consulta.", Snackbar.LENGTH_SHORT).show();
-        } else if ("".equals(descricaoConsulta.getText().toString())) {
-            Snackbar.make(dadosConsultaLayout, "Preencha uma descrição.", Snackbar.LENGTH_SHORT).show();
         } else {
             salvarConsulta();
         }
@@ -168,7 +166,7 @@ public class DadosConsultaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);

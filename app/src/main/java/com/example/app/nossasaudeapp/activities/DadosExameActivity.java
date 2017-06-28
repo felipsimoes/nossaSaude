@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
@@ -90,7 +91,7 @@ public class DadosExameActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnSalvarExame)
     public void onViewClicked() {
-        if ("".equals(tituloExame.getText().toString())) {
+        if (tituloExame.getText().toString().isEmpty()) {
             Snackbar.make(dadosExameLayout, "Preencha o nome do exame.", Snackbar.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Exame Salvo", Toast.LENGTH_SHORT).show();
@@ -165,6 +166,6 @@ public class DadosExameActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        NavUtils.navigateUpFromSameTask(this);
     }
 }

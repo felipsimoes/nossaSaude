@@ -184,12 +184,12 @@ public class DadosMedicamentoActivity extends AppCompatActivity
                     .show();
         }
 
-        //Todo: inserir validação de unidade e dose de medicamento
-//        if (spinnerUnidadeMedicamento.getSelectedItemId() == -1) {
-//            Snackbar.make(myCoordinatorLayout,
-//                    "Por favor, selecione a unidade de medicamento", Snackbar.LENGTH_SHORT)
-//                    .show();
-//        }
+        if (qtDoseMedicamento.getText().toString().trim().isEmpty()) {
+            Snackbar.make(myCoordinatorLayout,
+                    "Por favor, insira uma quantidade", Snackbar.LENGTH_SHORT)
+                    .show();
+        }
+
         else {
             saveMedicamento();
         }
@@ -335,10 +335,14 @@ public class DadosMedicamentoActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        NavUtils.navigateUpFromSameTask(this);
+    }
 }
